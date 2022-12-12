@@ -13,35 +13,35 @@
   <div class="container">
 
     <div class="signin-signup">
-      <form action="#" class="sign-in-form">
+      <form action="signin.php" class="sign-in-form" method = "post">
         <h2 class="title">Sign in</h2>
         <div class="input-field">
           <i class="fas fa-user"></i>
-          <input type="text" placeholder="Username" required/>
+          <input type="text" placeholder="Username" name = "username" required/>
         </div>
         <div class="input-field">
           <i class="fas fa-lock"></i>
-          <input type="password" placeholder="Password" required/>
+          <input type="password" placeholder="Password" name = "password" required/>
         </div>
         <input type="submit" value="Login" class="btn solid" />
       </form>
-      <form action="#" class="sign-up-form">
+      <form action="signup.php" class="sign-up-form" method = "post">
         <h2 class="title">Sign up</h2>
         <div class="input-field">
           <i class="fas fa-user-edit"></i>
-          <input type="text" placeholder="First Name" required/>
+          <input type="text" placeholder="First Name" name = "firstName" required/>
         </div>
         <div class="input-field">
           <i class="fas fa-user-edit"></i>
-          <input type="text" placeholder="Last Name" required/>
+          <input type="text" placeholder="Last Name" name = "lastName" required/>
         </div>
         <div class="input-field">
           <i class="fas fa-envelope"></i>
-          <input type="email" placeholder="Email" required/>
+          <input type="email" placeholder="Email" name = "username" required/>
         </div>
         <div class="input-field">
           <i class="fas fa-lock"></i>
-          <input type="password" placeholder="Password" required/>
+          <input type="password" placeholder="Password" name = "password" required/>
         </div>
         <input type="submit" class="btn" value="Sign up" />
       </form>
