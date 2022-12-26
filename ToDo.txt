@@ -1,1 +1,3 @@
 ~~~~To Do~~~~
+Με το Resize του window το μενου να προσαρμόζεται.
+Include το map 
