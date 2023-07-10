@@ -1,0 +1,159 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial;
+  color: #444;
+}
+
+#map {
+  position: fixed;
+  height: 100vh;
+  width: 88%;
+  right: 0;
+  transition: all 0.5s ease;
+}
+
+.userstuff {
+  position: relative;
+  height: 100vh;
+  width: 12%;
+  left: 0;
+  background-color: white;
+  transition: all 0.5s ease-in;
+  overflow-y: auto;
+}
+
+.logo {
+  width: 100%;
+  height: fit-content;
+  overflow: hidden;
+  margin-bottom: 30%;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  transform: translate(0%, 25%);
+}
+
+.infobox {
+  position: fixed;
+  border-radius: 1em;
+  right: 0;
+  height: 0px;
+  width: 0px;
+  margin: 2%;
+  background-color: white;
+  text-align: center;
+  font-weight: bold;
+  transition: all 0.3s ease-in;
+}
+
+.nav-bar {
+  position: relative;
+  overflow-x: hidden;
+}
+
+.menu {
+  display: none;
+  cursor: pointer;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.nav-bar ul {
+  padding: 0%;
+}
+
+.nav-bar a {
+  text-decoration: none;
+  color: black;
+}
+
+li {
+  text-align: center;
+  padding: 7%;
+  border-bottom: 2px groove rgba(255, 255, 255, 0.466);
+  background-color: white;
+  font-weight: bold;
+}
+
+li:hover {
+  text-align: center;
+  padding: 7%;
+  border-bottom: 2px groove transparent;
+  border-radius: 0.5em;
+  background-color: #c8c8c8;
+  font-weight: bold;
+}
+
+#selected {
+  background-color: #e1e1e1;
+  border-radius: 0.5em;
+}
+
+#last-nav-element {
+  border-bottom-left-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
+  border-bottom: none;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #777;
+  border-radius: 10em;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+.leaflet-control-search.search-exp {
+  opacity: 0.8 !important;
+  border-radius: 2em !important;
+}
+
+.search-button {
+  background-color: transparent !important;
+}
+
+.search-input {
+  border: none !important;
+}
+
+.leaflet-control-search .searchbar-clicked {
+  border: none !important;
+}
+
+.leaflet-touch .leaflet-bar {
+  border: none !important;
+}
+
+.leaflet-control-zoom-in {
+  border-radius: 1em !important;
+  margin-bottom: 20%;
+  opacity: 0.9 !important;
+}
+
+.leaflet-control-zoom-out {
+  border-radius: 1em !important;
+  opacity: 0.9 !important;
+}
+
+.my-location-button {
+  border-radius: 2em !important;
+  opacity: 0.9 !important;
+}
+
+.sm-name {
+  margin-top: 4%;
+}

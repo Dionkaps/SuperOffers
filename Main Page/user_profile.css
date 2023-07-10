@@ -1,0 +1,108 @@
+.profile_page {
+  background-image: linear-gradient(to right, #43cea2, #185a9d);
+  height: 100vh;
+  width: 88%;
+  position: absolute;
+  right: 0;
+  overflow: auto;
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: 30% 35% 35%;
+  grid-template-areas: "user_info likes_dislikes offers"
+    "user_score likes_dislikes offers";
+}
+
+.user_info {
+  grid-area: user_info;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+
+.user_score {
+  grid-area: user_score;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.likes_dislikes {
+  grid-area: likes_dislikes;
+  background-color: transparent;
+  display: flex;
+  justify-content:flex-start;
+  flex-direction: column;
+  align-items: center;
+}
+
+.offers {
+  grid-area: offers;
+  background-color: transparent;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inner_user_info {
+  background-color: white;
+  padding: 5% 15% 15% 15%;
+  border-radius: 2em;
+  border: solid black 2px;
+}
+
+.inner_user_score {
+  background-color: white;
+  padding: 5% 15% 15% 15%;
+  border-radius: 2em;
+  border: solid black 2px;
+}
+
+.inner_likes_dislikes {
+  background-color: white;
+  padding: 10%;
+  max-height: 80vh;
+  border-radius: 2em;
+  border: solid black 2px;
+  margin: 1%;
+  overflow-x: auto;
+}
+
+.inner_offers {
+  background-color: white;
+  padding: 10%;
+  max-height: 80vh;
+  border-radius: 2em;
+  border: solid black 2px;
+  margin: 1%;
+  overflow-x: auto;
+}
+
+tbody td {
+  text-align: center;
+}
+
+tfoot th {
+  text-align: right;
+}
+
+#inner_box {
+  box-shadow: 5px 5px 3px 5px rgba(0, 0, 0, 0.5);
+}
+
+#account_heading {
+  border-bottom: solid 1px grey;
+  text-align: center;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+}
+
+button :hover{
+  cursor: pointer;
+}
