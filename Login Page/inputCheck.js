@@ -1,7 +1,7 @@
 //Sinartisi elegxou olwn twn pediwn gia na ginei enable to koumpi sign up
-function inputCheckFunction(inputPass,inputFname,inputLname,inputEmail) {
+function inputCheckFunction(inputPass,inputFname,inputLname,inputEmail,inputUsername) {
   const signUpBtn = document.getElementById('signUpbtn');
-  if (inputPass.value.length > 0 && inputFname.value.length > 0 && inputLname.value.length > 0 && inputEmail.value.length > 0) {
+  if (inputPass.value.length > 0 && inputFname.value.length > 0 && inputLname.value.length > 0 && inputEmail.value.length > 0 && inputUsername.value.length > 0) {
     signUpBtn.style.pointerEvents = 'auto';
     signUpBtn.style.opacity = '1';
   } else {

@@ -30,19 +30,23 @@
         <h2 class="title">Sign up</h2>
         <div class="input-field">
           <i class="fas fa-user-edit"></i>
-          <input type="text" placeholder="First Name" name = "firstName" required oninput="inputCheckFunction(document.signUpForm.password,document.signUpForm.firstName,document.signUpForm.lastName,document.signUpForm.username)"/>
+          <input type="text" placeholder="First Name" name = "firstName" required oninput="inputCheckFunction(document.signUpForm.password,document.signUpForm.firstName,document.signUpForm.lastName,document.signUpForm.email,document.signUpForm.username)"/>
         </div>
         <div class="input-field">
           <i class="fas fa-user-edit"></i>
-          <input type="text" placeholder="Last Name" name = "lastName" required oninput="inputCheckFunction(document.signUpForm.password,document.signUpForm.firstName,document.signUpForm.lastName,document.signUpForm.username)"/>
+          <input type="text" placeholder="Last Name" name = "lastName" required oninput="inputCheckFunction(document.signUpForm.password,document.signUpForm.firstName,document.signUpForm.lastName,document.signUpForm.email,document.signUpForm.username)"/>
+        </div>
+        <div class="input-field">
+          <i class="fas fa-user-edit"></i>
+          <input type="text" placeholder="Username" name = "username" required oninput="inputCheckFunction(document.signUpForm.password,document.signUpForm.firstName,document.signUpForm.lastName,document.signUpForm.email,document.signUpForm.username)"/>
         </div>
         <div class="input-field">
           <i class="fas fa-envelope"></i>
-          <input type="email" placeholder="Email" name = "username" required oninput="inputCheckFunction(document.signUpForm.password,document.signUpForm.firstName,document.signUpForm.lastName,document.signUpForm.username)"/>
+          <input type="email" placeholder="Email" name = "email" required oninput="inputCheckFunction(document.signUpForm.password,document.signUpForm.firstName,document.signUpForm.lastName,document.signUpForm.email,document.signUpForm.username)"/>
         </div>
         <div class="input-field">
           <i class="fas fa-lock"></i>
-          <input type="password" placeholder="Password" name = "password" required oninput="inputCheckFunction(document.signUpForm.password,document.signUpForm.firstName,document.signUpForm.lastName,document.signUpForm.username)"/>
+          <input type="password" placeholder="Password" name = "password" required oninput="inputCheckFunction(document.signUpForm.password,document.signUpForm.firstName,document.signUpForm.lastName,document.signUpForm.email,document.signUpForm.username)"/>
         </div>
         <input type="submit" class="btn" id="signUpbtn" value="Sign up" onclick="passCheck(document.signUpForm.password, this.form)" />
       </form>

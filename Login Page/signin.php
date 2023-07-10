@@ -1,5 +1,5 @@
 <?php
-$username = $_POST['username'];
+$email = $_POST['email'];
 $password = $_POST['password'];
 
 // Database connection
@@ -8,7 +8,7 @@ if($conn->connect_error){
     echo "$conn->connect_error";
     die("Connection Failed : ". $conn->connect_error);
 } else {
-    $sql = "select * from registration where email='$username'AND password='$password'";
+    $sql = "select * from user where email='$email'AND password='$password'";
 
     $result = mysqli_query($conn,$sql);
 

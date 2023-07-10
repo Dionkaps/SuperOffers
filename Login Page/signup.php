@@ -1,8 +1,14 @@
 <?php
-$username = $_POST['username'];
+$email = $_POST['email'];
 $password = $_POST['password'];
 $firstName = $_POST['firstName'];
 $lastName = $_POST['lastName'];
+$username = $_POST['username'];
+$token_count = 0;
+$like_count = 0;
+$dislike_count = 0;
+$total_score = 0;
+$current_score = 0;
 
 // Database connection
 $conn = new mysqli('localhost','root','','webdev');
@@ -10,7 +16,7 @@ if($conn->connect_error){
     echo "$conn->connect_error";
     die("Connection Failed : ". $conn->connect_error);
 } else {
-    $sql = "select * from registration where email='$username'";
+    $sql = "select * from user where email='$email'";
 
     $result = mysqli_query($conn,$sql);
 
@@ -20,8 +26,8 @@ if($conn->connect_error){
     }
 
     else{
-        $stmt = $conn->prepare("insert into registration(first_name, last_name, email, password) values(?, ?, ?, ?)");
-        $stmt->bind_param("ssss", $firstName, $lastName, $username, $password);
+        $stmt = $conn->prepare("insert into user(username, password, email, token_count, like_count, dislike_count, total_score, current_score, first_name, last_name) values(?, ?, ?, ?, ?, ?, ?, ?, ? ,?)");
+        $stmt->bind_param("sssiiiiiss", $username, $password, $email, $token_count, $like_count, $dislike_count, $total_score, $current_score, $firstName, $lastName);
         $execval = $stmt->execute();
         echo "Ta vala";
     }
