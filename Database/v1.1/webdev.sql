@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Εξυπηρετητής: 127.0.0.1
--- Χρόνος δημιουργίας: 10 Ιουλ 2023 στις 17:55:46
+-- Χρόνος δημιουργίας: 11 Ιουλ 2023 στις 17:58:12
 -- Έκδοση διακομιστή: 10.4.27-MariaDB
 -- Έκδοση PHP: 8.1.12
 
@@ -20,6 +20,9 @@ SET time_zone = "+00:00";
 --
 -- Βάση δεδομένων: `webdev`
 --
+DROP DATABASE IF EXISTS `webdev`;
+CREATE DATABASE IF NOT EXISTS `webdev` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `webdev`;
 
 -- --------------------------------------------------------
 
