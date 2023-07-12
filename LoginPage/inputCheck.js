@@ -16,7 +16,6 @@ function passCheck(inputPass, form) {
   var passw = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
 
   if (inputPass.value.match(passw)) {
-    alert('All good, brother');
     form.submit();
   } else {
     alert('Your password must contain at least 8 characters, one uppercase, one number, and one special character');

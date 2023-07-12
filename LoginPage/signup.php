@@ -1,4 +1,4 @@
-<?php
+<?php 
 $email = $_POST['email'];
 $password = $_POST['password'];
 $firstName = $_POST['firstName'];
@@ -20,17 +20,32 @@ if($conn->connect_error){
 
     $result = mysqli_query($conn,$sql);
 
-    if(mysqli_num_rows($result)==1){
-        echo "USER ALREADY EXISTS";
+    if(mysqli_num_rows($result)==1){?> 
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="utf-8"/>
+            <title></title>
+        </head>
+        <body>
+            <script>
+            window.location.assign('http://localhost/LoginPage/index.html');
+            alert('User already exists');
+            
+            </script>
+        </body>
+    </html> 
+    <?php
         exit();
     }
 
     else{
         $stmt = $conn->prepare("insert into user(username, password, email, token_count, like_count, dislike_count, total_score, current_score, first_name, last_name) values(?, ?, ?, ?, ?, ?, ?, ?, ? ,?)");
         $stmt->bind_param("sssiiiiiss", $username, $password, $email, $token_count, $like_count, $dislike_count, $total_score, $current_score, $firstName, $lastName);
-        $execval = $stmt->execute();
-        echo "Ta vala";
+        $execval = $stmt->execute(); 
+        header('Location:http://localhost/MainPage/main_page.html');
     }
     $stmt->close();
     $conn->close();
 }
+?>
