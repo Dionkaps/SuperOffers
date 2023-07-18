@@ -13,7 +13,7 @@ if($conn->connect_error){
     $result = mysqli_query($conn,$sql);
 
     if(mysqli_num_rows($result)==1){
-        header('Location:http://localhost/MainPage/main_page.html');
+        header('Location:MainPage/main_page.html');
         exit();
     }
 
