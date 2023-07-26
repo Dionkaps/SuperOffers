@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: left;
+            justify-content: left;
+            min-height: 100vh;
+            background-color: #f2f2f2;
+        }
+
+        header {
+            background-color: #5995fd;
+            color: #fff;
+            padding: 10px;
+            text-align: left;
+        }
+
+        nav {
+            background-color: #f2f2f2;
+            padding: 10px;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+            text-align: left;
+        }
+
+        button {
+            text-decoration: none;
+            color: #333;
+            padding: 6px 12px; /* Adjust the padding to make the buttons smaller */
+            border: 5px solid #333;
+            border-radius: 10px;
+            display: block;
+            font-size: 14px; /* Adjust the font-size to make the buttons smaller */
+            width: 150px; /* Set a fixed width for all buttons */
+            background-color: transparent;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #5995fd;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome Admin</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><button onclick="buttonClick(1)">Δεδομένα προϊόντων</button></li>
+            <li><button onclick="buttonClick(2)">Δεδομένα καταστημάτων</button></li>
+            <li><button onclick="buttonClick(3)">Στατιστικά</button></li>
+            <li><button onclick="buttonClick(4)">Leaderboard</button></li>
+            <li><button onclick="buttonClick(5)">Χάρτης</button></li>
+        </ul>
+    </nav>
+    <main>
+        <!-- Your main content goes here -->
+        
+    </main>
+
+    <script>
+        function buttonClick(buttonNumber) {
+            switch (buttonNumber) {
+                case 1:
+                    alert("Button 1 clicked!");
+                    break;
+                case 2:
+                    alert("Button 2 clicked!");
+                    break;
+                case 3:
+                    alert("Button 3 clicked!");
+                    break;
+                case 4:
+                    alert("Button 4 clicked!");
+                    break;
+                case 5:
+                    alert("Button 5 clicked!");
+                    break;
+                default:
+                    alert("Unknown button clicked!");
+            }
+        }
+    </script>
+</body>
+</html>
