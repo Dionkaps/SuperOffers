@@ -13,26 +13,12 @@ if($conn->connect_error){
     $result = mysqli_query($conn,$sql);
 
     if(mysqli_num_rows($result)==1){
-        header('Location:MainPage/main_page.html');
+        echo "Correct";
         exit();
     }
-
-    else{ ?>
-        <!DOCTYPE html>
-        <html>
-            <head>
-                <meta charset="utf-8"/>
-                <title></title>
-            </head>
-            <body>
-                <script>alert('Wrong credentials');
-                window.location.assign('http://localhost/LoginPage/index.html');
-            </script>
-            </body>
-        </html> 
-        <?php 
-}
-
-    $conn->close();
+    else if(mysqli_num_rows($result)!=1){
+        echo "Wrong";
+    }
+    
 }
 ?>

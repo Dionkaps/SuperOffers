@@ -29,7 +29,7 @@ if($conn->connect_error){
         </head>
         <body>
             <script>
-            window.location.assign('http://localhost/LoginPage/index.html');
+            window.location.assign('index.html');
             alert('User already exists');
             
             </script>
@@ -43,7 +43,7 @@ if($conn->connect_error){
         $stmt = $conn->prepare("insert into user(username, password, email, token_count, like_count, dislike_count, total_score, current_score, first_name, last_name) values(?, ?, ?, ?, ?, ?, ?, ?, ? ,?)");
         $stmt->bind_param("sssiiiiiss", $username, $password, $email, $token_count, $like_count, $dislike_count, $total_score, $current_score, $firstName, $lastName);
         $execval = $stmt->execute(); 
-        header('Location:http://localhost/MainPage/main_page.html');
+        header('Location:/MainPage/main_page.html');
     }
     $stmt->close();
     $conn->close();

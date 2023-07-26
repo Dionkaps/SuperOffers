@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
   <script src="inputCheck.js"></script>
+  <script src="checkCredentials.js"></script>
   <link rel="stylesheet" href="style.css" />
   <title>Sign in & Sign up Form</title>
 </head>
@@ -13,8 +14,9 @@
 <body>
   <div class="container">
 
+    <!-- Sign in -->
     <div class="signin-signup">
-      <form action="signin.php" class="sign-in-form" method="post">
+      <form name="signInFrom" class="sign-in-form" method="post">
         <h2 class="title">Sign in</h2>
         <div class="input-field">
           <i class="fas fa-user"></i>
@@ -24,8 +26,10 @@
           <i class="fas fa-lock"></i>
           <input type="password" placeholder="Password" name="password" required />
         </div>
-        <input type="submit" value="Login" class="btn solid" />
+        <input type="button" value="Login" class="btn solid" onclick="checkDataFromPHP()" />
       </form>
+
+      <!-- Sign up -->
       <form name="signUpForm" class="sign-up-form" method="post">
         <h2 class="title">Sign up</h2>
         <div class="input-field">
