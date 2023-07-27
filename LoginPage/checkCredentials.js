@@ -1,5 +1,5 @@
 function checkDataFromPHP() {
-  const formElement = document.forms["signInFrom"];
+  const formElement = document.forms["signInForm"];
 
   //Create a new FormData object and append the form data to it
   const formData = new FormData(formElement);
