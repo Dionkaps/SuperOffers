@@ -2,14 +2,14 @@
 $host = "localhost";
 $username = "root";
 $password = "";
-$dbname = "test";
+$dbname = "webdev";
 $conn = new mysqli($host, $username, $password, $dbname);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
 //Decode the JSON data
-$json_string = file_get_contents('data.json');
+$json_string = file_get_contents('products_categories.json');
 $data = json_decode($json_string, true);
 
 //Prepared statements
