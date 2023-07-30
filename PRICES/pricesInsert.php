@@ -35,7 +35,7 @@ foreach ($data['data'] as $product) {
             $date = $price['date'];
             $priceValue = $price['price'];
 
-            $insertPriceQuery = "INSERT INTO prices (pricing_id, product_id, date, price) VALUES ($productId, $productId, '$date', $priceValue)";
+            $insertPriceQuery = "INSERT INTO prices (product_id, date, price) VALUES ( $productId, '$date', $priceValue)";
             mysqli_query($conn, $insertPriceQuery);
         }
     } else {
