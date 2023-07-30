@@ -16,37 +16,63 @@ header {
     padding: 10px;
     text-align: left;
 }
-
-nav {
-    background-color: #f2f2f2;
-    padding: 10px;
+.adminstuff {
+  position: relative;
+  height: 100vh;
+  width: 12%;
+  left: 0;
+  background-color: white;
+  transition: all 0.5s ease-in;
+  overflow-y: auto;
 }
 
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-li {
-    margin: 10px 0;
-    text-align: left;
-}
-
-button {
-    text-decoration: none;
-    color: #333;
-    padding: 6px 12px; /* Adjust the padding to make the buttons smaller */
-    border: 5px solid #333;
-    border-radius: 10px;
-    display: block;
-    font-size: 14px; /* Adjust the font-size to make the buttons smaller */
-    width: 150px; /* Set a fixed width for all buttons */
-    background-color: transparent;
+.nav-bar {
+    position: relative;
+    overflow-x: hidden;
+  }
+  
+  .menu {
+    display: none;
     cursor: pointer;
-}
-
-button:hover {
-    background-color: #5995fd;
-    color: #fff;
-}
+  }
+  
+  ul {
+    list-style-type: none;
+  }
+  
+  .nav-bar ul {
+    padding: 0%;
+  }
+  
+  .nav-bar a {
+    text-decoration: none;
+    color: black;
+  }
+  
+  li {
+    text-align: center;
+    padding: 7%;
+    border-bottom: 2px groove rgba(255, 255, 255, 0.466);
+    background-color: white;
+    font-weight: bold;
+  }
+  
+  li:hover {
+    text-align: center;
+    padding: 7%;
+    border-bottom: 2px groove transparent;
+    border-radius: 0.5em;
+    background-color: #c8c8c8;
+    font-weight: bold;
+  }
+  
+  #selected {
+    background-color: #e1e1e1;
+    border-radius: 0.5em;
+  }
+  
+  #last-nav-element {
+    border-bottom-left-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+    border-bottom: none;
+  }

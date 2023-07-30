@@ -1,0 +1,57 @@
+/* Basic styling for the body and centering the form */
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 50px auto;
+  max-width: 400px;
+}
+
+/* Style the header */
+h1 {
+  margin-bottom: 20px;
+}
+
+/* Style the form container */
+form {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+/* Style the label for the file input */
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* Style the file input field */
+input[type="file"] {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Style the submit button */
+input[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* On hover, change the background color of the submit button */
+input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* On form submission, disable the submit button to prevent multiple submissions */
+input[type="submit"]:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
