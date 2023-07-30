@@ -1,61 +1,56 @@
 //sample data values for populate map
 let data = {
-  "type": "FeatureCollection",
-  "generator": "overpass-ide",
-  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
-  "timestamp": "2023-02-16T20:42:12Z",
-  "features": [
+  type: "FeatureCollection",
+  generator: "overpass-ide",
+  copyright:
+    "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  timestamp: "2023-02-16T20:42:12Z",
+  features: [
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/354449389",
-        "brand": "Lidl",
+        brand: "Lidl",
         "brand:wikidata": "Q151954",
         "brand:wikipedia": "en:Lidl",
-        "name": "Lidl",
-        "opening_hours": "Mo-Fr 07:00-21:00, Sa 07:00-20:00",
-        "shop": "supermarket"
+        name: "Lidl",
+        opening_hours: "Mo-Fr 07:00-21:00, Sa 07:00-20:00",
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.712654,
-          38.2080319
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.712654, 38.2080319],
       },
-      "id": "node/354449389"
+      id: "node/354449389",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/360217468",
-        "name": "The Mart",
+        name: "The Mart",
         "name:en": "The Mart",
-        "shop": "supermarket"
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7806567,
-          38.28931
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7806567, 38.28931],
       },
-      "id": "node/360217468"
+      id: "node/360217468",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/360226900",
         "addr:city": "Πάτρα",
         "addr:housenumber": "9",
         "addr:postcode": "26442",
         "addr:street": "Νοταρά",
-        "brand": "Lidl",
+        brand: "Lidl",
         "brand:wikidata": "Q151954",
         "brand:wikipedia": "en:Lidl",
-        "name": "Lidl",
-        "opening_hours": "Mo-Fr 09:00-21:00; Sa 9:00-20:00",
-        "operator": "LIDL",
+        name: "Lidl",
+        opening_hours: "Mo-Fr 09:00-21:00; Sa 9:00-20:00",
+        operator: "LIDL",
         "payment:bitcoin": "no",
         "payment:cash": "yes",
         "payment:coins": "yes",
@@ -63,1527 +58,1269 @@ let data = {
         "payment:debit_cards": "yes",
         "payment:mastercard": "yes",
         "payment:visa": "yes",
-        "phone": "800 111 3333",
-        "shop": "supermarket",
-        "website": "https://www.lidl-hellas.gr/el/index.htm"
+        phone: "800 111 3333",
+        shop: "supermarket",
+        website: "https://www.lidl-hellas.gr/el/index.htm",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7434265,
-          38.2633511
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7434265, 38.2633511],
       },
-      "id": "node/360226900"
+      id: "node/360226900",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/364381224",
         "addr:city": "Ρίο",
         "addr:housenumber": "23",
         "addr:postcode": "26504",
         "addr:street": "Αθηνών",
-        "name": "Σουπερμάρκετ Ανδρικόπουλος",
+        name: "Σουπερμάρκετ Ανδρικόπουλος",
         "name:en": "Supermarket Andrikopoulos",
-        "operator": "Andrikopoulos",
-        "shop": "supermarket"
+        operator: "Andrikopoulos",
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7908028,
-          38.2952086
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7908028, 38.2952086],
       },
-      "id": "node/364381224"
+      id: "node/364381224",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/364463568",
-        "brand": "Σκλαβενίτης",
+        brand: "Σκλαβενίτης",
         "brand:el": "Σκλαβενίτης",
         "brand:en": "Sklavenitis",
         "brand:wikidata": "Q7536037",
-        "name": "Σκλαβενίτης",
+        name: "Σκλαβενίτης",
         "name:el": "Σκλαβενίτης",
         "name:en": "Sklavenitis",
-        "shop": "supermarket"
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7642075,
-          38.2104365
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7642075, 38.2104365],
       },
-      "id": "node/364463568"
+      id: "node/364463568",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/598279836",
-        "name": "Papakos",
-        "shop": "convenience"
+        name: "Papakos",
+        shop: "convenience",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7622778,
-          38.23553
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7622778, 38.23553],
       },
-      "id": "node/598279836"
+      id: "node/598279836",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/633369803",
-        "shop": "convenience"
+        shop: "convenience",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7540236,
-          38.2612908
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7540236, 38.2612908],
       },
-      "id": "node/633369803"
+      id: "node/633369803",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/980515550",
-        "brand": "Lidl",
+        brand: "Lidl",
         "brand:wikidata": "Q151954",
         "brand:wikipedia": "en:Lidl",
-        "name": "Lidl",
-        "shop": "supermarket"
+        name: "Lidl",
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.740082,
-          38.2312926
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.740082, 38.2312926],
       },
-      "id": "node/980515550"
+      id: "node/980515550",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/1643373636",
         "addr:city": "Δημοτική Ενότητα Ρίου",
         "addr:street": "Σώμερσετ",
-        "brand": "Σκλαβενίτης",
+        brand: "Σκλαβενίτης",
         "brand:el": "Σκλαβενίτης",
         "brand:en": "Sklavenitis",
         "brand:wikidata": "Q7536037",
-        "name": "Σκλαβενίτης",
+        name: "Σκλαβενίτης",
         "name:el": "Σκλαβενίτης",
         "name:en": "Sklavenitis",
-        "opening_hours": "Mo-Fr 08:00-21:00; Sa 08:00-20:00; Su 11:00-18:00",
+        opening_hours: "Mo-Fr 08:00-21:00; Sa 08:00-20:00; Su 11:00-18:00",
         "payment:cash": "yes",
         "payment:credit_cards": "yes",
-        "shop": "supermarket"
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7814957,
-          38.3013087
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7814957, 38.3013087],
       },
-      "id": "node/1643373636"
+      id: "node/1643373636",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/1643373639",
-        "shop": "supermarket"
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.790383,
-          38.2949372
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.790383, 38.2949372],
       },
-      "id": "node/1643373639"
+      id: "node/1643373639",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/1643713403",
-        "shop": "convenience"
+        shop: "convenience",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7666723,
-          38.2852364
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7666723, 38.2852364],
       },
-      "id": "node/1643713403"
+      id: "node/1643713403",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/1643713405",
-        "shop": "convenience"
+        shop: "convenience",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7714546,
-          38.2911121
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7714546, 38.2911121],
       },
-      "id": "node/1643713405"
+      id: "node/1643713405",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/1643713406",
-        "shop": "convenience"
+        shop: "convenience",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7666079,
-          38.2913332
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7666079, 38.2913332],
       },
-      "id": "node/1643713406"
+      id: "node/1643713406",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/1643818244",
-        "shop": "convenience"
+        shop: "convenience",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7625472,
-          38.2779126
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7625472, 38.2779126],
       },
-      "id": "node/1643818244"
+      id: "node/1643818244",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/1643818267",
-        "shop": "convenience"
+        shop: "convenience",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7574031,
-          38.2751636
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7574031, 38.2751636],
       },
-      "id": "node/1643818267"
+      id: "node/1643818267",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/1643818277",
-        "shop": "supermarket"
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7629172,
-          38.2756942
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7629172, 38.2756942],
       },
-      "id": "node/1643818277"
+      id: "node/1643818277",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/1643818281",
-        "brand": "Σκλαβενίτης",
+        brand: "Σκλαβενίτης",
         "brand:el": "Σκλαβενίτης",
         "brand:en": "Sklavenitis",
         "brand:wikidata": "Q7536037",
         "brand:wikipedia": "el:Σκλαβενίτης",
-        "name": "Σκλαβενίτης",
+        name: "Σκλαβενίτης",
         "name:el": "Σκλαβενίτης",
         "name:en": "Sklavenitis",
-        "shop": "supermarket"
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7489662,
-          38.2596476
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7489662, 38.2596476],
       },
-      "id": "node/1643818281"
+      id: "node/1643818281",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/1643825320",
-        "shop": "convenience"
+        shop: "convenience",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7883123,
-          38.2945036
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7883123, 38.2945036],
       },
-      "id": "node/1643825320"
+      id: "node/1643825320",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/1643889596",
-        "shop": "supermarket"
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7568738,
-          38.2126477
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7568738, 38.2126477],
       },
-      "id": "node/1643889596"
+      id: "node/1643889596",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/1657132006",
-        "name": "Ρουμελιώτης SUPER Market",
-        "shop": "supermarket"
+        name: "Ρουμελιώτης SUPER Market",
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7436127,
-          38.2613806
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7436127, 38.2613806],
       },
-      "id": "node/1657132006"
+      id: "node/1657132006",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/1657132008",
-        "brand": "Σκλαβενίτης",
+        brand: "Σκλαβενίτης",
         "brand:el": "Σκλαβενίτης",
         "brand:en": "Sklavenitis",
         "brand:wikidata": "Q7536037",
         "brand:wikipedia": "el:Σκλαβενίτης",
-        "name": "Σκλαβενίτης",
+        name: "Σκλαβενίτης",
         "name:el": "Σκλαβενίτης",
         "name:en": "Sklavenitis",
-        "shop": "supermarket"
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.741582,
-          38.2585236
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.741582, 38.2585236],
       },
-      "id": "node/1657132008"
+      id: "node/1657132008",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/1657962066",
-        "shop": "convenience"
+        shop: "convenience",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7854989,
-          38.2991382
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7854989, 38.2991382],
       },
-      "id": "node/1657962066"
+      id: "node/1657962066",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/1695934267",
-        "shop": "convenience"
+        shop: "convenience",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7712803,
-          38.2915409
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7712803, 38.2915409],
       },
-      "id": "node/1695934267"
+      id: "node/1695934267",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/1763830009",
         "addr:housenumber": "52-56",
         "addr:street": "Καλαβρύτων",
-        "name": "My market",
-        "shop": "supermarket"
+        name: "My market",
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7473265,
-          38.2323892
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7473265, 38.2323892],
       },
-      "id": "node/1763830009"
+      id: "node/1763830009",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/1763830474",
-        "brand": "ΑΒ Βασιλόπουλος",
+        brand: "ΑΒ Βασιλόπουλος",
         "brand:el": "ΑΒ Βασιλόπουλος",
         "brand:en": "AB Vassilopoulos",
         "brand:wikidata": "Q4721807",
         "brand:wikipedia": "el:Άλφα Βήτα Βασιλόπουλος",
-        "name": "ΑΒ Βασιλόπουλος",
+        name: "ΑΒ Βασιλόπουλος",
         "name:el": "ΑΒ Βασιλόπουλος",
         "name:en": "AB Vassilopoulos",
-        "shop": "supermarket"
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7257294,
-          38.2322376
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7257294, 38.2322376],
       },
-      "id": "node/1763830474"
+      id: "node/1763830474",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/1770994538",
-        "name": "Markoulas",
-        "shop": "supermarket"
+        name: "Markoulas",
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7603629,
-          38.2644973
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7603629, 38.2644973],
       },
-      "id": "node/1770994538"
+      id: "node/1770994538",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/1771512424",
-        "shop": "convenience"
+        shop: "convenience",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7593252,
-          38.2657865
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7593252, 38.2657865],
       },
-      "id": "node/1771512424"
+      id: "node/1771512424",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/1815896581",
-        "access": "customers",
-        "brand": "Lidl",
+        access: "customers",
+        brand: "Lidl",
         "brand:wikidata": "Q151954",
         "brand:wikipedia": "en:Lidl",
-        "name": "Lidl",
-        "opening_hours": "Mo-Sa 08:00-20:00",
-        "operator": "Lidl",
-        "shop": "supermarket"
+        name: "Lidl",
+        opening_hours: "Mo-Sa 08:00-20:00",
+        operator: "Lidl",
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.8051332,
-          38.3067563
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.8051332, 38.3067563],
       },
-      "id": "node/1815896581"
+      id: "node/1815896581",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/1971240515",
-        "name": "Ανδρικόπουλος",
-        "shop": "supermarket"
+        name: "Ανδρικόπουλος",
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.736371,
-          38.2399863
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.736371, 38.2399863],
       },
-      "id": "node/1971240515"
+      id: "node/1971240515",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/1971240518",
-        "shop": "convenience"
+        shop: "convenience",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7399001,
-          38.2377144
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7399001, 38.2377144],
       },
-      "id": "node/1971240518"
+      id: "node/1971240518",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/1971247760",
-        "brand": "Σκλαβενίτης",
+        brand: "Σκλαβενίτης",
         "brand:el": "Σκλαβενίτης",
         "brand:en": "Sklavenitis",
         "brand:wikidata": "Q7536037",
         "brand:wikipedia": "el:Σκλαβενίτης",
-        "name": "Σκλαβενίτης",
+        name: "Σκλαβενίτης",
         "name:el": "Σκλαβενίτης",
         "name:en": "Sklavenitis",
-        "shop": "supermarket"
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7373409,
-          38.2364945
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7373409, 38.2364945],
       },
-      "id": "node/1971247760"
+      id: "node/1971247760",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/1971249846",
-        "name": "My Market",
+        name: "My Market",
         "name:de": "My market",
-        "shop": "supermarket"
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7342362,
-          38.2427052
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7342362, 38.2427052],
       },
-      "id": "node/1971249846"
+      id: "node/1971249846",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/1997401665",
-        "shop": "convenience"
+        shop: "convenience",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7689392,
-          38.2803811
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7689392, 38.2803811],
       },
-      "id": "node/1997401665"
+      id: "node/1997401665",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/1997401682",
-        "shop": "convenience"
+        shop: "convenience",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7646316,
-          38.2767389
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7646316, 38.2767389],
       },
-      "id": "node/1997401682"
+      id: "node/1997401682",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/3144355008",
         "addr:city": "Πάτρα",
         "addr:postcode": "26441",
         "addr:street": "Αγίας Σοφίας & Αθηνών",
-        "name": "My market",
-        "opening_hours": "08:00-21:00 (Saturday: 08:00-20:00)",
-        "operator": "ΜETRO AEBE",
-        "shop": "supermarket"
+        name: "My market",
+        opening_hours: "08:00-21:00 (Saturday: 08:00-20:00)",
+        operator: "ΜETRO AEBE",
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7396708,
-          38.2568618
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7396708, 38.2568618],
       },
-      "id": "node/3144355008"
+      id: "node/3144355008",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/3354481184",
-        "name": "Ανδρικόπουλος",
-        "shop": "supermarket"
+        name: "Ανδρικόπουλος",
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7323293,
-          38.1951968
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7323293, 38.1951968],
       },
-      "id": "node/3354481184"
+      id: "node/3354481184",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/4101518891",
         "addr:street": "Εγνατίας",
-        "name": "ΑΒ ΒΑΣΙΛΟΠΟΥΛΟΣ",
-        "shop": "supermarket"
+        name: "ΑΒ ΒΑΣΙΛΟΠΟΥΛΟΣ",
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7418506,
-          38.2565589
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7418506, 38.2565589],
       },
-      "id": "node/4101518891"
+      id: "node/4101518891",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/4356067891",
-        "shop": "supermarket"
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7365286,
-          38.2450095
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7365286, 38.2450095],
       },
-      "id": "node/4356067891"
+      id: "node/4356067891",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/4356183595",
-        "brand": "Σκλαβενίτης",
+        brand: "Σκλαβενίτης",
         "brand:el": "Σκλαβενίτης",
         "brand:en": "Sklavenitis",
         "brand:wikidata": "Q7536037",
         "brand:wikipedia": "el:Σκλαβενίτης",
-        "name": "Σκλαβενίτης",
+        name: "Σκλαβενίτης",
         "name:el": "Σκλαβενίτης",
         "name:en": "Sklavenitis",
-        "opening_hours": "Mo-Fr 08:00-21:00; Sa 08:00-20:00",
-        "shop": "supermarket"
+        opening_hours: "Mo-Fr 08:00-21:00; Sa 08:00-20:00",
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.733285,
-          38.2434859
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.733285, 38.2434859],
       },
-      "id": "node/4356183595"
+      id: "node/4356183595",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/4357098895",
-        "shop": "convenience"
+        shop: "convenience",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7339549,
-          38.2438242
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7339549, 38.2438242],
       },
-      "id": "node/4357098895"
+      id: "node/4357098895",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/4357217589",
-        "shop": "supermarket"
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7414219,
-          38.2524287
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7414219, 38.2524287],
       },
-      "id": "node/4357217589"
+      id: "node/4357217589",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/4357425491",
         "name:de": "Kaponis",
-        "shop": "supermarket"
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7423925,
-          38.2512732
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7423925, 38.2512732],
       },
-      "id": "node/4357425491"
+      id: "node/4357425491",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/4357589496",
-        "name": "Ανδρικόπουλος",
+        name: "Ανδρικόπουλος",
         "name:de": "Elomas",
-        "shop": "supermarket"
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7302559,
-          38.2427963
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7302559, 38.2427963],
       },
-      "id": "node/4357589496"
+      id: "node/4357589496",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/4358244594",
-        "shop": "supermarket"
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7337191,
-          38.2454121
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7337191, 38.2454121],
       },
-      "id": "node/4358244594"
+      id: "node/4358244594",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/4372108797",
-        "name": "Mini Market",
-        "shop": "convenience"
+        name: "Mini Market",
+        shop: "convenience",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.8364993,
-          38.2725804
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.8364993, 38.2725804],
       },
-      "id": "node/4372108797"
+      id: "node/4372108797",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/4484528391",
         "addr:street": "Εθνική Οδός 8α",
-        "level": "0",
-        "name": "Carna",
-        "shop": "convenience"
+        level: "0",
+        name: "Carna",
+        shop: "convenience",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7667136,
-          38.2795377
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7667136, 38.2795377],
       },
-      "id": "node/4484528391"
+      id: "node/4484528391",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/4752810729",
-        "name": "Mini Market",
-        "shop": "convenience"
+        name: "Mini Market",
+        shop: "convenience",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7770011,
-          38.3052409
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7770011, 38.3052409],
       },
-      "id": "node/4752810729"
+      id: "node/4752810729",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/4931300543",
-        "name": "Kronos",
-        "shop": "supermarket"
+        name: "Kronos",
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7296435,
-          38.2425794
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7296435, 38.2425794],
       },
-      "id": "node/4931300543"
+      id: "node/4931300543",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/4953268497",
-        "name": "Φίλιππας",
-        "shop": "convenience"
+        name: "Φίλιππας",
+        shop: "convenience",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7504681,
-          38.2585639
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7504681, 38.2585639],
       },
-      "id": "node/4953268497"
+      id: "node/4953268497",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/4969309651",
-        "shop": "supermarket"
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7940989,
-          38.3015018
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7940989, 38.3015018],
       },
-      "id": "node/4969309651"
+      id: "node/4969309651",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/5005384516",
-        "name": "No supermarket",
-        "shop": "supermarket"
+        name: "No supermarket",
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7363349,
-          38.2498065
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7363349, 38.2498065],
       },
-      "id": "node/5005384516"
+      id: "node/5005384516",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/5005409493",
-        "name": "Kiosk",
-        "shop": "convenience"
+        name: "Kiosk",
+        shop: "convenience",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.735128,
-          38.2490852
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.735128, 38.2490852],
       },
-      "id": "node/5005409493"
+      id: "node/5005409493",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/5005409494",
-        "name": "Kiosk",
-        "shop": "convenience"
+        name: "Kiosk",
+        shop: "convenience",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7349115,
-          38.2493169
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7349115, 38.2493169],
       },
-      "id": "node/5005409494"
+      id: "node/5005409494",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/5005409495",
-        "name": "Kiosk",
-        "shop": "convenience"
+        name: "Kiosk",
+        shop: "convenience",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7344427,
-          38.2489563
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7344427, 38.2489563],
       },
-      "id": "node/5005409495"
+      id: "node/5005409495",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/5005476710",
-        "name": "Kiosk",
-        "shop": "convenience"
+        name: "Kiosk",
+        shop: "convenience",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7413066,
-          38.2569875
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7413066, 38.2569875],
       },
-      "id": "node/5005476710"
+      id: "node/5005476710",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/5005476711",
-        "name": "Kiosk",
-        "shop": "convenience"
+        name: "Kiosk",
+        shop: "convenience",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7409531,
-          38.2561434
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7409531, 38.2561434],
       },
-      "id": "node/5005476711"
+      id: "node/5005476711",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/5132918123",
-        "shop": "supermarket"
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7400704,
-          38.2523678
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7400704, 38.2523678],
       },
-      "id": "node/5132918123"
+      id: "node/5132918123",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/5164678230",
         "addr:city": "Πάτρα",
         "addr:housenumber": "1 - 3",
         "addr:postcode": "26442",
         "addr:street": "Αξιού",
-        "name": "Ανδρικόπουλος - Supermarket",
+        name: "Ανδρικόπουλος - Supermarket",
         "name:el": "Ανδρικόπουλος",
         "name:en": "Andrikopoulos",
-        "opening_hours": "Mo-Fr 08:00-21:00; Sa 08:00-20:00",
-        "operator": "Ανδρικόπουλος",
+        opening_hours: "Mo-Fr 08:00-21:00; Sa 08:00-20:00",
+        operator: "Ανδρικόπουλος",
         "payment:cash": "yes",
         "payment:credit_cards": "yes",
         "payment:debit_cards": "yes",
         "payment:edenred_card": "yes",
-        "phone": "+302610430062",
-        "shop": "supermarket",
-        "website": "https://www.andrikopoulos.com.gr/"
+        phone: "+302610430062",
+        shop: "supermarket",
+        website: "https://www.andrikopoulos.com.gr/",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7481501,
-          38.2691937
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7481501, 38.2691937],
       },
-      "id": "node/5164678230"
+      id: "node/5164678230",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/5164741179",
         "addr:postcode": "26442",
         "addr:street": "Νοταρά",
-        "brand": "Σκλαβενίτης",
+        brand: "Σκλαβενίτης",
         "brand:el": "Σκλαβενίτης",
         "brand:en": "Sklavenitis",
         "brand:wikidata": "Q7536037",
         "brand:wikipedia": "el:Σκλαβενίτης",
-        "name": "Σκλαβενίτης",
+        name: "Σκλαβενίτης",
         "name:el": "Σκλαβενίτης",
         "name:en": "Sklavenitis",
-        "opening_hours": "Mo-Fr 9:00-21:00, Sa 9:00-20:00",
+        opening_hours: "Mo-Fr 9:00-21:00, Sa 9:00-20:00",
         "payment:cash": "yes",
         "payment:credit_cards": "yes",
         "payment:debit_cards": "yes",
         "payment:edenred_card": "yes",
-        "shop": "supermarket"
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7497014,
-          38.2690963
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7497014, 38.2690963],
       },
-      "id": "node/5164741179"
+      id: "node/5164741179",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/5350727524",
         "name:en": "ENA food cash $ cary",
-        "shop": "supermarket"
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7251655,
-          38.233827
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7251655, 38.233827],
       },
-      "id": "node/5350727524"
+      id: "node/5350727524",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/5396345464",
-        "name": "Mini Market",
-        "opening_hours": "Mo-Sa 07:00-22:00",
+        name: "Mini Market",
+        opening_hours: "Mo-Sa 07:00-22:00",
         "payment:cash": "yes",
         "payment:coins": "yes",
         "payment:credit_cards": "yes",
-        "shop": "convenience"
+        shop: "convenience",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.8764222,
-          38.3277388
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.8764222, 38.3277388],
       },
-      "id": "node/5396345464"
+      id: "node/5396345464",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/5620198221",
-        "brand": "ΑΒ Βασιλόπουλος",
+        brand: "ΑΒ Βασιλόπουλος",
         "brand:el": "ΑΒ Βασιλόπουλος",
         "brand:en": "AB Vassilopoulos",
         "brand:wikidata": "Q4721807",
         "brand:wikipedia": "el:Άλφα Βήτα Βασιλόπουλος",
-        "name": "ΑΒ Βασιλόπουλος",
+        name: "ΑΒ Βασιλόπουλος",
         "name:el": "ΑΒ Βασιλόπουλος",
         "name:en": "AB Vassilopoulos",
-        "opening_hours": "Mo-Fr 08:00-21:00; Sa 08:00-20:00",
-        "shop": "supermarket",
-        "wheelchair": "yes"
+        opening_hours: "Mo-Fr 08:00-21:00; Sa 08:00-20:00",
+        shop: "supermarket",
+        wheelchair: "yes",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7357783,
-          38.2170935
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7357783, 38.2170935],
       },
-      "id": "node/5620198221"
+      id: "node/5620198221",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/5620208927",
-        "name": "Mini Market",
-        "shop": "convenience"
+        name: "Mini Market",
+        shop: "convenience",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7321204,
-          38.2160259
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7321204, 38.2160259],
       },
-      "id": "node/5620208927"
+      id: "node/5620208927",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/5783486253",
-        "shop": "supermarket"
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.8203451,
-          38.312741
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.8203451, 38.312741],
       },
-      "id": "node/5783486253"
+      id: "node/5783486253",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/5909978406",
-        "shop": "supermarket"
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7312416,
-          38.2451867
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7312416, 38.2451867],
       },
-      "id": "node/5909978406"
+      id: "node/5909978406",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/7673935764",
-        "name": "3A",
-        "shop": "supermarket"
+        name: "3A",
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7396687,
-          38.2504514
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7396687, 38.2504514],
       },
-      "id": "node/7673935764"
+      id: "node/7673935764",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/7673976786",
-        "brand": "Spar",
+        brand: "Spar",
         "brand:wikidata": "Q610492",
         "brand:wikipedia": "en:SPAR (retailer)",
-        "name": "Spar",
-        "shop": "supermarket"
+        name: "Spar",
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7389771,
-          38.2486316
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7389771, 38.2486316],
       },
-      "id": "node/7673976786"
+      id: "node/7673976786",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/7673986831",
-        "name": "ΑΝΔΡΙΚΟΠΟΥΛΟΣ",
-        "shop": "supermarket"
+        name: "ΑΝΔΡΙΚΟΠΟΥΛΟΣ",
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7383224,
-          38.2481545
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7383224, 38.2481545],
       },
-      "id": "node/7673986831"
+      id: "node/7673986831",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/7674120315",
-        "name": "ΑΝΔΡΙΚΟΠΟΥΛΟΣ",
-        "shop": "supermarket"
+        name: "ΑΝΔΡΙΚΟΠΟΥΛΟΣ",
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7308044,
-          38.2429466
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7308044, 38.2429466],
       },
-      "id": "node/7674120315"
+      id: "node/7674120315",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/7677225097",
-        "name": "MyMarket",
-        "shop": "supermarket"
+        name: "MyMarket",
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7265283,
-          38.2392836
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7265283, 38.2392836],
       },
-      "id": "node/7677225097"
+      id: "node/7677225097",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/7914886761",
-        "shop": "supermarket"
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7575349,
-          38.2653368
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7575349, 38.2653368],
       },
-      "id": "node/7914886761"
+      id: "node/7914886761",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/8214753473",
-        "name": "Ena Cash And Carry",
-        "shop": "supermarket"
+        name: "Ena Cash And Carry",
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7253472,
-          38.2346622
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7253472, 38.2346622],
       },
-      "id": "node/8214753473"
+      id: "node/8214753473",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/8214854586",
-        "name": "ΚΡΟΝΟΣ - (Σκαγιοπουλείου)",
-        "shop": "supermarket"
+        name: "ΚΡΟΝΟΣ - (Σκαγιοπουλείου)",
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7294915,
-          38.2358002
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7294915, 38.2358002],
       },
-      "id": "node/8214854586"
+      id: "node/8214854586",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/8214887295",
-        "name": "Ανδρικόπουλος Super Market",
-        "shop": "supermarket"
+        name: "Ανδρικόπουλος Super Market",
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7306406,
-          38.2379176
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7306406, 38.2379176],
       },
-      "id": "node/8214887295"
+      id: "node/8214887295",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/8214887306",
-        "name": "3Α Αράπης",
-        "shop": "supermarket"
+        name: "3Α Αράπης",
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7328984,
-          38.2375068
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7328984, 38.2375068],
       },
-      "id": "node/8214887306"
+      id: "node/8214887306",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/8214910532",
-        "brand": "Γαλαξίας",
+        brand: "Γαλαξίας",
         "brand:el": "Γαλαξίας",
         "brand:en": "Galaxias",
         "brand:wikidata": "Q5518063",
         "brand:wikipedia": "el:Γαλαξίας (σούπερ μάρκετ)",
-        "name": "Γαλαξίας",
+        name: "Γαλαξίας",
         "name:el": "Γαλαξίας",
         "name:en": "Galaxias",
-        "shop": "supermarket"
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.733787,
-          38.2361127
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.733787, 38.2361127],
       },
-      "id": "node/8214910532"
+      id: "node/8214910532",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/8215010716",
-        "name": "Super Market Θεοδωρόπουλος",
-        "shop": "supermarket"
+        name: "Super Market Θεοδωρόπουλος",
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7283123,
-          38.2360129
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7283123, 38.2360129],
       },
-      "id": "node/8215010716"
+      id: "node/8215010716",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/8215157448",
-        "name": "Super Market ΚΡΟΝΟΣ",
-        "shop": "supermarket"
+        name: "Super Market ΚΡΟΝΟΣ",
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7340723,
-          38.2390442
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7340723, 38.2390442],
       },
-      "id": "node/8215157448"
+      id: "node/8215157448",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/8753329904",
-        "shop": "supermarket"
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7396855,
-          38.2642274
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7396855, 38.2642274],
       },
-      "id": "node/8753329904"
+      id: "node/8753329904",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/8753329905",
-        "shop": "supermarket"
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7398813,
-          38.2658237
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7398813, 38.2658237],
       },
-      "id": "node/8753329905"
+      id: "node/8753329905",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/8777081651",
-        "brand": "Σκλαβενίτης",
+        brand: "Σκλαβενίτης",
         "brand:el": "Σκλαβενίτης",
         "brand:en": "Sklavenitis",
         "brand:wikidata": "Q7536037",
         "brand:wikipedia": "el:Σκλαβενίτης",
-        "name": "Σκλαβενίτης",
+        name: "Σκλαβενίτης",
         "name:el": "Σκλαβενίτης",
         "name:en": "Sklavenitis",
-        "shop": "supermarket"
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7428703,
-          38.2601801
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7428703, 38.2601801],
       },
-      "id": "node/8777081651"
+      id: "node/8777081651",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/8777171555",
-        "name": "3A ARAPIS",
+        name: "3A ARAPIS",
         "name:el": "3Α Αράπης",
-        "shop": "supermarket"
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7460078,
-          38.2586424
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7460078, 38.2586424],
       },
-      "id": "node/8777171555"
+      id: "node/8777171555",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/8805335004",
-        "brand": "Μασούτης",
+        brand: "Μασούτης",
         "brand:el": "Μασούτης",
         "brand:en": "Masoutis",
         "brand:wikidata": "Q6783887",
         "brand:wikipedia": "en:Masoutis",
-        "name": "Μασούτης",
+        name: "Μασούτης",
         "name:el": "Μασούτης",
         "name:en": "Masoutis",
-        "shop": "supermarket"
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7355058,
-          38.2454669
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7355058, 38.2454669],
       },
-      "id": "node/8805335004"
+      id: "node/8805335004",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/8805467220",
-        "name": "ΑΒ Shop & Go",
-        "shop": "supermarket"
+        name: "ΑΒ Shop & Go",
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7380288,
-          38.24957
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7380288, 38.24957],
       },
-      "id": "node/8805467220"
+      id: "node/8805467220",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/8806495733",
-        "name": "3Α ΑΡΑΠΗΣ",
-        "shop": "supermarket"
+        name: "3Α ΑΡΑΠΗΣ",
+        shop: "supermarket",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7455558,
-          38.2398789
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7455558, 38.2398789],
       },
-      "id": "node/8806495733"
+      id: "node/8806495733",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/9651304117",
-        "name": "Περίπτερο",
-        "shop": "convenience"
+        name: "Περίπτερο",
+        shop: "convenience",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.7408745,
-          38.2554443
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.7408745, 38.2554443],
       },
-      "id": "node/9651304117"
+      id: "node/9651304117",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/9785182275",
-        "shop": "convenience"
+        shop: "convenience",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.6232207,
-          38.1494223
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.6232207, 38.1494223],
       },
-      "id": "node/9785182275"
+      id: "node/9785182275",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/9785182280",
-        "shop": "convenience"
+        shop: "convenience",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.6206284,
-          38.1477412
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.6206284, 38.1477412],
       },
-      "id": "node/9785182280"
+      id: "node/9785182280",
     },
     {
-      "type": "Feature",
-      "properties": {
+      type: "Feature",
+      properties: {
         "@id": "node/9785335420",
-        "shop": "convenience"
+        shop: "convenience",
       },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.6454791,
-          38.1563067
-        ]
+      geometry: {
+        type: "Point",
+        coordinates: [21.6454791, 38.1563067],
       },
-      "id": "node/9785335420"
-    }
-  ]
-}
+      id: "node/9785335420",
+    },
+  ],
+};
 
-//Sinartisi gia lipsi topothesias xristi 
-function getUsersLocation(){
+//Sinartisi gia lipsi topothesias xristi
+function getUsersLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function (position) {
       //Apothikeusi sintetagmenwn
-      var userLocation = new L.LatLng(position.coords.latitude, position.coords.longitude);
+      var userLocation = new L.LatLng(
+        position.coords.latitude,
+        position.coords.longitude
+      );
 
       //Estiasi sti topothesia xristi
       mymap.setView(userLocation, 16);
       var location_icon = L.icon({
-        iconUrl: 'images/giphy.gif',
+        iconUrl: "images/giphy.gif",
         iconSize: [52, 68],
-        iconAnchor: [26, 58]
+        iconAnchor: [26, 58],
       });
 
       //Afairesi marker me click button gia na min kanoun stack
@@ -1592,18 +1329,16 @@ function getUsersLocation(){
 
       //Custom marker sti topothesia tou xristi
       location_marker = L.marker(userLocation, { icon: location_icon });
-      location_marker.addTo(mymap)
+      location_marker.addTo(mymap);
 
       //Kiklos 50 metrwn me kentro ti topothesia tou xristi
       circle = L.circle(userLocation, {
         radius: 500,
-        color: 'blue',
+        color: "blue",
         fillOpacity: 0.1,
-        opacity: 0.7
+        opacity: 0.7,
       }).addTo(mymap);
-
     });
-
   }
 }
 
@@ -1612,7 +1347,7 @@ getUsersLocation();
 let mymap = L.map("map", {
   zoomControl: false,
   zoom: 12,
-  center: L.latLng([38.246242, 21.7350847])
+  center: L.latLng([38.246242, 21.7350847]),
 }); //set center
 
 mymap.addLayer(
@@ -1622,7 +1357,7 @@ mymap.addLayer(
 ////////////populate map with GeoJSON feature layer
 
 const myIcon = L.icon({
-  iconUrl: 'images/marker.png',
+  iconUrl: "images/marker.png",
   iconSize: [32, 32],
   iconAnchor: [16, 22],
 });
@@ -1633,7 +1368,7 @@ var featuresLayer = new L.GeoJSON(data, {
   },
   pointToLayer: function (feature, latlng) {
     return L.marker(latlng, { icon: myIcon });
-  }
+  },
 });
 featuresLayer.addTo(mymap);
 
@@ -1646,12 +1381,14 @@ let controlSearch = new L.Control.Search({
   zoom: 19,
   marker: false,
   collapsed: false, //Emfanizei apo tin arxi olokliro to searchbar kai oxi mono to button
-  textPlaceholder: 'Search for a supermarket...'
-}).addTo(mymap)
-
-L.control.zoom({
-  position: 'topleft'
+  textPlaceholder: "Search for a supermarket...",
 }).addTo(mymap);
+
+L.control
+  .zoom({
+    position: "topleft",
+  })
+  .addTo(mymap);
 
 //Dimiourgia kai leitourgikotita find my location button
 var circle = null;
@@ -1659,23 +1396,25 @@ var location_marker = null;
 
 var customControl = L.Control.extend({
   options: {
-    position: 'topleft'
+    position: "topleft",
   },
 
   onAdd: function (mymap) {
-    var container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-custom-control');
-    container.title = 'Zoom to my location';
-    container.innerHTML = '<a href="#" class="my-location-button" role="button"><i class="fas fa-location-arrow"></i></a>';
-    L.DomEvent.on(container, 'click', function () {
-      getUsersLocation();
-    });
+    var container = L.DomUtil.create(
+      "div",
+      "leaflet-bar leaflet-control leaflet-custom-control"
+    );
+    container.title = "Zoom to my location";
+    container.innerHTML =
+      '<a href="#" class="my-location-button" role="button"><i class="fas fa-location-arrow"></i></a>';
+
     return container;
-  }
+  },
 });
 
 mymap.addControl(new customControl());
 
-const infobox_body = document.querySelector('.infobox_body');
+const infobox_body = document.querySelector(".infobox_body");
 
 function infobox_populate(event) {
   //Dimiourgia leitourgias gia prosthiki prosforas
@@ -1693,33 +1432,30 @@ function infobox_populate(event) {
     } else {
       console.log("Supermarket is outside the circle.");
       infobox_body.innerHTML = "Eisai makria apo ola ta supermarket";
-
     }
-  }
-  else {
+  } else {
     console.log("Circle has not been drawn yet");
   }
 }
 
 function infobox_attributes() {
   if (window.innerWidth > 1121) {
-    element.classList.add('infobox');
-    element.style.height = '400px';
-    element.style.width = '370px';
-    element.style.boxShadow = '5px 5px 10px 5px rgba(0, 0, 0, .4)';
-  }
-  else {
-    element.style.height = '40%';
-    element.style.width = '100%';
+    element.classList.add("infobox");
+    element.style.height = "400px";
+    element.style.width = "370px";
+    element.style.boxShadow = "5px 5px 10px 5px rgba(0, 0, 0, .4)";
+  } else {
+    element.style.height = "40%";
+    element.style.width = "100%";
   }
 }
 
 //Lipsi onomatos supermarket apo to layer featuresLayer me click se marker
-const s_name = document.querySelector('.sm-name');
-var element = document.getElementById('infobox_id');
+const s_name = document.querySelector(".sm-name");
+var element = document.getElementById("infobox_id");
 var superChosen = false;
 
-featuresLayer.on('click', function (event) {
+featuresLayer.on("click", function (event) {
   superChosen = true;
   const supermarketName = event.layer.feature.properties.name;
   s_name.innerHTML = supermarketName;
@@ -1730,7 +1466,7 @@ featuresLayer.on('click', function (event) {
 
 //Lipsi onomatos supermarket apo to layer controlSearch me epitixi anazitisi &
 //Topothetisi popup me to onoma tou sm sto location tou
-controlSearch.on('search:locationfound', function (event) {
+controlSearch.on("search:locationfound", function (event) {
   superChosen = true;
   const supermarketName = event.layer.feature.properties.name;
   s_name.innerHTML = supermarketName;
@@ -1741,15 +1477,45 @@ controlSearch.on('search:locationfound', function (event) {
 });
 
 //Anagnwrisi alagis mikous parathirou gia na allazei to infobox katallila
-window.addEventListener('resize', function () {
+window.addEventListener("resize", function () {
   if (window.innerWidth > 1121 && superChosen) {
-    element.classList.add('infobox');
-    element.style.height = '400px';
-    element.style.width = '370px';
-    element.style.boxShadow = '5px 5px 10px 5px rgba(0, 0, 0, .4)';
-  }
-  else {
-    element.style.height = '40%';
-    element.style.width = '100%';
+    element.classList.add("infobox");
+    element.style.height = "400px";
+    element.style.width = "370px";
+    element.style.boxShadow = "5px 5px 10px 5px rgba(0, 0, 0, .4)";
+  } else {
+    element.style.height = "40%";
+    element.style.width = "100%";
   }
 });
+
+var xhr = new XMLHttpRequest();
+xhr.open("GET", "fetchCategories.php", true);
+xhr.onreadystatechange = function () {
+  if (xhr.readyState === XMLHttpRequest.DONE) {
+    if (xhr.status === 200) {
+      var response = JSON.parse(xhr.responseText);
+
+      var buttonContainer = document.getElementById("buttonContainer");
+      buttonContainer.style.display = "flex";
+      buttonContainer.style.flexDirection = "column";
+
+      for (var i = 0; i < response.length; i++) {
+        var category = response[i];
+
+        var button = document.createElement("button");
+        button.innerText = category;
+
+        button.addEventListener("click", function () {
+          console.log("Button clicked:", this.innerText);
+          // Your logic when a button is clicked goes here
+        });
+
+        buttonContainer.appendChild(button);
+      }
+    } else {
+      console.error("Error fetching data:", xhr.status);
+    }
+  }
+};
+xhr.send();

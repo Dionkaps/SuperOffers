@@ -1,6 +1,13 @@
-~~~~To Do~~~~
-Με το Resize του window το μενου να προσαρμόζεται.
-Include το map 
-Να προσαρμόσω το kapws.php στο δικο μας database
+ο»Ώ~~~~To Do~~~~
+ΞΞµ Ο„ΞΏ Resize Ο„ΞΏΟ… window Ο„ΞΏ ΞΌΞµΞ½ΞΏΟ… Ξ½Ξ± Ο€ΟΞΏΟƒΞ±ΟΞΌΟΞ¶ΞµΟ„Ξ±ΞΉ.
+Include Ο„ΞΏ map 
+ΞΞ± Ο€ΟΞΏΟƒΞ±ΟΞΌΟΟƒΟ‰ Ο„ΞΏ kapws.php ΟƒΟ„ΞΏ Ξ΄ΞΉΞΊΞΏ ΞΌΞ±Ο‚ database
 
-Να παίρνει ο χάρτης τα στοιχεια του σουπερμαρκετ απο τη βαση
+ΞΞ± Ο€Ξ±Ξ―ΟΞ½ΞµΞΉ ΞΏ Ο‡Ξ¬ΟΟ„Ξ·Ο‚ Ο„Ξ± ΟƒΟ„ΞΏΞΉΟ‡ΞµΞΉΞ± Ο„ΞΏΟ… ΟƒΞΏΟ…Ο€ΞµΟΞΌΞ±ΟΞΊΞµΟ„ Ξ±Ο€ΞΏ Ο„Ξ· Ξ²Ξ±ΟƒΞ·
+
+https://www.w3schools.com/howto/howto_js_sidenav.asp
+FULL WIDTH SIDEBAR gia proionta
+
+Bug infobox
+
+Resposive products categories sidebar
