@@ -1483,7 +1483,7 @@ window.addEventListener("resize", function () {
     element.style.height = "400px";
     element.style.width = "370px";
     element.style.boxShadow = "5px 5px 10px 5px rgba(0, 0, 0, .4)";
-  } else {
+  } else if(window.innerWidth <= 1121 && superChosen){
     element.style.height = "40%";
     element.style.width = "100%";
   }
@@ -1508,7 +1508,6 @@ xhr.onreadystatechange = function () {
 
         button.addEventListener("click", function () {
           console.log("Button clicked:", this.innerText);
-          // Your logic when a button is clicked goes here
         });
 
         buttonContainer.appendChild(button);

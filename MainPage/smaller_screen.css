@@ -72,4 +72,8 @@
       "user_score" "likes_dislikes" "offers";
   }
 
+  #buttonContainer {
+    height: 200vh;
+    width: 0;
+  }
 }
