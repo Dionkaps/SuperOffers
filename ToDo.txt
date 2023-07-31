@@ -11,3 +11,5 @@ FULL WIDTH SIDEBAR gia proionta
 Bug infobox
 
 Resposive products categories sidebar
+
+Na valoume node sta onomata twn shop apo geojson 
