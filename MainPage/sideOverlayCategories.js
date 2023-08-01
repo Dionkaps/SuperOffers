@@ -1,4 +1,4 @@
-/* Set the width of the side navigation to 250px for screens larger than or equal to 1121px */
+//Set the width of the side navigation to 250px for screens larger than or equal to 1121px
 function openNav() {
   if (window.innerWidth >= 1121) {
     document.getElementById("buttonContainer").style.width = "12%";

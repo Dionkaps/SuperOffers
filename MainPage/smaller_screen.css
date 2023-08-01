@@ -76,4 +76,11 @@
     height: 200vh;
     width: 0;
   }
+
+  #exitBut {
+    font-weight: bold;
+    color: black;
+    cursor: pointer;
+    left: 0;
+  }
 }
