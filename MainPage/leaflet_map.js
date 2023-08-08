@@ -3,7 +3,7 @@ function fetchJSON(url) {
     return response.json();
   });
 }
-var data = fetchJSON("export.geojson").then(function (data) {
+var data = fetchJSON("map_data.geojson").then(function (data) {
   //Sinartisi gia lipsi topothesias xristi
   function getUsersLocation() {
     if (navigator.geolocation) {
@@ -32,7 +32,7 @@ var data = fetchJSON("export.geojson").then(function (data) {
 
         //Kiklos 50 metrwn me kentro ti topothesia tou xristi
         circle = L.circle(userLocation, {
-          radius: 500,
+          radius: 160000,
           color: "blue",
           fillOpacity: 0.1,
           opacity: 0.7,
@@ -107,7 +107,13 @@ var data = fetchJSON("export.geojson").then(function (data) {
       //Elegxos an to layer einai marker & an vrisketai entos tou kiklou
       if (event.layer instanceof L.Marker && distance <= circle.getRadius()) {
         console.log("Supermarket is inside the circle.");
-        infobox_body.innerHTML = "Mporeis na prostheseis prosfora";
+        infobox_body.innerHTML = "";
+        let btn = document.createElement("button");
+        btn.innerHTML = "Click Me";
+        btn.onclick = function () {
+          alert("Button is clicked");
+        };
+        infobox_body.appendChild(btn);
       } else {
         console.log("Supermarket is outside the circle.");
         infobox_body.innerHTML = "Eisai makria apo ola ta supermarket";
