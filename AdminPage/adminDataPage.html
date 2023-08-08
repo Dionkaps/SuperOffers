@@ -1,63 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="adminStyle.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="JSONstyle.css" />
     <script src="button.js" defer></script>
     <title>Admin Menu</title>
 </head>
+
 <body>
     <header>
-    
-            <h1>Products data</h1>
-        
+
+        <h1>Products data</h1>
+
     </header>
     <div class="jsonUpload">
-    
-        <body>
-            <div class="jsonMargin">
-            <h2>Read JSON File Contents</h2>
-            <input type="file" id="jsonFileInput">
+
+
+        <div class="jsonMargin">
+            <form action="JSON.php" method="post" enctype="multipart/form-data">
+                <label for="fileToUpload">Please select a JSON file with the data you wish to insert</label>
+                <input type="file" name="fileToUpload" id="fileToUpload" accept=".json">
+                <input type="submit" value="Upload" name="submit">
+            </form>
         </div>
-            <pre id="output"></pre>
-            <script>
-                document.getElementById("jsonFileInput").addEventListener("change", function(event) {
-                    const file = event.target.files[0];
-                    const reader = new FileReader();
-        
-                    reader.onload = function(e) {
-                        const content = e.target.result;
-                        try {
-                            const jsonData = JSON.parse(content);
-                            const formattedJSON = JSON.stringify(jsonData, null, 2);
-                            document.getElementById("output").textContent = formattedJSON;
-                        } catch (error) {
-                            document.getElementById("output").textContent = "Error reading JSON file: " + error.message;
-                        }
-                    };
-        
-                    reader.readAsText(file);
-                });
-            </script>
-        </body>
-        </html>
-    </script>
+
     </div>
     <div class="nav-bar">
-      <div class="adminstuff">
-        <ul>
-          <li id="selected"><a href="adminDataPage.html"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>&nbsp;Products data</a></li>
-                <li><a href="adminShopDataPage.html"><i class="fa fa-building" aria-hidden="true"></i>&nbsp;Shops data</a></li>
-                <li><a href="adminStatsPage.html"><i class="fa fa-line-chart" aria-hidden="true"></i></i>&nbsp;Stats</a></li>
-                <li><a href="adminLeaderboardPage.html"><i class="fa fa-list-ol" aria-hidden="true"></i>&nbsp;Leaderboard</a></li>
-                <li id="last-nav-element"><a href="adminMapPage.html"><i class="fa fa-map" aria-hidden="true"></i>&nbsp;Map</a></li>
-        </ul>
-      </div>
+        <div class="adminstuff">
+            <ul>
+                <li id="selected"><a href="adminDataPage.html"><i class="fa fa-cart-arrow-down"
+                            aria-hidden="true"></i>&nbsp;Products data</a></li>
+                <li><a href="adminShopDataPage.html"><i class="fa fa-building" aria-hidden="true"></i>&nbsp;Shops
+                        data</a>
+                </li>
+                <li><a href="adminStatsPage.html"><i class="fa fa-line-chart" aria-hidden="true"></i></i>&nbsp;Stats</a>
+                </li>
+                <li><a href="adminLeaderboardPage.html"><i class="fa fa-list-ol"
+                            aria-hidden="true"></i>&nbsp;Leaderboard</a></li>
+                <li id="last-nav-element"><a href="adminMapPage.html"><i class="fa fa-map"
+                            aria-hidden="true"></i>&nbsp;Map</a></li>
+            </ul>
+        </div>
     </div>
-        
+
 </body>
+
 </html>
