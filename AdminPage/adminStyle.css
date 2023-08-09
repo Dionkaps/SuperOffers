@@ -1,25 +1,27 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    justify-content: left;
-    min-height: 100vh;
-    background-color: #f2f2f2;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+  min-height: 100vh;
+  background-color: #f2f2f2;
 }
 
 header {
-    background-color: #5995fd;
-    color: #fff;
-    text-align: left;
-    height: 10vh;
+  background-color: #5995fd;
+  color: #fff;
+  text-align: left;
+  height: 10vh;
 }
-.jsonMargin{
- margin-top: 20vh;
-  
+
+.jsonMargin {
+  margin-top: 20vh;
+
 }
+
 .jsonUpload {
   position: fixed;
   height: 90vh;
@@ -33,7 +35,7 @@ header {
 
 .adminstuff {
   position: relative;
-  height: 100vh;
+  height: 90vh;
   width: 12%;
   left: 0;
   background-color: white;
@@ -42,52 +44,52 @@ header {
 }
 
 .nav-bar {
-    position: relative;
-    overflow-x: hidden;
-  }
-  
-  .menu {
-    display: none;
-    cursor: pointer;
-  }
-  
-  ul {
-    list-style-type: none;
-  }
-  
-  .nav-bar ul {
-    padding: 0%;
-  }
-  
-  .nav-bar a {
-    text-decoration: none;
-    color: black;
-  }
-  
-  li {
-    text-align: center;
-    padding: 7%;
-    border-bottom: 2px groove rgba(255, 255, 255, 0.466);
-    background-color: white;
-    font-weight: bold;
-  }
-  
-  li:hover {
-    text-align: center;
-    padding: 7%;
-    border-bottom: 2px groove transparent;
-    border-radius: 0.5em;
-    background-color: #c8c8c8;
-    font-weight: bold;
-  }
-  
-  #selected {
-    background-color: #e1e1e1;
-    border-radius: 0.5em;
-  }
-  
-  #last-nav-element {
-    border-bottom-left-radius: 0.5em;
-    border-bottom-right-radius: 0.5em;
-    border-bottom: none;
-  }
+  position: relative;
+  overflow-x: hidden;
+}
+
+.menu {
+  display: none;
+  cursor: pointer;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.nav-bar ul {
+  padding: 0%;
+}
+
+.nav-bar a {
+  text-decoration: none;
+  color: black;
+}
+
+li {
+  text-align: center;
+  padding: 7%;
+  border-bottom: 2px groove rgba(255, 255, 255, 0.466);
+  background-color: white;
+  font-weight: bold;
+}
+
+li:hover {
+  text-align: center;
+  padding: 7%;
+  border-bottom: 2px groove transparent;
+  border-radius: 0.5em;
+  background-color: #c8c8c8;
+  font-weight: bold;
+}
+
+#selected {
+  background-color: #e1e1e1;
+  border-radius: 0.5em;
+}
+
+#last-nav-element {
+  border-bottom-left-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
+  border-bottom: none;
+}

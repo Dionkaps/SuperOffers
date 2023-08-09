@@ -9,12 +9,12 @@ if (isset($_POST["submit"])) {
     if ($_FILES["fileToUpload"]["error"] === UPLOAD_ERR_OK) {
         // Read JSON data from the uploaded file
         $jsonData = file_get_contents($_FILES["fileToUpload"]["tmp_name"]);
-        
+
         // Decode JSON data into an associative array
         $dataArray = json_decode($jsonData, true);
-        
+
         $conn = new mysqli($servername, $username, $password, $dbname);
-        
+
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
@@ -25,39 +25,39 @@ if (isset($_POST["submit"])) {
         $stmtSelect = $conn->prepare($sqlSelect);
         $stmtInsert = $conn->prepare($sqlInsert);
         $stmtUpdate = $conn->prepare($sqlUpdate);
-        
+
         foreach ($dataArray as $item) {
             // Check if the entry already exists
-            $stmtSelect->bind_param("ss", $item['id'],$item['name']);
+            $stmtSelect->bind_param("ss", $item['id'], $item['name']);
             $stmtSelect->execute();
             $stmtSelect->store_result();
-            
+
             if ($stmtSelect->num_rows === 0) {
                 // Entry doesn't exist, insert it
-                $stmtInsert->bind_param("ssss", $item['id'], $item['name'],$item['category_id'], $item['subcategory_id']);
-                
+                $stmtInsert->bind_param("ssss", $item['id'], $item['name'], $item['category_id'], $item['subcategory_id']);
+
                 if ($stmtInsert->execute()) {
                     echo "Data inserted successfully!";
                 } else {
                     echo "Error: " . $stmtInsert->error;
                 }
-            } else {// h name yparxei hdh h id yparxei hdh
+            } else { // h name yparxei hdh h id yparxei hdh
                 $idToUpdate = $item['id'];
-                $newName = $item['name']; 
-                $newCategoryId = $item['category_id']; 
-                $newSubcategoryId =  $item['subcategory_id']; 
-                $stmtUpdate->bind_param("ssss", $newName , $newCategoryId ,$newSubcategoryId , $idToUpdate);
+                $newName = $item['name'];
+                $newCategoryId = $item['category_id'];
+                $newSubcategoryId =  $item['subcategory_id'];
+                $stmtUpdate->bind_param("ssss", $newName, $newCategoryId, $newSubcategoryId, $idToUpdate);
                 $stmtUpdate->execute();
-               echo "Updated successfully!";
+                echo "Updated successfully!";
             }
         }
 
         // Close the prepared statements and database connection
         $stmtSelect->close();
         $stmtInsert->close();
+        $stmtUpdate->close();
         $conn->close();
     } else {
         echo "File upload error: " . $_FILES["fileToUpload"]["error"];
     }
 }
-?>
