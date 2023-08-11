@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
     integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="JSONstyle.css" />
     <script src="button.js" defer></script>
     <title>Admin Menu</title>
 </head>
@@ -25,6 +26,16 @@
         </ul>
       </div>
     </div>
+    <div class="jsonUpload">
+
+
+      <div class="jsonMargin">
+          <form action="shopsJson.php" method="post" enctype="multipart/form-data">
+              <label for="fileToUpload">Please select a JSON file with the products data you wish to insert</label>
+              <input type="file" name="fileToUpload" id="fileToUpload" accept=".json">
+              <input type="submit" value="Upload" name="submit">
+          </form>
+      </div>
             
 </body>
 </html>
