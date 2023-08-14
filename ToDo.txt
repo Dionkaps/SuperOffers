@@ -11,3 +11,9 @@ FULL WIDTH SIDEBAR gia proionta
 Na valoume node sta onomata twn shop apo geojson 
 
 Na kanoume to infobox wste na xwraei mesa tou to content tou
+
+ID APO VARCHAR SE INT STA PRODUCT
+
+PHP $_SERVER['REQUEST_METHOD'] === 'POST' ANTI GIA TO ALLO KSES ESI
+
+foreign key sto prices product_id
