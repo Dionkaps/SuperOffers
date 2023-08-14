@@ -10,6 +10,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" type="text/css" href="JSONstyle.css" />
     <script src="button.js" defer></script>
+    <script src="uploadAlerts.js" defer></script>
     <title>Admin Menu</title>
 </head>
 
@@ -40,16 +41,16 @@
 
 
         <div class="jsonMargin">
-            <form action="productsJson.php" method="post" enctype="multipart/form-data">
+            <form name="productsForm" method="post" enctype="multipart/form-data">
                 <label for="fileToUpload">Please select a JSON file with the products data you wish to insert</label>
-                <input type="file" name="fileToUpload" id="fileToUpload" accept=".json">
-                <input type="submit" value="Upload" name="submit">
+                <input type="file" name="fileToUpload1" id="fileToUpload1" accept=".json">
+                <input type="button" value="Upload" name="submit" onclick="productsAlert()">
             </form>
             <br>
-            <form action="pricesJson.php" method="post" enctype="multipart/form-data">
+            <form name="pricesForm" method="post" enctype="multipart/form-data">
                 <label for="fileToUpload">Please select a JSON file with the price data you wish to insert</label>
-                <input type="file" name="fileToUpload" id="fileToUpload" accept=".json">
-                <input type="submit" value="Upload" name="submit">
+                <input type="file" name="fileToUpload2" id="fileToUpload2" accept=".json">
+                <input type="button" value="Upload" name="submit" onclick="pricesAlert()">
             </form>
         </div>
 

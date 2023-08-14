@@ -4,11 +4,11 @@ $username = "root";
 $password = "";
 $dbname = "webdev";
 
-if (isset($_POST["submit"])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Check if there was no file upload error
-    if ($_FILES["fileToUpload"]["error"] === UPLOAD_ERR_OK) {
+    if ($_FILES["fileToUpload2"]["error"] === UPLOAD_ERR_OK) {
         // Read JSON data from the uploaded file
-        $jsonData = file_get_contents($_FILES["fileToUpload"]["tmp_name"]);
+        $jsonData = file_get_contents($_FILES["fileToUpload2"]["tmp_name"]);
 
         // Decode JSON data into an associative array
         $dataArray = json_decode($jsonData, true);
@@ -28,7 +28,7 @@ if (isset($_POST["submit"])) {
             $stmtInsert->bind_param("sss", $item['id'], $item['price'], $currentDate);
 
             if ($stmtInsert->execute()) {
-                echo "Data inserted successfully!";
+                echo "Insert";
             } else {
                 echo "Error: " . $stmtInsert->error;
             }
@@ -38,6 +38,6 @@ if (isset($_POST["submit"])) {
         $stmtInsert->close();
         $conn->close();
     } else {
-        echo "File upload error: " . $_FILES["fileToUpload"]["error"];
+        echo "File upload error: " . $_FILES["fileToUpload2"]["error"];
     }
 }

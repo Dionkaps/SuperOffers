@@ -4,11 +4,10 @@ $username = "root";
 $password = "";
 $dbname = "webdev";
 
-if (isset($_POST["submit"])) {
-    // Check if there was no file upload error
-    if ($_FILES["fileToUpload"]["error"] === UPLOAD_ERR_OK) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if ($_FILES["fileToUpload1"]["error"] === UPLOAD_ERR_OK) {
         // Read JSON data from the uploaded file
-        $jsonData = file_get_contents($_FILES["fileToUpload"]["tmp_name"]);
+        $jsonData = file_get_contents($_FILES["fileToUpload1"]["tmp_name"]);
 
         // Decode JSON data into an associative array
         $dataArray = json_decode($jsonData, true);
@@ -37,18 +36,18 @@ if (isset($_POST["submit"])) {
                 $stmtInsert->bind_param("ssss", $item['id'], $item['name'], $item['category_id'], $item['subcategory_id']);
 
                 if ($stmtInsert->execute()) {
-                    echo "Data inserted successfully!";
+                    echo "Insert";
                 } else {
                     echo "Error: " . $stmtInsert->error;
                 }
             } else { // h name yparxei hdh h id yparxei hdh
+                echo "Update";
                 $idToUpdate = $item['id'];
                 $newName = $item['name'];
                 $newCategoryId = $item['category_id'];
                 $newSubcategoryId =  $item['subcategory_id'];
                 $stmtUpdate->bind_param("ssss", $newName, $newCategoryId, $newSubcategoryId, $idToUpdate);
                 $stmtUpdate->execute();
-                echo "Updated successfully!";
             }
         }
 
@@ -58,6 +57,6 @@ if (isset($_POST["submit"])) {
         $stmtUpdate->close();
         $conn->close();
     } else {
-        echo "File upload error: " . $_FILES["fileToUpload"]["error"];
+        echo "File upload error: " . $_FILES["fileToUpload1"]["error"];
     }
 }
