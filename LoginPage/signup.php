@@ -1,4 +1,6 @@
-<?php 
+<?php
+session_start();
+
 $email = $_POST['email'];
 $password = $_POST['password'];
 $firstName = $_POST['firstName'];
@@ -11,41 +13,32 @@ $total_score = 0;
 $current_score = 0;
 
 // Database connection
-$conn = new mysqli('localhost','root','','webdev');
-if($conn->connect_error){
+$conn = new mysqli('localhost', 'root', '', 'webdev');
+if ($conn->connect_error) {
     echo "$conn->connect_error";
-    die("Connection Failed : ". $conn->connect_error);
+    die("Connection Failed : " . $conn->connect_error);
 } else {
-    $sql = "select * from user where email='$email'";
+    $sql = "SELECT * FROM user WHERE email='$email'";
 
-    $result = mysqli_query($conn,$sql);
+    $result = mysqli_query($conn, $sql);
 
-    if(mysqli_num_rows($result)==1){?> 
-    <!DOCTYPE html>
-    <html>
-        <head>
-            <meta charset="utf-8"/>
-            <title></title>
-        </head>
-        <body>
-            <script>
-            window.location.assign('index.html');
-            alert('User already exists');
-            
-            </script>
-        </body>
-    </html> 
-    <?php
+    if (mysqli_num_rows($result) == 1) {
+        $_SESSION['error_message'] = 'User already exists';
+        header('Location: error_page.php');
         exit();
-    }
-
-    else{
-        $stmt = $conn->prepare("insert into user(username, password, email, token_count, like_count, dislike_count, total_score, current_score, first_name, last_name) values(?, ?, ?, ?, ?, ?, ?, ?, ? ,?)");
+    } else {
+        $stmt = $conn->prepare("INSERT INTO user(username, password, email, token_count, like_count, dislike_count, total_score, current_score, first_name, last_name) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("sssiiiiiss", $username, $password, $email, $token_count, $like_count, $dislike_count, $total_score, $current_score, $firstName, $lastName);
-        $execval = $stmt->execute(); 
+        $execval = $stmt->execute();
+        $stmt->close();
+        
+        // Store user data in session
+        $_SESSION['username'] = $username;
+        $_SESSION['email'] = $email;
+        
         header('Location:/MainPage/main_page.html');
     }
-    $stmt->close();
+
     $conn->close();
 }
 ?>
