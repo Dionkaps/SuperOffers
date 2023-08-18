@@ -17,3 +17,5 @@ ID APO VARCHAR SE INT STA PRODUCT
 PHP $_SERVER['REQUEST_METHOD'] === 'POST' ANTI GIA TO ALLO KSES ESI
 
 foreign key sto prices product_id
+
+dhmiourgia session gia oti neo xaraktiristiko tou xrhsth prokypsei sto database(sto signin.php)
