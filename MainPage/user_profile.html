@@ -19,9 +19,11 @@
     <div class="profile_page">
         <div class="user_info">
             <div id="inner_box" class="inner_user_info">
-                <h2 id="account_heading">User Info</h2><br>
-               <span id="username">Username</span> <button id="edit_username"><i class="fa-solid fa-pen-to-square"></i></button> <br><br>
-               <span id="password">Password</span> <button id="edit_password"><i class="fa-solid fa-pen-to-square"></i></button>
+                    <form action="update_profile.php" method="post">
+                        New Email: <input type="email" name="newEmail"><br>
+                        New Username: <input type="text" name="newUsername"><br>
+                        <input type="submit" value="Update">
+                    </form>     
             </div>
         </div>
         <div class="user_score">

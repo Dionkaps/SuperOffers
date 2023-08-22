@@ -18,7 +18,9 @@ if ($conn->connect_error) {
         $user_data = mysqli_fetch_assoc($result);
         
         // Store user data in session
-        $_SESSION['first_name'] = $user_data['first_name']; // Replace 'id' with your actual user ID column name
+        $_SESSION['username']=$user_data['username'];
+        $_SESSION['email'] = $user_data['email']; // Replace 'id' with your actual user ID column name
+        $_SESSION['password']=$user_data['password'];
     
         
         echo "Correct";
