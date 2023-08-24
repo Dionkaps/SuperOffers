@@ -41,41 +41,45 @@ document.addEventListener("DOMContentLoaded", function () {
             subcategoryDropdown.addEventListener("change", function () {
                 const selectedSubcategoryId = subcategoryDropdown.value;
                 console.log(selectedSubcategoryId);
+
+                //Fetch product data from selection
+                const productGrid = document.querySelector('.product-grid');
+
+                // Clear the existing content of the grid
+                productGrid.innerHTML = '';
+
+                const xhrProduct = new XMLHttpRequest();
+                xhrProduct.open('GET', `fetchProductData.php?subcategory=${selectedSubcategoryId}`, true);
+                xhrProduct.onreadystatechange = function () {
+                    if (xhrProduct.readyState === XMLHttpRequest.DONE) {
+                        if (xhrProduct.status === 200) {
+                            const productData = JSON.parse(xhrProduct.responseText);
+                            productData.forEach(product => {
+                                const productItem = document.createElement('div');
+                                productItem.classList.add('product-item');
+
+                                const image = document.createElement('img');
+                                image.src = product.image;
+                                image.alt = product.name;
+
+                                const name = document.createElement('p');
+                                name.textContent = product.name;
+
+                                productItem.appendChild(image);
+                                productItem.appendChild(name);
+
+                                productGrid.appendChild(productItem);
+                            });
+                        } else {
+                            console.error('Error fetching data:', xhrProduct.statusText);
+                        }
+                    }
+                };
+                xhrProduct.send();
+
             });
         }
     };
     xhr.send();
 });
-
-//Fetch product data from selection
-const productGrid = document.querySelector('.product-grid');
-
-const xhr = new XMLHttpRequest();
-xhr.open('GET', 'fetchProductData.php', true);
-xhr.onreadystatechange = function () {
-    if (xhr.readyState === XMLHttpRequest.DONE) {
-        if (xhr.status === 200) {
-            const productData = JSON.parse(xhr.responseText);
-            productData.forEach(product => {
-                const productItem = document.createElement('div');
-                productItem.classList.add('product-item');
-
-                const image = document.createElement('img');
-                image.src = product.image;
-                image.alt = product.name;
-
-                const name = document.createElement('p');
-                name.textContent = product.name;
-
-                productItem.appendChild(image);
-                productItem.appendChild(name);
-
-                productGrid.appendChild(productItem);
-            });
-        } else {
-            console.error('Error fetching data:', xhr.statusText);
-        }
-    }
-};
-xhr.send();
 
