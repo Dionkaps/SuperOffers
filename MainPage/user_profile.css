@@ -49,14 +49,14 @@
 
 .inner_user_info {
   background-color: white;
-  padding: 5% 5% 5% 5%;
+  padding: 2% 2% 2% 2%;
   border-radius: 2em;
   border: solid black 2px;
 }
 
 .inner_user_score {
   background-color: white;
-  padding: 5% 15% 15% 15%;
+  padding: 1% 1% 1% 1%;
   border-radius: 2em;
   border: solid black 2px;
 }
@@ -109,7 +109,7 @@ button :hover{
 form {
   max-width: 300px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 40px;
   background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -120,12 +120,12 @@ input[type="text"] {
   width: 100%;
   padding: 10px;
   margin-bottom: 15px;
-  border: 1px solid #ccc;
+  border: 1px solid black;
   border-radius: 5px;
 }
 
 input[type="submit"] {
-  background-color: #007bff;
+  background-color: #43cea2;
   color: #ffffff;
   border: none;
   border-radius: 5px;
@@ -136,5 +136,5 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-  background-color: #0056b3;
+  background-color: #185a9d;
 }
