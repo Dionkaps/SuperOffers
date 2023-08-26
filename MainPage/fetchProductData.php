@@ -4,12 +4,14 @@ $username = 'root';
 $password = '';
 $dbname = 'webdev';
 
+
 // Get the selected category from the query string
 if (isset($_GET["subcategory"])) {
     $selectedSubcategoryId = $_GET["subcategory"];
 } else {
-    die("Category parameter is missing.");
+    die("Subcategory parameter is missing.");
 }
+
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 

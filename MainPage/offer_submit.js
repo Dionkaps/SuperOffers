@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 productItem.classList.add('product-item');
 
                                 const image = document.createElement('img');
-                                image.src = product.image;
+                                image.src = "/web/imgScript/" + product.image ;
                                 image.alt = product.name;
 
                                 const name = document.createElement('p');
