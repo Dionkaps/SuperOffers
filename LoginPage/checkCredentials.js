@@ -13,7 +13,7 @@ function checkDataFromPHP() {
 
       //Check server the response and display the result
       if (data === "Correct") {
-        window.location.href = "/MainPage/main_page.html";
+        window.location.href = "../MainPage/main_page.html";
       } else if (data === "Wrong") {
         alert("Wrong credentials. Try again!");
       } else {
