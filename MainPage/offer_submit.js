@@ -1,7 +1,34 @@
 document.addEventListener("DOMContentLoaded", function () {
     const categoryDropdown = document.getElementById("categories");
     const subcategoryDropdown = document.getElementById("subcategories");
+    const searchBox = document.getElementById("searchBox");
+    const searchResults = document.getElementById("searchResults");
 
+    //Searchbar
+    searchBox.addEventListener("input", function () {
+        const inputValue = searchBox.value.trim();
+
+        if (inputValue.length >= 2) {
+            fetch("searchProduct.php?query=" + inputValue)
+                .then(response => response.json())
+                .then(data => {
+                    searchResults.innerHTML = "";
+                    data.forEach(item => {
+                        const resultItem = document.createElement("p");
+                        resultItem.textContent = item;
+                        resultItem.classList.add("resultItem"); // Add class for styling
+                        searchResults.appendChild(resultItem);
+
+                        resultItem.addEventListener("click", function () {
+                            searchBox.value = item;
+                            searchResults.innerHTML = "";
+                        });
+                    });
+                });
+        } else {
+            searchResults.innerHTML = "";
+        }
+    });
 
     // Function to populate dropdowns
     function populateDropdown(dropdown, data, dispText) {
@@ -17,6 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
             dropdown.appendChild(option);
         });
     }
+
     //Options for display text(dispText)
     catDispText = 'Select a category';
     subcatDispText = 'Select a subcategory';
@@ -59,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 productItem.classList.add('product-item');
 
                                 const image = document.createElement('img');
-                                image.src = "/web/imgScript/" + product.image ;
+                                image.src = "/web/imgScript/" + product.image;
                                 image.alt = product.name;
 
                                 const name = document.createElement('p');
@@ -76,7 +104,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                 };
                 xhrProduct.send();
-
             });
         }
     };

@@ -1,7 +1,20 @@
 <!DOCTYPE html>
 <html>
 
+<head>
+    <link rel="stylesheet" type="text/css" href="offer_submit.css" />
+    <link rel="stylesheet" type="text/css" href="searchProduct.css" />
+    <script src="offer_submit.js"></script>
+</head>
+
 <body>
+    <div class="search-bar">
+        <form action="searchProduct.php" method="GET">
+            <input type="text" name="query" id="searchBox" placeholder="Enter your search query">
+            <input type="submit" value="Search">
+        </form>
+        <div id="searchResults"></div>
+    </div>
     <div class="ddropdown">
         <label for="categories">Select a category:</label>
         <select id="categories"></select>
@@ -12,7 +25,6 @@
     <div class="product-grid">
 
     </div>
-    <script src="offer_submit.js"></script>
 </body>
 
 </html>
