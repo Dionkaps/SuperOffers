@@ -32,7 +32,7 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
 
         //Kiklos 50 metrwn me kentro ti topothesia tou xristi
         circle = L.circle(userLocation, {
-          radius: 160000,
+          radius: 50,
           color: "blue",
           fillOpacity: 0.1,
           opacity: 0.7,
@@ -193,8 +193,26 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
           button.innerText = category;
 
           button.addEventListener("click", function () {
-            console.log("Button clicked:", this.innerText);
-            changeIconOnOffer("Papakos");
+            var data = { message: this.innerText };
+
+            resetIcons(); //Reset all icons
+
+            fetch("fetchOffers.php", {
+              method: "POST",
+              headers: {
+                "Content-Type": "text/plain"
+              },
+              body: JSON.stringify(data)
+            })
+              .then(response => response.text())
+              .then(result => {
+                const items = result.split(",");
+                items.forEach(item => {
+                  changeIconOnOffer(item.trim()); //Icon update on offer found
+                  console.log(item.trim());
+                });
+              });
+
           });
 
           buttonContainer.appendChild(button);
@@ -214,11 +232,20 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
   });
 
   //Change supermarket icon if there is an offer there
-  function changeIconOnOffer(name) {
+  function changeIconOnOffer(nodeId) {
+
     featuresLayer.eachLayer(function (layer) {
-      if (layer.feature.properties.name === name) {
+      if (layer.feature.id === nodeId) {
         layer.setIcon(offerIcon);
       }
+    });
+
+  }
+
+  //Reset all icons
+  function resetIcons() {
+    featuresLayer.eachLayer(function (layer) {
+      layer.setIcon(myIcon);
     });
   }
 });
