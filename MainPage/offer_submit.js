@@ -2,31 +2,45 @@ document.addEventListener("DOMContentLoaded", function () {
     const categoryDropdown = document.getElementById("categories");
     const subcategoryDropdown = document.getElementById("subcategories");
     const searchBox = document.getElementById("searchBox");
-    const searchResults = document.getElementById("searchResults");
+    const productGrid = document.querySelector('.product-grid');
 
     //Searchbar
+
     searchBox.addEventListener("input", function () {
         const inputValue = searchBox.value.trim();
 
         if (inputValue.length >= 2) {
-            fetch("searchProduct.php?query=" + inputValue)
+            fetch("fetchProductOnSearch.php?searchedName=" + inputValue)
                 .then(response => response.json())
                 .then(data => {
-                    searchResults.innerHTML = "";
-                    data.forEach(item => {
-                        const resultItem = document.createElement("p");
-                        resultItem.textContent = item;
-                        resultItem.classList.add("resultItem"); // Add class for styling
-                        searchResults.appendChild(resultItem);
+                    productGrid.innerHTML = ''; // Clear existing content
 
-                        resultItem.addEventListener("click", function () {
-                            searchBox.value = item;
-                            searchResults.innerHTML = "";
-                        });
+                    data.forEach(product => {
+                        const productItem = document.createElement('div');
+                        productItem.classList.add('product-item');
+
+                        const image = document.createElement('img');
+                        image.src = "/web/imgScript/" + product.image;
+                        image.alt = product.name;
+
+                        const name = document.createElement('p');
+                        name.textContent = product.name;
+
+                        const submitButton = document.createElement('button');
+                        submitButton.classList.add('submit-button');
+                        submitButton.textContent = 'Submit offer';
+
+                        const productInfo = document.createElement('div');
+                        productInfo.classList.add('product-info');
+
+                        productItem.appendChild(image);
+                        productItem.appendChild(name);
+                        productItem.appendChild(submitButton);
+                        productGrid.appendChild(productItem);
                     });
                 });
         } else {
-            searchResults.innerHTML = "";
+            productGrid.innerHTML = ''; // Clear existing content
         }
     });
 
@@ -93,9 +107,16 @@ document.addEventListener("DOMContentLoaded", function () {
                                 const name = document.createElement('p');
                                 name.textContent = product.name;
 
+                                const submitButton = document.createElement('button');
+                                submitButton.classList.add('submit-button');
+                                submitButton.textContent = 'Submit offer';
+
+                                const productInfo = document.createElement('div');
+                                productInfo.classList.add('product-info');
+
                                 productItem.appendChild(image);
                                 productItem.appendChild(name);
-
+                                productItem.appendChild(submitButton);
                                 productGrid.appendChild(productItem);
                             });
                         } else {

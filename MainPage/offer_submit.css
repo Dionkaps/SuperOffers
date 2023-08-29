@@ -1,3 +1,4 @@
+/* Styles for the general layout */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -10,30 +11,61 @@ body {
     background-color: #f0f0f0;
 }
 
-.header {
+/* Styles for the search bar */
+.search-bar {
+    margin-top: 20px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#searchBox {
+    width: 300px;
     padding: 10px;
-    background-color: #fff;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    position: fixed;
-    top: 0;
-    z-index: 1000;
+    font-size: 16px;
 }
 
-.dropdowns {
+#searchResults {
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+#searchResults .resultItem {
+    margin: 0;
+    padding: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#searchResults .resultItem:hover {
+    background-color: #f0f0f0;
+}
+
+/* Styles for the dropdowns */
+.ddropdown {
     display: flex;
     align-items: center;
-    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
 }
 
+#categories,
+#subcategories {
+    width: 200px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+/* Styles for the product grid and items */
 .product-grid {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 100px;
+    margin-top: 20px;
 }
 
 .product-item {
@@ -42,10 +74,11 @@ body {
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin: 20px;
-    flex-basis: 100%; /* Take up 100% of the width */
+    width: 100%;
     box-sizing: border-box;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     transition: transform 0.2s ease-in-out;
 }
 
@@ -54,16 +87,26 @@ body {
 }
 
 .product-image {
-    margin-right: 20px; /* Add spacing between image and text */
-    width: 80px; /* Adjust the width of the image as needed */
+    width: 80px;
+    margin-right: 20px;
 }
 
 .product-name {
     font-size: 16px;
     color: #333;
     text-align: center;
+    flex-grow: 1;
 }
 
-.product-info {
-    flex-grow: 1;
+.submit-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 15px 20px; /* Adjusted button size */
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
 }
