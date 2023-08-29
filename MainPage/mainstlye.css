@@ -237,8 +237,14 @@ h5 {
   margin-bottom: 10%;
 }
 
-#buttonContainer{
+#buttonContainer {
   width: 0;
   height: 100vh;
   transition: all 0.5s ease;
+}
+
+.infobox_body {
+  max-height: 350px;
+  overflow-y: auto;
+  padding: 10px;
 }

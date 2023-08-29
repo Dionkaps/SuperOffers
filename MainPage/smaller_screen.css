@@ -83,4 +83,10 @@
     cursor: pointer;
     left: 0;
   }
+
+  .infobox_body {
+    max-height: 22vh;
+    overflow-y: auto;
+    padding-top: 10%;
+  }
 }

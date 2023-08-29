@@ -32,7 +32,7 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
 
         //Kiklos 50 metrwn me kentro ti topothesia tou xristi
         circle = L.circle(userLocation, {
-          radius: 50,
+          radius: 5000,
           color: "blue",
           fillOpacity: 0.1,
           opacity: 0.7,
@@ -106,6 +106,37 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
 
       //Elegxos an to layer einai marker & an vrisketai entos tou kiklou
       if (event.layer instanceof L.Marker && distance <= circle.getRadius()) {
+        // Offer search for chosen supermarket
+        var data = { message: s_name.innerHTML };
+        fetch("fetchSupOffers.php", {
+          method: "POST",
+          headers: {
+            "Content-Type": "text/plain"
+          },
+          body: JSON.stringify(data)
+        })
+          .then(response => response.text())
+          .then(result => {
+            const items = result.split("~");
+            infobox_body.innerHTML = ""; // Clear existing content
+
+            // Create a container for the items
+            const itemsContainer = document.createElement("div");
+
+            items.forEach(item => {
+              const itemElement = document.createElement("p");
+              itemElement.textContent = item.trim();
+              infobox_body.appendChild(itemElement);
+            });
+
+            if (result === "") {
+              const itemElement = document.createElement("p");
+              itemElement.textContent = "No offers found";
+              infobox_body.appendChild(itemElement);
+            }
+            infobox_body.appendChild(itemsContainer);
+          });
+
         console.log("Supermarket is inside the circle.");
         infobox_body.innerHTML = "";
         let btn = document.createElement("button");
@@ -114,7 +145,9 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
           alert("Button is clicked");
         };
         infobox_body.appendChild(btn);
-      } else {
+      }
+
+      else {
         console.log("Supermarket is outside the circle.");
         infobox_body.innerHTML = "Eisai makria apo ola ta supermarket";
       }
