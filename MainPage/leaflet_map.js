@@ -32,7 +32,7 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
 
         //Kiklos 50 metrwn me kentro ti topothesia tou xristi
         circle = L.circle(userLocation, {
-          radius: 5000,
+          radius: 50000,
           color: "blue",
           fillOpacity: 0.1,
           opacity: 0.7,
@@ -124,10 +124,76 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
             const itemsContainer = document.createElement("div");
 
             items.forEach(item => {
-              const itemElement = document.createElement("p");
-              itemElement.textContent = item.trim();
-              infobox_body.appendChild(itemElement);
+              if (item.trim() != "") {
+                const itemElement = document.createElement("p");
+                itemElement.textContent = item.trim();
+
+                const likeButton = document.createElement("button");
+                likeButton.textContent = "Like";
+                likeButton.style.backgroundColor = "#69db69";
+                likeButton.style.color = "black";
+                likeButton.style.borderRadius = "5px";
+                likeButton.addEventListener("click", () => {
+                  var values = {
+                    spname: s_name.innerHTML,
+                    pname: item.trim()
+                  }
+                  fetch("likeOffer.php", {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(values)
+                  })
+                    .then(response => response.text())
+                    .then(result => {
+                      if (result === "Value increased successfully") {
+                        alert("Succsessfully liked offer");
+                      }
+                    });
+                });
+
+
+                const dislikeButton = document.createElement("button");
+                dislikeButton.textContent = "Dislike";
+                dislikeButton.style.backgroundColor = "#ff7a7a";
+                dislikeButton.style.color = "black";
+                dislikeButton.style.borderRadius = "5px";
+                dislikeButton.addEventListener("click", () => {
+                  var values = {
+                    spname: s_name.innerHTML,
+                    pname: item.trim()
+                  }
+                  fetch("dislikeOffer.php", {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(values)
+                  })
+                    .then(response => response.text())
+                    .then(result => {
+                      if (result === "Value increased successfully") {
+                        alert("Succsessfully disliked offer");
+                      }
+                    });
+                });
+
+                const buttonContainer = document.createElement("div");
+                buttonContainer.appendChild(likeButton);
+                buttonContainer.appendChild(dislikeButton);
+
+                const itemContainer = document.createElement("div");
+                itemContainer.classList.add("item-container");
+                itemContainer.appendChild(itemElement);
+                itemContainer.appendChild(buttonContainer);
+
+                infobox_body.appendChild(itemContainer);
+              }
             });
+
+
+
 
             if (result === "") {
               const itemElement = document.createElement("p");
