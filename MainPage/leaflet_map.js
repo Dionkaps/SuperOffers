@@ -32,7 +32,7 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
 
         //Kiklos 50 metrwn me kentro ti topothesia tou xristi
         circle = L.circle(userLocation, {
-          radius: 500,
+          radius: 10000,
           color: "blue",
           fillOpacity: 0.1,
           opacity: 0.7,
@@ -94,13 +94,13 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
   var location_marker = null;
 
   const infobox_body = document.querySelector(".infobox_body");
-
+  let btn = document.createElement("button");
   //Offer infobox populate function
   function offerPopulate() {
     infobox_body.innerHTML = ""; //Clear existing content
     //Offer search for chosen supermarket and category
     var values = {
-      spname: s_name.innerHTML,
+      spid: superId,
       catname: catName
     }
     fetch("fetchSupOffers.php", {
@@ -130,7 +130,7 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
             likeButton.style.borderRadius = "5px";
             likeButton.addEventListener("click", () => {
               var values = {
-                spname: s_name.innerHTML,
+                spid: superId,
                 pname: item.trim()
               }
               fetch("likeOffer.php", {
@@ -156,7 +156,7 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
             dislikeButton.style.borderRadius = "5px";
             dislikeButton.addEventListener("click", () => {
               var values = {
-                spname: s_name.innerHTML,
+                spid: superId,
                 pname: item.trim()
               }
               fetch("dislikeOffer.php", {
@@ -195,9 +195,8 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
       });
 
     console.log("Supermarket is inside the circle.");
-    let btn = document.createElement("button");
     btn.innerHTML = "Apply an offer";
-    btn.id = "offerButton"; // Adding the id "offerButton"
+    btn.id = "offerButton";
     btn.onclick = function () {
       alert("Button is clicked");
     };
@@ -216,17 +215,31 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
 
       //Elegxos an to layer einai marker & an vrisketai entos tou kiklou
       if (event.layer instanceof L.Marker && distance <= circle.getRadius()) {
-        if (catChosen == true) {
-          offerPopulate();
-        }
-        else {
-          console.log("No category chosen");
-        }
+        infobox_body.innerHTML = "";
+        btn.disabled = false;
+        btn.innerHTML = "Apply an offer";
+        btn.id = "offerButton";
+        btn.onclick = function () {
+          alert("Button is clicked");
+        };
+        infobox_body.appendChild(btn);
       }
-
       else {
         console.log("Supermarket is outside the circle.");
-        infobox_body.innerHTML = "Eisai makria apo ola ta supermarket";
+        infobox_body.innerHTML = "You are too far away from the supermarket";
+        btn.innerHTML = "Apply an offer";
+        btn.id = "offerButton";
+        btn.onclick = function () {
+          alert("Button is clicked");
+        };
+        infobox_body.appendChild(btn);
+        btn.disabled = true;
+      }
+      if (catChosen == true) {
+        offerPopulate();
+      }
+      else {
+        console.log("No category chosen");
       }
     } else {
       console.log("Circle has not been drawn yet");
@@ -249,10 +262,12 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
   const s_name = document.querySelector(".sm-name");
   var element = document.getElementById("infobox_id");
   var superChosen = false;
+  var superId;
 
   featuresLayer.on("click", function (event) {
     superChosen = true;
     const supermarketName = event.layer.feature.properties.name;
+    superId = event.layer.feature.id;
     s_name.innerHTML = supermarketName;
 
     infobox_attributes();

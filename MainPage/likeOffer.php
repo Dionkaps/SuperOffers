@@ -10,16 +10,8 @@ if ($conn->connect_error) {
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $jsonData = file_get_contents("php://input");
     $data = json_decode($jsonData, true);
-    $supName = $data['spname'];
+    $spId = $data['spid'];
     $pName = $data['pname'];
-
-    $queryShopId = "SELECT shop_id FROM shop WHERE name = '" . $supName . "'";
-    $resultShopId = $conn->query($queryShopId);
-
-    if ($resultShopId) {
-        $row = $resultShopId->fetch_assoc();
-        $shopId = $row['shop_id'];
-    }
 
     $queryProdId = "SELECT id FROM products WHERE name = '" . $pName . "'";
     $resultProdId = $conn->query($queryProdId);
@@ -32,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $query = "SELECT likes FROM discount WHERE shop_id = ? AND product_id = ?";
 
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("ss", $shopId, $prodId);
+    $stmt->bind_param("ss", $spId, $prodId);
     $stmt->execute();
     $result = $stmt->get_result();
 
@@ -44,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $newValue = $currentValue + 1;
 
         // Step 4: Update the Database
-        $sqlUpdate = "UPDATE discount SET likes = $newValue WHERE shop_id = '" . $shopId . "' AND product_id = '" . $prodId . "'";
+        $sqlUpdate = "UPDATE discount SET likes = $newValue WHERE shop_id = '" . $spId . "' AND product_id = '" . $prodId . "'";
         if ($conn->query($sqlUpdate) === TRUE) {
             echo "Value increased successfully";
         } else {

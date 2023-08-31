@@ -10,17 +10,8 @@ if ($conn->connect_error) {
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $jsonData = file_get_contents("php://input");
     $data = json_decode($jsonData, true);
-    $supName = $data['spname'];
+    $spId = $data['spid'];
     $catName = $data['catname'];
-
-    //Shop ID
-    $queryShopName = "SELECT shop_id FROM shop WHERE name = '" . $supName . "'";
-    $resultShopId = $conn->query($queryShopName);
-
-    if ($resultShopId) {
-        $row = $resultShopId->fetch_assoc();
-        $shopId = $row['shop_id'];
-    }
 
     //Category ID
     $queryCatName = "SELECT id FROM categories WHERE name = '" . $catName . "'";
@@ -35,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $query = "SELECT product_id FROM discount WHERE shop_id = ?";
 
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("s", $shopId);
+    $stmt->bind_param("s", $spId);
     $stmt->execute();
     $result = $stmt->get_result();
 
