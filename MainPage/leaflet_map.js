@@ -32,7 +32,7 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
 
         //Kiklos 50 metrwn me kentro ti topothesia tou xristi
         circle = L.circle(userLocation, {
-          radius: 50000,
+          radius: 500,
           color: "blue",
           fillOpacity: 0.1,
           opacity: 0.7,
@@ -95,6 +95,116 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
 
   const infobox_body = document.querySelector(".infobox_body");
 
+  //Offer infobox populate function
+  function offerPopulate() {
+    infobox_body.innerHTML = ""; //Clear existing content
+    //Offer search for chosen supermarket and category
+    var values = {
+      spname: s_name.innerHTML,
+      catname: catName
+    }
+    fetch("fetchSupOffers.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(values)
+    })
+      .then(response => response.text())
+      .then(result => {
+        const items = result.split("~");
+
+
+        //Create a container for the items
+        const itemsContainer = document.createElement("div");
+
+        items.forEach(item => {
+          if (item.trim() != "") {
+            const itemElement = document.createElement("p");
+            itemElement.textContent = item.trim();
+
+            const likeButton = document.createElement("button");
+            likeButton.textContent = "Like";
+            likeButton.style.backgroundColor = "#69db69";
+            likeButton.style.color = "black";
+            likeButton.style.borderRadius = "5px";
+            likeButton.addEventListener("click", () => {
+              var values = {
+                spname: s_name.innerHTML,
+                pname: item.trim()
+              }
+              fetch("likeOffer.php", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json"
+                },
+                body: JSON.stringify(values)
+              })
+                .then(response => response.text())
+                .then(result => {
+                  if (result === "Value increased successfully") {
+                    alert("Succsessfully liked offer");
+                  }
+                });
+            });
+
+
+            const dislikeButton = document.createElement("button");
+            dislikeButton.textContent = "Dislike";
+            dislikeButton.style.backgroundColor = "#ff7a7a";
+            dislikeButton.style.color = "black";
+            dislikeButton.style.borderRadius = "5px";
+            dislikeButton.addEventListener("click", () => {
+              var values = {
+                spname: s_name.innerHTML,
+                pname: item.trim()
+              }
+              fetch("dislikeOffer.php", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json"
+                },
+                body: JSON.stringify(values)
+              })
+                .then(response => response.text())
+                .then(result => {
+                  if (result === "Value increased successfully") {
+                    alert("Succsessfully disliked offer");
+                  }
+                });
+            });
+
+            const buttonContainer = document.createElement("div");
+            buttonContainer.appendChild(likeButton);
+            buttonContainer.appendChild(dislikeButton);
+
+            const itemContainer = document.createElement("div");
+            itemContainer.classList.add("item-container");
+            itemContainer.appendChild(itemElement);
+            itemContainer.appendChild(buttonContainer);
+
+            infobox_body.appendChild(itemContainer);
+          }
+        });
+        if (result === "") {
+          const itemElement = document.createElement("p");
+          itemElement.textContent = "No offers found";
+          infobox_body.appendChild(itemElement);
+        }
+        infobox_body.appendChild(itemsContainer);
+      });
+
+    console.log("Supermarket is inside the circle.");
+    let btn = document.createElement("button");
+    btn.innerHTML = "Apply an offer";
+    btn.id = "offerButton"; // Adding the id "offerButton"
+    btn.onclick = function () {
+      alert("Button is clicked");
+    };
+    infobox_body.appendChild(btn);
+
+  }
+
   function infobox_populate(event) {
     //Dimiourgia leitourgias gia prosthiki prosforas
     //Elegxos iparksis tou circle sto map
@@ -106,111 +216,12 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
 
       //Elegxos an to layer einai marker & an vrisketai entos tou kiklou
       if (event.layer instanceof L.Marker && distance <= circle.getRadius()) {
-        // Offer search for chosen supermarket
-        var data = { message: s_name.innerHTML };
-        fetch("fetchSupOffers.php", {
-          method: "POST",
-          headers: {
-            "Content-Type": "text/plain"
-          },
-          body: JSON.stringify(data)
-        })
-          .then(response => response.text())
-          .then(result => {
-            const items = result.split("~");
-            infobox_body.innerHTML = ""; // Clear existing content
-
-            // Create a container for the items
-            const itemsContainer = document.createElement("div");
-
-            items.forEach(item => {
-              if (item.trim() != "") {
-                const itemElement = document.createElement("p");
-                itemElement.textContent = item.trim();
-
-                const likeButton = document.createElement("button");
-                likeButton.textContent = "Like";
-                likeButton.style.backgroundColor = "#69db69";
-                likeButton.style.color = "black";
-                likeButton.style.borderRadius = "5px";
-                likeButton.addEventListener("click", () => {
-                  var values = {
-                    spname: s_name.innerHTML,
-                    pname: item.trim()
-                  }
-                  fetch("likeOffer.php", {
-                    method: "POST",
-                    headers: {
-                      "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(values)
-                  })
-                    .then(response => response.text())
-                    .then(result => {
-                      if (result === "Value increased successfully") {
-                        alert("Succsessfully liked offer");
-                      }
-                    });
-                });
-
-
-                const dislikeButton = document.createElement("button");
-                dislikeButton.textContent = "Dislike";
-                dislikeButton.style.backgroundColor = "#ff7a7a";
-                dislikeButton.style.color = "black";
-                dislikeButton.style.borderRadius = "5px";
-                dislikeButton.addEventListener("click", () => {
-                  var values = {
-                    spname: s_name.innerHTML,
-                    pname: item.trim()
-                  }
-                  fetch("dislikeOffer.php", {
-                    method: "POST",
-                    headers: {
-                      "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(values)
-                  })
-                    .then(response => response.text())
-                    .then(result => {
-                      if (result === "Value increased successfully") {
-                        alert("Succsessfully disliked offer");
-                      }
-                    });
-                });
-
-                const buttonContainer = document.createElement("div");
-                buttonContainer.appendChild(likeButton);
-                buttonContainer.appendChild(dislikeButton);
-
-                const itemContainer = document.createElement("div");
-                itemContainer.classList.add("item-container");
-                itemContainer.appendChild(itemElement);
-                itemContainer.appendChild(buttonContainer);
-
-                infobox_body.appendChild(itemContainer);
-              }
-            });
-
-
-
-
-            if (result === "") {
-              const itemElement = document.createElement("p");
-              itemElement.textContent = "No offers found";
-              infobox_body.appendChild(itemElement);
-            }
-            infobox_body.appendChild(itemsContainer);
-          });
-
-        console.log("Supermarket is inside the circle.");
-        infobox_body.innerHTML = "";
-        let btn = document.createElement("button");
-        btn.innerHTML = "Click Me";
-        btn.onclick = function () {
-          alert("Button is clicked");
-        };
-        infobox_body.appendChild(btn);
+        if (catChosen == true) {
+          offerPopulate();
+        }
+        else {
+          console.log("No category chosen");
+        }
       }
 
       else {
@@ -275,6 +286,8 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
 
   //Populate the products categories sidebar
   var xhr = new XMLHttpRequest();
+  var catChosen = false;
+  var catName;
   xhr.open("GET", "fetchCategories.php", true);
   xhr.onreadystatechange = function () {
     if (xhr.readyState === XMLHttpRequest.DONE) {
@@ -292,7 +305,9 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
           button.innerText = category;
 
           button.addEventListener("click", function () {
-            var data = { message: this.innerText };
+            catChosen = true;
+            catName = this.innerText;
+            data = { message: this.innerText };
 
             resetIcons(); //Reset all icons
 
@@ -311,7 +326,7 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
                   console.log(item.trim());
                 });
               });
-
+            offerPopulate();
           });
 
           buttonContainer.appendChild(button);

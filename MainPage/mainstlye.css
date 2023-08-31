@@ -170,9 +170,8 @@ button {
 button:hover {
   text-align: center;
   padding: 7%;
-  border-bottom: 2px groove transparent;
   border-radius: 0.5em;
-  background-color: #465fd0;
+  background-color: #96a7f1;
   font-weight: bold;
 }
 
@@ -257,4 +256,16 @@ h5 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+#offerButton{
+  padding: 4%;
+  margin-top: 2%;
+  margin-bottom: 4%;
+  border-radius: 10px;
+  background-color: #dedede;
+}
+
+#offerButton:hover{
+  background-color: #bbc8ff;
 }
