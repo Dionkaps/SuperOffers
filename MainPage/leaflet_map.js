@@ -122,7 +122,8 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
           if (item.trim() != "") {
             const itemElement = document.createElement("p");
             itemElement.textContent = item.trim();
-
+            itemElement.style.fontWeight = "bold";
+            itemElement.id = "itemElement";
             const likeButton = document.createElement("button");
             likeButton.textContent = "Like";
             likeButton.style.backgroundColor = "#69db69";
@@ -180,10 +181,54 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
 
             const itemContainer = document.createElement("div");
             itemContainer.classList.add("item-container");
-            itemContainer.appendChild(itemElement);
-            itemContainer.appendChild(buttonContainer);
+
+            const firstRow = document.createElement("div");
+            firstRow.classList.add("item-row");
+            const secondRow = document.createElement("div");
+            secondRow.classList.add("item-row");
+            firstRow.appendChild(itemElement);
+            //firstRow.appendChild(buttonContainer);
 
             infobox_body.appendChild(itemContainer);
+
+            var values = {
+              spid: superId,
+              pname: item.trim()
+            }
+            const priceNrating = document.createElement("p");
+            const date = document.createElement("p");
+            const br = document.createElement("br");
+
+            fetch("offerDetails.php", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify(values)
+            })
+              .then(response => response.text())
+              .then(result => {
+                const jsonResponse = JSON.parse(result);
+
+                // Create formatted text with italic styles
+                const formattedText = `<em>
+                ${jsonResponse[0].discount_price}&nbsp;<i class="fa-solid fa-euro-sign euro"></i>&nbsp;
+                ${jsonResponse[0].likes}&nbsp;<i class="fa-solid fa-thumbs-up like"></i>&nbsp;
+                ${jsonResponse[0].dislikes}&nbsp;<i class="fa-solid fa-thumbs-down dislike"></i>&nbsp;</em>
+              `;
+
+                priceNrating.innerHTML = formattedText;
+
+                const formattedDate = `&nbsp;&nbsp;<strong>Offer date:</strong> <em>${jsonResponse[0].date}</em>`;
+
+                date.innerHTML = formattedDate;
+              });
+
+            secondRow.appendChild(priceNrating);
+            secondRow.appendChild(br);
+            secondRow.appendChild(date);
+            itemContainer.appendChild(firstRow);
+            itemContainer.appendChild(secondRow);
           }
         });
         if (result === "") {

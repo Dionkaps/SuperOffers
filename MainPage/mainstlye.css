@@ -45,7 +45,6 @@ img {
   margin: 2%;
   background-color: white;
   text-align: center;
-  font-weight: bold;
   transition: all 0.3s ease-in;
 }
 
@@ -184,27 +183,18 @@ h5 {
 /* The side navigation menu */
 .sidenav {
   height: 100%;
-  /* 100% Full-height */
   width: 0;
-  /* 0 width - change this with JavaScript */
   position: fixed;
-  /* Stay in place */
   z-index: 1;
-  /* Stay on top */
   top: 0;
-  /* Stay at the top */
   left: 0;
   background-color: #111;
-  /* Black*/
   overflow-x: hidden;
-  /* Disable horizontal scroll */
   padding-top: 60px;
-  /* Place content 60px from the top */
   transition: 0.5s;
-  /* 0.5 second transition effect to slide in the sidenav */
+
 }
 
-/* The navigation menu links */
 .sidenav a {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
@@ -214,12 +204,10 @@ h5 {
   transition: 0.3s;
 }
 
-/* When you mouse over the navigation links, change their color */
 .sidenav a:hover {
   color: #f1f1f1;
 }
 
-/* Position and style the close button (top right corner) */
 .sidenav .closebtn {
   position: absolute;
   top: 0;
@@ -251,21 +239,39 @@ h5 {
 .item-container {
   border: 1px solid #ccc;
   padding: 10px;
-  margin-bottom: 10px;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.item-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-#offerButton{
+#offerButton {
   padding: 4%;
   margin-top: 2%;
   margin-bottom: 4%;
   border-radius: 10px;
-  background-color: #dedede;
+  background-color: #bbc8ff;
 }
 
-#offerButton:hover{
-  background-color: #bbc8ff;
+#offerButton:hover {
+  background-color: #5f7cfe;
+}
+
+.like {
+  color: rgb(71, 194, 106);
+}
+
+.dislike {
+  color: rgb(225, 75, 75);
+}
+
+.euro {
+  color: rgb(224, 188, 68);
 }
