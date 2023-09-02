@@ -94,47 +94,118 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
   var location_marker = null;
 
   const infobox_body = document.querySelector(".infobox_body");
-  let btn = document.createElement("button");
+  let offerbtn = document.createElement("button");
+  let ratebtn = document.createElement("button");
+  const buttonsContainer = document.createElement("div");
+  buttonsContainer.id = "buttonsContainer";
+  buttonsContainer.style.display = "flex";
+  buttonsContainer.style.flexDirection = "row";
   //Offer infobox populate function
   function offerPopulate() {
     infobox_body.innerHTML = ""; //Clear existing content
     //Offer search for chosen supermarket and category
-    var values = {
-      spid: superId,
-      catname: catName
-    }
-    fetch("fetchSupOffers.php", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(values)
-    })
-      .then(response => response.text())
-      .then(result => {
-        const items = result.split("~");
+    if (superId != null) {
+      var values = {
+        spid: superId,
+        catname: catName
+      }
+      fetch("fetchSupOffers.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(values)
+      })
+        .then(response => response.text())
+        .then(result => {
+          const items = result.split("~");
 
 
-        //Create a container for the items
-        const itemsContainer = document.createElement("div");
+          //Create a container for the items
+          const itemsContainer = document.createElement("div");
 
-        items.forEach(item => {
-          if (item.trim() != "") {
-            const itemElement = document.createElement("p");
-            itemElement.textContent = item.trim();
-            itemElement.style.fontWeight = "bold";
-            itemElement.id = "itemElement";
-            const likeButton = document.createElement("button");
-            likeButton.textContent = "Like";
-            likeButton.style.backgroundColor = "#69db69";
-            likeButton.style.color = "black";
-            likeButton.style.borderRadius = "5px";
-            likeButton.addEventListener("click", () => {
+          items.forEach(item => {
+            if (item.trim() != "") {
+              const itemElement = document.createElement("p");
+              itemElement.textContent = item.trim();
+              itemElement.style.fontWeight = "bold";
+              itemElement.id = "itemElement";
+              const likeButton = document.createElement("button");
+              likeButton.textContent = "Like";
+              likeButton.style.backgroundColor = "#69db69";
+              likeButton.style.color = "black";
+              likeButton.style.borderRadius = "5px";
+              likeButton.addEventListener("click", () => {
+                var values = {
+                  spid: superId,
+                  pname: item.trim()
+                }
+                fetch("likeOffer.php", {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json"
+                  },
+                  body: JSON.stringify(values)
+                })
+                  .then(response => response.text())
+                  .then(result => {
+                    if (result === "Value increased successfully") {
+                      alert("Succsessfully liked offer");
+                    }
+                  });
+              });
+
+
+              const dislikeButton = document.createElement("button");
+              dislikeButton.textContent = "Dislike";
+              dislikeButton.style.backgroundColor = "#ff7a7a";
+              dislikeButton.style.color = "black";
+              dislikeButton.style.borderRadius = "5px";
+              dislikeButton.addEventListener("click", () => {
+                var values = {
+                  spid: superId,
+                  pname: item.trim()
+                }
+                fetch("dislikeOffer.php", {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json"
+                  },
+                  body: JSON.stringify(values)
+                })
+                  .then(response => response.text())
+                  .then(result => {
+                    if (result === "Value increased successfully") {
+                      alert("Succsessfully disliked offer");
+                    }
+                  });
+              });
+
+              const buttonContainer = document.createElement("div");
+              buttonContainer.appendChild(likeButton);
+              buttonContainer.appendChild(dislikeButton);
+
+              const itemContainer = document.createElement("div");
+              itemContainer.classList.add("item-container");
+
+              const firstRow = document.createElement("div");
+              firstRow.classList.add("item-row");
+              const secondRow = document.createElement("div");
+              secondRow.classList.add("item-row");
+              firstRow.appendChild(itemElement);
+              //firstRow.appendChild(buttonContainer);
+
+              infobox_body.appendChild(itemContainer);
+
               var values = {
                 spid: superId,
                 pname: item.trim()
               }
-              fetch("likeOffer.php", {
+              const priceNrating = document.createElement("p");
+              const date = document.createElement("p");
+              const br = document.createElement("br");
+
+              fetch("offerDetails.php", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json"
@@ -143,109 +214,56 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
               })
                 .then(response => response.text())
                 .then(result => {
-                  if (result === "Value increased successfully") {
-                    alert("Succsessfully liked offer");
-                  }
-                });
-            });
+                  const jsonResponse = JSON.parse(result);
 
-
-            const dislikeButton = document.createElement("button");
-            dislikeButton.textContent = "Dislike";
-            dislikeButton.style.backgroundColor = "#ff7a7a";
-            dislikeButton.style.color = "black";
-            dislikeButton.style.borderRadius = "5px";
-            dislikeButton.addEventListener("click", () => {
-              var values = {
-                spid: superId,
-                pname: item.trim()
-              }
-              fetch("dislikeOffer.php", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json"
-                },
-                body: JSON.stringify(values)
-              })
-                .then(response => response.text())
-                .then(result => {
-                  if (result === "Value increased successfully") {
-                    alert("Succsessfully disliked offer");
-                  }
-                });
-            });
-
-            const buttonContainer = document.createElement("div");
-            buttonContainer.appendChild(likeButton);
-            buttonContainer.appendChild(dislikeButton);
-
-            const itemContainer = document.createElement("div");
-            itemContainer.classList.add("item-container");
-
-            const firstRow = document.createElement("div");
-            firstRow.classList.add("item-row");
-            const secondRow = document.createElement("div");
-            secondRow.classList.add("item-row");
-            firstRow.appendChild(itemElement);
-            //firstRow.appendChild(buttonContainer);
-
-            infobox_body.appendChild(itemContainer);
-
-            var values = {
-              spid: superId,
-              pname: item.trim()
-            }
-            const priceNrating = document.createElement("p");
-            const date = document.createElement("p");
-            const br = document.createElement("br");
-
-            fetch("offerDetails.php", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json"
-              },
-              body: JSON.stringify(values)
-            })
-              .then(response => response.text())
-              .then(result => {
-                const jsonResponse = JSON.parse(result);
-
-                // Create formatted text with italic styles
-                const formattedText = `<em>
+                  // Create formatted text with italic styles
+                  const formattedText = `<em>
                 ${jsonResponse[0].discount_price}&nbsp;<i class="fa-solid fa-euro-sign euro"></i>&nbsp;
                 ${jsonResponse[0].likes}&nbsp;<i class="fa-solid fa-thumbs-up like"></i>&nbsp;
                 ${jsonResponse[0].dislikes}&nbsp;<i class="fa-solid fa-thumbs-down dislike"></i>&nbsp;</em>
               `;
 
-                priceNrating.innerHTML = formattedText;
+                  priceNrating.innerHTML = formattedText;
 
-                const formattedDate = `&nbsp;&nbsp;<strong>Offer date:</strong> <em>${jsonResponse[0].date}</em>`;
+                  const formattedDate = `&nbsp;&nbsp;<strong>Offer date:</strong> <em>${jsonResponse[0].date}</em>`;
 
-                date.innerHTML = formattedDate;
-              });
+                  date.innerHTML = formattedDate;
+                });
 
-            secondRow.appendChild(priceNrating);
-            secondRow.appendChild(br);
-            secondRow.appendChild(date);
-            itemContainer.appendChild(firstRow);
-            itemContainer.appendChild(secondRow);
+              secondRow.appendChild(priceNrating);
+              secondRow.appendChild(br);
+              secondRow.appendChild(date);
+              itemContainer.appendChild(firstRow);
+              itemContainer.appendChild(secondRow);
+            }
+          });
+          if (result === "") {
+            const itemElement = document.createElement("p");
+            itemElement.textContent = "No offers found";
+            infobox_body.appendChild(itemElement);
           }
+          infobox_body.appendChild(itemsContainer);
         });
-        if (result === "") {
-          const itemElement = document.createElement("p");
-          itemElement.textContent = "No offers found";
-          infobox_body.appendChild(itemElement);
-        }
-        infobox_body.appendChild(itemsContainer);
-      });
 
-    console.log("Supermarket is inside the circle.");
-    btn.innerHTML = "Apply an offer";
-    btn.id = "offerButton";
-    btn.onclick = function () {
-      alert("Button is clicked");
-    };
-    infobox_body.appendChild(btn);
+      console.log("Supermarket is inside the circle.");
+      offerbtn.innerHTML = "Add new offer";
+      offerbtn.id = "offerButton";
+      offerbtn.onclick = function () {
+        alert("Button is clicked");
+      };
+
+      ratebtn.innerHTML = "Rate an offer";
+      ratebtn.id = "rateButton";
+      ratebtn.onclick = function () {
+        alert("Button is clicked");
+      };
+      buttonsContainer.appendChild(offerbtn);
+      buttonsContainer.appendChild(ratebtn);
+      infobox_body.appendChild(buttonsContainer);
+    }
+    else {
+      console.log("No supermarket chosen");
+    }
 
   }
 
@@ -261,24 +279,39 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
       //Elegxos an to layer einai marker & an vrisketai entos tou kiklou
       if (event.layer instanceof L.Marker && distance <= circle.getRadius()) {
         infobox_body.innerHTML = "";
-        btn.disabled = false;
-        btn.innerHTML = "Apply an offer";
-        btn.id = "offerButton";
-        btn.onclick = function () {
+        offerbtn.disabled = false;
+        offerbtn.innerHTML = "Add new offer";
+        offerbtn.id = "offerButton";
+        offerbtn.onclick = function () {
           alert("Button is clicked");
         };
-        infobox_body.appendChild(btn);
+        ratebtn.disabled = false;
+        ratebtn.innerHTML = "Rate an offer";
+        ratebtn.id = "rateButton";
+        ratebtn.onclick = function () {
+          alert("Button is clicked");
+        };
+        buttonsContainer.appendChild(offerbtn);
+        buttonsContainer.appendChild(ratebtn);
+        infobox_body.appendChild(buttonsContainer);
       }
       else {
         console.log("Supermarket is outside the circle.");
         infobox_body.innerHTML = "You are too far away from the supermarket";
-        btn.innerHTML = "Apply an offer";
-        btn.id = "offerButton";
-        btn.onclick = function () {
+        offerbtn.innerHTML = "Add new offer";
+        offerbtn.id = "offerButton";
+        offerbtn.onclick = function () {
           alert("Button is clicked");
         };
-        infobox_body.appendChild(btn);
-        btn.disabled = true;
+        ratebtn.innerHTML = "Rate an offer";
+        ratebtn.id = "rateButton";
+        ratebtn.onclick = function () {
+          alert("Button is clicked");
+        };
+        buttonsContainer.appendChild(offerbtn);
+        infobox_body.appendChild(buttonsContainer);
+        offerbtn.disabled = true;
+        ratebtn.disabled = true;
       }
       if (catChosen == true) {
         offerPopulate();

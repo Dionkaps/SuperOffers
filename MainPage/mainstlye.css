@@ -264,6 +264,26 @@ h5 {
   background-color: #5f7cfe;
 }
 
+#offerButton:disabled {
+  background-color: #cdd0db;
+}
+
+#rateButton {
+  padding: 4%;
+  margin-top: 2%;
+  margin-bottom: 4%;
+  border-radius: 10px;
+  background-color: #bbc8ff;
+}
+
+#rateButton:hover {
+  background-color: #5f7cfe;
+}
+
+#rateButton:disabled {
+  background-color: #cdd0db;
+}
+
 .like {
   color: rgb(71, 194, 106);
 }
@@ -274,4 +294,12 @@ h5 {
 
 .euro {
   color: rgb(224, 188, 68);
+}
+
+#buttonsContainer {
+  display: flex;
+  padding-left: 15%;
+  padding-right: 15%;
+  justify-content: space-between;
+  align-items: center;
 }
