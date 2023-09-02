@@ -24,6 +24,8 @@ body {
     width: 300px;
     padding: 10px;
     font-size: 16px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
 }
 
 #searchResults {
@@ -58,6 +60,7 @@ body {
     width: 200px;
     padding: 10px;
     font-size: 16px;
+    border-radius: 10px;
 }
 
 /* Styles for the product grid and items */
@@ -72,6 +75,7 @@ body {
     background-color: #fff;
     border: 1px solid #ccc;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
     padding: 20px;
     margin: 20px;
     width: 100%;
@@ -100,9 +104,11 @@ body {
 
 .submit-button {
     background-color: #007bff;
+    border-radius: 10px;
     color: #fff;
     border: none;
-    padding: 15px 20px; /* Adjusted button size */
+    padding: 15px 20px;
+    /* Adjusted button size */
     cursor: pointer;
     transition: background-color 0.2s;
 }

@@ -100,6 +100,23 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
   buttonsContainer.id = "buttonsContainer";
   buttonsContainer.style.display = "flex";
   buttonsContainer.style.flexDirection = "row";
+
+  function offerButtonInit() {
+    offerbtn.innerHTML = "Add new offer";
+    offerbtn.id = "offerButton";
+    offerbtn.onclick = function () {
+      window.location.href = "offer_submit.html";
+    };
+  }
+
+  function rateButtonInit() {
+    ratebtn.innerHTML = "Rate an offer";
+    ratebtn.id = "rateButton";
+    ratebtn.onclick = function () {
+      alert("Button is clicked");
+    };
+  }
+
   //Offer infobox populate function
   function offerPopulate() {
     infobox_body.innerHTML = ""; //Clear existing content
@@ -246,17 +263,9 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
         });
 
       console.log("Supermarket is inside the circle.");
-      offerbtn.innerHTML = "Add new offer";
-      offerbtn.id = "offerButton";
-      offerbtn.onclick = function () {
-        alert("Button is clicked");
-      };
+      offerButtonInit();
 
-      ratebtn.innerHTML = "Rate an offer";
-      ratebtn.id = "rateButton";
-      ratebtn.onclick = function () {
-        alert("Button is clicked");
-      };
+      rateButtonInit();
       buttonsContainer.appendChild(offerbtn);
       buttonsContainer.appendChild(ratebtn);
       infobox_body.appendChild(buttonsContainer);
@@ -280,17 +289,9 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
       if (event.layer instanceof L.Marker && distance <= circle.getRadius()) {
         infobox_body.innerHTML = "";
         offerbtn.disabled = false;
-        offerbtn.innerHTML = "Add new offer";
-        offerbtn.id = "offerButton";
-        offerbtn.onclick = function () {
-          alert("Button is clicked");
-        };
+        offerButtonInit();
         ratebtn.disabled = false;
-        ratebtn.innerHTML = "Rate an offer";
-        ratebtn.id = "rateButton";
-        ratebtn.onclick = function () {
-          alert("Button is clicked");
-        };
+        rateButtonInit();
         buttonsContainer.appendChild(offerbtn);
         buttonsContainer.appendChild(ratebtn);
         infobox_body.appendChild(buttonsContainer);
@@ -298,16 +299,8 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
       else {
         console.log("Supermarket is outside the circle.");
         infobox_body.innerHTML = "You are too far away from the supermarket";
-        offerbtn.innerHTML = "Add new offer";
-        offerbtn.id = "offerButton";
-        offerbtn.onclick = function () {
-          alert("Button is clicked");
-        };
-        ratebtn.innerHTML = "Rate an offer";
-        ratebtn.id = "rateButton";
-        ratebtn.onclick = function () {
-          alert("Button is clicked");
-        };
+        offerButtonInit();
+        rateButtonInit();
         buttonsContainer.appendChild(offerbtn);
         infobox_body.appendChild(buttonsContainer);
         offerbtn.disabled = true;

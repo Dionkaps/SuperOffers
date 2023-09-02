@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const searchBox = document.getElementById("searchBox");
     const productGrid = document.querySelector('.product-grid');
 
+    function submitOffer() { }
+
     //Searchbar
 
     searchBox.addEventListener("input", function () {
@@ -28,7 +30,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                         const submitButton = document.createElement('button');
                         submitButton.classList.add('submit-button');
-                        submitButton.textContent = 'Submit offer';
+                        submitButton.textContent = 'Add new offer';
+                        submitButton.addEventListener('click', submitOffer());
 
                         const productInfo = document.createElement('div');
                         productInfo.classList.add('product-info');
@@ -109,7 +112,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                                 const submitButton = document.createElement('button');
                                 submitButton.classList.add('submit-button');
-                                submitButton.textContent = 'Submit offer';
+                                submitButton.textContent = 'Add new offer';
+                                submitButton.addEventListener('click', submitOffer());
 
                                 const productInfo = document.createElement('div');
                                 productInfo.classList.add('product-info');
