@@ -11,16 +11,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $jsonData = file_get_contents("php://input");
     $data = json_decode($jsonData, true);
     $spId = $data['spid'];
-    $catName = $data['catname'];
-
-    //Category ID
-    $queryCatName = "SELECT id FROM categories WHERE name = '" . $catName . "'";
-    $resultCatId = $conn->query($queryCatName);
-
-    if ($resultCatId) {
-        $row = $resultCatId->fetch_assoc();
-        $catId = $row['id'];
-    }
 
 
     $query = "SELECT product_id FROM discount WHERE shop_id = ?";
@@ -34,8 +24,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         while ($row = $result->fetch_assoc()) {
             $productId = $row['product_id'];
 
-            $stmt1 = $conn->prepare("SELECT name FROM products WHERE id = ? AND category_id = ?");
-            $stmt1->bind_param("ss", $productId, $catId);
+            $stmt1 = $conn->prepare("SELECT name FROM products WHERE id = ?");
+            $stmt1->bind_param("s", $productId);
 
             $stmt1->execute();
 

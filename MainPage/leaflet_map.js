@@ -123,8 +123,7 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
     //Offer search for chosen supermarket and category
     if (superId != null) {
       var values = {
-        spid: superId,
-        catname: catName
+        spid: superId
       }
       fetch("fetchSupOffers.php", {
         method: "POST",
@@ -306,12 +305,7 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
         offerbtn.disabled = true;
         ratebtn.disabled = true;
       }
-      if (catChosen == true) {
-        offerPopulate();
-      }
-      else {
-        console.log("No category chosen");
-      }
+      offerPopulate();
     } else {
       console.log("Circle has not been drawn yet");
     }
@@ -372,7 +366,6 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
 
   //Populate the products categories sidebar
   var xhr = new XMLHttpRequest();
-  var catChosen = false;
   var catName;
   xhr.open("GET", "fetchCategories.php", true);
   xhr.onreadystatechange = function () {
@@ -391,7 +384,6 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
           button.innerText = category;
 
           button.addEventListener("click", function () {
-            catChosen = true;
             catName = this.innerText;
             data = { message: this.innerText };
 
@@ -408,11 +400,10 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
               .then(result => {
                 const items = result.split(",");
                 items.forEach(item => {
-                  changeIconOnOffer(item.trim()); //Icon update on offer found
+                  changeIconOnCatOffer(item.trim()); //Icon update on offer found
                   console.log(item.trim());
                 });
               });
-            offerPopulate();
           });
 
           buttonContainer.appendChild(button);
@@ -431,6 +422,13 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
     iconAnchor: [16, 22],
   });
 
+  //Custom offer icon for Categories
+  const catOfferIcon = L.icon({
+    iconUrl: "images/offerCat.png",
+    iconSize: [32, 32],
+    iconAnchor: [16, 22],
+  });
+
   //Change supermarket icon if there is an offer there
   function changeIconOnOffer(nodeId) {
 
@@ -442,10 +440,32 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
 
   }
 
+  //Change supermarket icon if there is an offer there
+  function changeIconOnCatOffer(nodeId) {
+
+    featuresLayer.eachLayer(function (layer) {
+      if (layer.feature.id === nodeId) {
+        layer.setIcon(catOfferIcon);
+      }
+    });
+
+  }
+
   //Reset all icons
   function resetIcons() {
-    featuresLayer.eachLayer(function (layer) {
-      layer.setIcon(myIcon);
-    });
+    fetch("fetchAllOffers.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "text/plain"
+      }
+    })
+      .then(response => response.text())
+      .then(result => {
+        const items = result.split(",");
+        items.forEach(item => {
+          changeIconOnOffer(item.trim()); //Icon update on offer found
+          console.log(item.trim());
+        });
+      });
   }
 });
