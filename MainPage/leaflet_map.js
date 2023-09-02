@@ -387,7 +387,7 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
             catName = this.innerText;
             data = { message: this.innerText };
 
-            resetIcons(); //Reset all icons
+            setAllIcons(); //Reset all icons
 
             fetch("fetchOffers.php", {
               method: "POST",
@@ -425,7 +425,7 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
   //Custom offer icon for Categories
   const catOfferIcon = L.icon({
     iconUrl: "images/offerCat.png",
-    iconSize: [32, 32],
+    iconSize: [40, 40],
     iconAnchor: [16, 22],
   });
 
@@ -450,9 +450,9 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
     });
 
   }
-
+  setAllIcons();
   //Reset all icons
-  function resetIcons() {
+  function setAllIcons() {
     fetch("fetchAllOffers.php", {
       method: "POST",
       headers: {
