@@ -36,7 +36,7 @@ if ($conn->connect_error) {
         $_SESSION['username'] = $username;
         $_SESSION['email'] = $email;
         
-        header('Location:/MainPage/main_page.html');
+        header('Location:../MainPage/main_page.html');
     }
 
     $conn->close();
