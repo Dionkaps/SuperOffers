@@ -1,19 +1,31 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const shopDetails = document.getElementById("shop-name");
+  // const shopDetails = document.getElementById("shop-name");
+  const offerGrid = document.querySelector('.offer-grid');
 
+
+  /*
   function populateShopInfo(shopName){
-    const shopName = document.createElement('p');
+    const shopDetails = document.createElement('p');
+    shopDetails.textContent = 
   }
-
-  //Offer infobox populate function
+  */
   function offerPopulate() {
-    infobox_body.innerHTML = ""; //Clear existing content
+    offerGrid.innerHTML = ""; //Clear existing content
+
+    //*** 
+    //Test shop id
+    //***
+    const superId = "node/1643373639";
+
     //Offer search for chosen supermarket and category
     if (superId != null) {
+
+
+
       var values = {
         spid: superId
       }
-      fetch("fetchSupOffers.php", {
+      fetch("fetchProductDataOfferRating.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -22,16 +34,19 @@ document.addEventListener("DOMContentLoaded", function () {
       })
         .then(response => response.text())
         .then(result => {
-          const items = result.split("~");
-
-
-          //Create a container for the items
-          const itemsContainer = document.createElement("div");
+          const items = JSON.parse(result);
 
           items.forEach(item => {
-            if (item.trim() != "") {
+            if (item.name.trim() != "") {
+              const offerContainer = document.createElement('div');
+              offerContainer.classList.add("offer-item");
+
+              const productImage = document.createElement('img');
+              productImage.src = "/web/imgScript/" + item.image;
+              productImage.alt = item.name.trim();
+
               const itemElement = document.createElement("p");
-              itemElement.textContent = item.trim();
+              itemElement.textContent = item.name.trim();
               itemElement.style.fontWeight = "bold";
               itemElement.id = "itemElement";
               const likeButton = document.createElement("button");
@@ -42,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
               likeButton.addEventListener("click", () => {
                 var values = {
                   spid: superId,
-                  pname: item.trim()
+                  pname: item.name.trim()
                 }
                 fetch("likeOffer.php", {
                   method: "POST",
@@ -68,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
               dislikeButton.addEventListener("click", () => {
                 var values = {
                   spid: superId,
-                  pname: item.trim()
+                  pname: item.name.trim()
                 }
                 fetch("dislikeOffer.php", {
                   method: "POST",
@@ -85,31 +100,36 @@ document.addEventListener("DOMContentLoaded", function () {
                   });
               });
 
-              const buttonContainer = document.createElement("div");
-              buttonContainer.appendChild(likeButton);
-              buttonContainer.appendChild(dislikeButton);
+              //Image container init
+              const imageContainer = document.createElement("div");
 
+
+              //Item container init
               const itemContainer = document.createElement("div");
               itemContainer.classList.add("item-container");
 
-              const firstRow = document.createElement("div");
-              firstRow.classList.add("item-row");
-              const secondRow = document.createElement("div");
-              secondRow.classList.add("item-row");
-              firstRow.appendChild(itemElement);
-              //firstRow.appendChild(buttonContainer);
+              //Button container init
+              const buttonContainer = document.createElement("div");
 
-              infobox_body.appendChild(itemContainer);
+
+              const firstRow = document.createElement("div");
+              firstRow.classList.add("product-details");
+              const secondRow = document.createElement("div");
+              secondRow.classList.add("offer-details");
+
+              firstRow.appendChild(itemElement);
+
+              offerContainer.appendChild(itemContainer);
 
               var values = {
                 spid: superId,
-                pname: item.trim()
+                pname: item.name.trim()
               }
               const priceNrating = document.createElement("p");
               const date = document.createElement("p");
               const br = document.createElement("br");
 
-              fetch("fetchProductDataOfferRating.php", {
+              fetch("offerDetails.php", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json"
@@ -122,10 +142,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
                   // Create formatted text with italic styles
                   const formattedText = `<em>
-                ${jsonResponse[0].discount_price}&nbsp;<i class="fa-solid fa-euro-sign euro"></i>&nbsp;
-                ${jsonResponse[0].likes}&nbsp;<i class="fa-solid fa-thumbs-up like"></i>&nbsp;
-                ${jsonResponse[0].dislikes}&nbsp;<i class="fa-solid fa-thumbs-down dislike"></i>&nbsp;</em>
-              `;
+              ${jsonResponse[0].discount_price}&nbsp;<i class="fa-solid fa-euro-sign euro"></i>&nbsp;
+              ${jsonResponse[0].likes}&nbsp;<i class="fa-solid fa-thumbs-up like"></i>&nbsp;
+              ${jsonResponse[0].dislikes}&nbsp;<i class="fa-solid fa-thumbs-down dislike"></i>&nbsp;</em>
+            `;
 
                   priceNrating.innerHTML = formattedText;
 
@@ -139,24 +159,34 @@ document.addEventListener("DOMContentLoaded", function () {
               secondRow.appendChild(date);
               itemContainer.appendChild(firstRow);
               itemContainer.appendChild(secondRow);
+
+              imageContainer.appendChild(productImage);
+
+              buttonContainer.appendChild(likeButton);
+              buttonContainer.appendChild(dislikeButton);
+
+              offerContainer.appendChild(imageContainer);
+              offerContainer.appendChild(itemContainer);
+              offerContainer.appendChild(buttonContainer);
+              offerGrid.appendChild(offerContainer);
             }
           });
           if (result === "") {
             const itemElement = document.createElement("p");
             itemElement.textContent = "No offers found";
-            infobox_body.appendChild(itemElement);
+            offerContainer.appendChild(itemElement);
           }
-          infobox_body.appendChild(itemsContainer);
+
         });
 
       console.log("Supermarket is inside the circle.");
-      offerButtonInit();
 
-      rateButtonInit();
-      buttonsContainer.appendChild(offerbtn);
-      buttonsContainer.appendChild(ratebtn);
-      infobox_body.appendChild(buttonsContainer);
+
     }
   }
+  offerPopulate();
+  });
 
-});
+
+
+
