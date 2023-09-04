@@ -9,8 +9,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
     integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" type="text/css" href="offer_submit.css" />
+  <link rel="stylesheet" type="text/css" href="searchProduct.css" />
+  <script src="offer_submit.js"></script>
   <script src="leaflet_map.js" defer></script>
   <!--Xrisi defer gia na prolavainei prwta na fortwthei to Dom kai meta na treksei to jscript-->
+  <script src="sideOverlayOfferSubmit.js" defer></script>
   <script src="sideOverlayCategories.js" defer></script>
   <script src="menu_button.js" defer></script>
   <script src="https://unpkg.com/leaflet@1.3.0/dist/leaflet.js"></script>
@@ -28,25 +32,43 @@
 
   <div class="userstuff">
     <div class="logo">
-      <img src="images/logo.png" alt="logooooo">
+      <img src="images/logo.png" alt="logooooo" id="logoImage">
     </div>
 
     <div class="nav-bar">
       <ul>
-        <li id="selected"><a href="../MainPage/main_page.html"><i class="fa-solid fa-house-chimney">&nbsp;</i>Home</a></li>
+        <li id="selected"><a href="main_page.html"><i class="fa-solid fa-house-chimney"></i>Home</a></li>
         <li><a href="#"><i class="fa-solid fa-cart-shopping"></i>&nbsp;Cart</a></li>
         <li><a href="#"><i class="fa-solid fa-address-card"></i>&nbsp;About</a></li>
         <li><a href="user_profile.html"><i class="fa-solid fa-user"></i>&nbsp;Account</a></li>
         <li onclick="openNav()" style="color: black; cursor: pointer;"><i
             class="fa-solid fa-note-sticky"></i>&nbsp;Product Categories
         </li>
-        <li id="last-nav-element"><a href="../LoginPage/index.html"><i
+        <li id="last-nav-element"><a href="LoginPage/index.html"><i
               class="fa-solid fa-arrow-right-from-bracket"></i>&nbsp;Log
             out</a></li>
       </ul>
     </div>
     <div id="buttonContainer" class="sidenav" style="background-color: white;">
       <div id="exitBut" onclick="closeNav()">Exit</div>
+    </div>
+  </div>
+  <div id="mySidenav" class="sidenav" style="background-color: rgb(255, 255, 255);">
+    <button id="offerExitBut" onclick="closeFullNav()">Exit</button>
+    <div class="search-bar">
+      <form action="searchProduct.php" method="GET">
+        <input type="text" name="query" id="searchBox" placeholder="Enter your search query">
+      </form>
+    </div>
+    <div class="ddropdown">
+      <label for="categories">Select a category:</label>
+      <select id="categories"></select>
+
+      <label for="subcategories">Select a subcategory:</label>
+      <select id="subcategories"></select>
+    </div>
+    <div class="product-grid">
+
     </div>
   </div>
   <img src="images/menu.png" alt="menu icon" class="menu">

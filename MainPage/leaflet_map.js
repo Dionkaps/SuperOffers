@@ -105,7 +105,7 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
     offerbtn.innerHTML = "Add new offer";
     offerbtn.id = "offerButton";
     offerbtn.onclick = function () {
-      window.location.href = "offer_submit.html";
+      openFullNav();
     };
   }
 

@@ -30,7 +30,7 @@ body {
   margin-bottom: 30%;
 }
 
-img {
+#logoImage {
   width: 100%;
   height: auto;
   transform: translate(0%, 25%);
@@ -225,6 +225,12 @@ h5 {
 }
 
 #buttonContainer {
+  width: 0;
+  height: 100vh;
+  transition: all 0.5s ease;
+}
+
+#mySidenav {
   width: 0;
   height: 100vh;
   transition: all 0.5s ease;
