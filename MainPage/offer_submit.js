@@ -4,8 +4,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const searchBox = document.getElementById("searchBox");
     const productGrid = document.querySelector('.product-grid');
 
-    function submitOffer() { }
-
+    function submitOffer() {}
+    function productGridReset(){
+        productGrid.innerHTML = ''; // Clear existing content
+    }
     //Searchbar
 
     searchBox.addEventListener("input", function () {
@@ -15,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
             fetch("fetchProductOnSearch.php?searchedName=" + inputValue)
                 .then(response => response.json())
                 .then(data => {
-                    productGrid.innerHTML = ''; // Clear existing content
+                    productGridReset();
 
                     data.forEach(product => {
                         const productItem = document.createElement('div');
@@ -43,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     });
                 });
         } else {
-            productGrid.innerHTML = ''; // Clear existing content
+            productGridReset();
         }
     });
 
@@ -76,6 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Event listener for category dropdown change
             categoryDropdown.addEventListener("change", function () {
+                productGridReset();
                 const selectedCategoryId = categoryDropdown.value;
                 const category = data.categories.find(category => category.id === selectedCategoryId);
                 subcategoryDropdown.innerHTML = ""; // Clear existing options
@@ -91,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const productGrid = document.querySelector('.product-grid');
 
                 // Clear the existing content of the grid
-                productGrid.innerHTML = '';
+                productGridReset();
 
                 const xhrProduct = new XMLHttpRequest();
                 xhrProduct.open('GET', `fetchProductData.php?subcategory=${selectedSubcategoryId}`, true);

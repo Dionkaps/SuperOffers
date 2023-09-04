@@ -34,4 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $shopID = $row['shop_id'] . ',';
         echo $shopID;
     }
+    $stmt->close();
 }
+$conn->close();
+?>

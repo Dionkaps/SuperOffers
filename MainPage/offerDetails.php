@@ -38,6 +38,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         );
         $response[] = $item;
     }
-
+    $stmt->close();
     echo json_encode($response);
 }
+$conn->close();
+?>
