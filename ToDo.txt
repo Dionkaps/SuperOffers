@@ -19,3 +19,5 @@ PHP $_SERVER['REQUEST_METHOD'] === 'POST' ANTI GIA TO ALLO KSES ESI
 foreign key sto prices product_id
 
 dhmiourgia session gia oti neo xaraktiristiko tou xrhsth prokypsei sto database(sto signin.php)
+
+na mpei i sinartisi pou vazei ola ta dedomena sto infobox(koumpia rating kai offer) kai otan ginetai anazitisi supermarket kai apo searchbar

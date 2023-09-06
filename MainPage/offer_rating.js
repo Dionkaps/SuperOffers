@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   // const shopDetails = document.getElementById("shop-name");
-  const offerGrid = document.querySelector('.offer-grid');
-
+  const offerGrid = document.querySelector(".offer-grid");
 
   /*
   function populateShopInfo(shopName){
@@ -12,36 +11,33 @@ document.addEventListener("DOMContentLoaded", function () {
   function offerPopulate() {
     offerGrid.innerHTML = ""; //Clear existing content
 
-    //*** 
+    //***
     //Test shop id
     //***
     const superId = "node/1643373639";
 
     //Offer search for chosen supermarket and category
     if (superId != null) {
-
-
-
       var values = {
-        spid: superId
-      }
+        spid: superId,
+      };
       fetch("fetchProductDataOfferRating.php", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(values)
+        body: JSON.stringify(values),
       })
-        .then(response => response.text())
-        .then(result => {
+        .then((response) => response.text())
+        .then((result) => {
           const items = JSON.parse(result);
 
-          items.forEach(item => {
+          items.forEach((item) => {
             if (item.name.trim() != "") {
-              const offerContainer = document.createElement('div');
+              const offerContainer = document.createElement("div");
               offerContainer.classList.add("offer-item");
 
-              const productImage = document.createElement('img');
+              const productImage = document.createElement("img");
               productImage.src = "/web/imgScript/" + item.image;
               productImage.alt = item.name.trim();
 
@@ -57,23 +53,22 @@ document.addEventListener("DOMContentLoaded", function () {
               likeButton.addEventListener("click", () => {
                 var values = {
                   spid: superId,
-                  pname: item.name.trim()
-                }
+                  pname: item.name.trim(),
+                };
                 fetch("likeOffer.php", {
                   method: "POST",
                   headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
                   },
-                  body: JSON.stringify(values)
+                  body: JSON.stringify(values),
                 })
-                  .then(response => response.text())
-                  .then(result => {
+                  .then((response) => response.text())
+                  .then((result) => {
                     if (result === "Value increased successfully") {
                       alert("Succsessfully liked offer");
                     }
                   });
               });
-
 
               const dislikeButton = document.createElement("button");
               dislikeButton.textContent = "Dislike";
@@ -83,17 +78,17 @@ document.addEventListener("DOMContentLoaded", function () {
               dislikeButton.addEventListener("click", () => {
                 var values = {
                   spid: superId,
-                  pname: item.name.trim()
-                }
+                  pname: item.name.trim(),
+                };
                 fetch("dislikeOffer.php", {
                   method: "POST",
                   headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
                   },
-                  body: JSON.stringify(values)
+                  body: JSON.stringify(values),
                 })
-                  .then(response => response.text())
-                  .then(result => {
+                  .then((response) => response.text())
+                  .then((result) => {
                     if (result === "Value increased successfully") {
                       alert("Succsessfully disliked offer");
                     }
@@ -103,14 +98,12 @@ document.addEventListener("DOMContentLoaded", function () {
               //Image container init
               const imageContainer = document.createElement("div");
 
-
               //Item container init
               const itemContainer = document.createElement("div");
               itemContainer.classList.add("item-container");
 
               //Button container init
               const buttonContainer = document.createElement("div");
-
 
               const firstRow = document.createElement("div");
               firstRow.classList.add("product-details");
@@ -123,8 +116,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
               var values = {
                 spid: superId,
-                pname: item.name.trim()
-              }
+                pname: item.name.trim(),
+              };
               const priceNrating = document.createElement("p");
               const date = document.createElement("p");
               const br = document.createElement("br");
@@ -132,12 +125,12 @@ document.addEventListener("DOMContentLoaded", function () {
               fetch("offerDetails.php", {
                 method: "POST",
                 headers: {
-                  "Content-Type": "application/json"
+                  "Content-Type": "application/json",
                 },
-                body: JSON.stringify(values)
+                body: JSON.stringify(values),
               })
-                .then(response => response.text())
-                .then(result => {
+                .then((response) => response.text())
+                .then((result) => {
                   const jsonResponse = JSON.parse(result);
 
                   // Create formatted text with italic styles
@@ -176,17 +169,10 @@ document.addEventListener("DOMContentLoaded", function () {
             itemElement.textContent = "No offers found";
             offerContainer.appendChild(itemElement);
           }
-
         });
 
       console.log("Supermarket is inside the circle.");
-
-
     }
   }
   offerPopulate();
-  });
-
-
-
-
+});

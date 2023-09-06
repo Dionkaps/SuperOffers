@@ -13,8 +13,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $spId = $data['spid'];
     $prodName = $data['pname'];
 
-    $queryProducts = "SELECT id FROM products WHERE name = '" . $prodName . "'";
-    $resultPordId = $conn->query($queryProducts);
+    $queryProducts = "SELECT id FROM products WHERE name = ?";
+    $stmt1 = $conn->prepare($queryProducts);
+    $stmt1->bind_param("s", $prodName);
+    $stmt1->execute();
+    $resultPordId = $stmt1->get_result();
 
     if ($resultPordId) {
         $row = $resultPordId->fetch_assoc();
@@ -42,4 +45,3 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     echo json_encode($response);
 }
 $conn->close();
-?>

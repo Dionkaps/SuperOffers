@@ -12,9 +12,9 @@
   <link rel="stylesheet" type="text/css" href="offer_submit.css" />
   <script src="leaflet_map.js" defer></script>
   <!--Xrisi defer gia na prolavainei prwta na fortwthei to Dom kai meta na treksei to jscript-->
+  <script src="offer_submit.js" defer></script>
   <script src="sideOverlayOfferSubmit.js" defer></script>
   <script src="sideOverlayCategories.js" defer></script>
-  <script src="offer_submit.js" defer></script>
   <script src="menu_button.js" defer></script>
   <script src="https://unpkg.com/leaflet@1.3.0/dist/leaflet.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-search/3.0.2/leaflet-search.min.js"></script>
@@ -55,7 +55,7 @@
   <div id="mySidenav" class="sidenav" style="background-color: rgb(255, 255, 255);">
     <button id="offerExitBut" onclick="closeFullNav()">Exit</button>
     <div class="search-bar">
-        <input type="text" name="query" id="searchBox" placeholder="Search products...">
+      <input type="text" name="query" id="searchBox" placeholder="Search products...">
     </div>
     <div class="ddropdown">
       <label for="categories">Select a category:</label>
@@ -67,6 +67,18 @@
     <div class="product-grid">
 
     </div>
+  </div>
+  <div id="popup-window">
+    <form name="newPriceForm" class="new-price-form" method="POST">
+      <label for="newPrice">New Price:</label>
+      <input type="number" id="newPrice" name="newPrice" step="0.01" required>
+      <br><br>
+      <input type="submit" value="Update Price" class="btn solid" onclick="newOfferPrice(document.newPriceForm)">
+      <input type="hidden" name="superId" id="superIdInput" value="">
+      <input type="hidden" name="prodName" id="productNameInput" value="">
+
+    </form>
+    <button id="close-button">Close</button>
   </div>
   <img src="images/menu.png" alt="menu icon" class="menu">
 </body>

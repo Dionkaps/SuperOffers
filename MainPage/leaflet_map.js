@@ -1,3 +1,4 @@
+var superId;
 function fetchJSON(url) {
   return fetch(url).then(function (response) {
     return response.json();
@@ -123,24 +124,23 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
     //Offer search for chosen supermarket and category
     if (superId != null) {
       var values = {
-        spid: superId
-      }
+        spid: superId,
+      };
       fetch("fetchSupOffers.php", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(values)
+        body: JSON.stringify(values),
       })
-        .then(response => response.text())
-        .then(result => {
+        .then((response) => response.text())
+        .then((result) => {
           const items = result.split("~");
-
 
           //Create a container for the items
           const itemsContainer = document.createElement("div");
 
-          items.forEach(item => {
+          items.forEach((item) => {
             if (item.trim() != "") {
               const itemElement = document.createElement("p");
               itemElement.textContent = item.trim();
@@ -154,23 +154,22 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
               likeButton.addEventListener("click", () => {
                 var values = {
                   spid: superId,
-                  pname: item.trim()
-                }
+                  pname: item.trim(),
+                };
                 fetch("likeOffer.php", {
                   method: "POST",
                   headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
                   },
-                  body: JSON.stringify(values)
+                  body: JSON.stringify(values),
                 })
-                  .then(response => response.text())
-                  .then(result => {
+                  .then((response) => response.text())
+                  .then((result) => {
                     if (result === "Value increased successfully") {
                       alert("Succsessfully liked offer");
                     }
                   });
               });
-
 
               const dislikeButton = document.createElement("button");
               dislikeButton.textContent = "Dislike";
@@ -180,17 +179,17 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
               dislikeButton.addEventListener("click", () => {
                 var values = {
                   spid: superId,
-                  pname: item.trim()
-                }
+                  pname: item.trim(),
+                };
                 fetch("dislikeOffer.php", {
                   method: "POST",
                   headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
                   },
-                  body: JSON.stringify(values)
+                  body: JSON.stringify(values),
                 })
-                  .then(response => response.text())
-                  .then(result => {
+                  .then((response) => response.text())
+                  .then((result) => {
                     if (result === "Value increased successfully") {
                       alert("Succsessfully disliked offer");
                     }
@@ -215,8 +214,8 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
 
               var values = {
                 spid: superId,
-                pname: item.trim()
-              }
+                pname: item.trim(),
+              };
               const priceNrating = document.createElement("p");
               const date = document.createElement("p");
               const br = document.createElement("br");
@@ -224,14 +223,15 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
               fetch("offerDetails.php", {
                 method: "POST",
                 headers: {
-                  "Content-Type": "application/json"
+                  "Content-Type": "application/json",
                 },
-                body: JSON.stringify(values)
+                body: JSON.stringify(values),
               })
-                .then(response => response.text())
-                .then(result => {
+                .then((response) => response.text())
+                .then((result) => {
+                  console.log(result);
                   const jsonResponse = JSON.parse(result);
-
+                  
                   // Create formatted text with italic styles
                   const formattedText = `<em>
                 ${jsonResponse[0].discount_price}&nbsp;<i class="fa-solid fa-euro-sign euro"></i>&nbsp;
@@ -268,11 +268,9 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
       buttonsContainer.appendChild(offerbtn);
       buttonsContainer.appendChild(ratebtn);
       infobox_body.appendChild(buttonsContainer);
-    }
-    else {
+    } else {
       console.log("No supermarket chosen");
     }
-
   }
 
   function infobox_populate(event) {
@@ -294,8 +292,7 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
         buttonsContainer.appendChild(offerbtn);
         buttonsContainer.appendChild(ratebtn);
         infobox_body.appendChild(buttonsContainer);
-      }
-      else {
+      } else {
         console.log("Supermarket is outside the circle.");
         infobox_body.innerHTML = "You are too far away from the supermarket";
         offerButtonInit();
@@ -327,7 +324,6 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
   const s_name = document.querySelector(".sm-name");
   var element = document.getElementById("infobox_id");
   var superChosen = false;
-  var superId;
 
   featuresLayer.on("click", function (event) {
     superChosen = true;
@@ -392,14 +388,14 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
             fetch("fetchOffers.php", {
               method: "POST",
               headers: {
-                "Content-Type": "text/plain"
+                "Content-Type": "text/plain",
               },
-              body: JSON.stringify(data)
+              body: JSON.stringify(data),
             })
-              .then(response => response.text())
-              .then(result => {
+              .then((response) => response.text())
+              .then((result) => {
                 const items = result.split(",");
-                items.forEach(item => {
+                items.forEach((item) => {
                   changeIconOnCatOffer(item.trim()); //Icon update on offer found
                   console.log(item.trim());
                 });
@@ -431,24 +427,20 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
 
   //Change supermarket icon if there is an offer there
   function changeIconOnOffer(nodeId) {
-
     featuresLayer.eachLayer(function (layer) {
       if (layer.feature.id === nodeId) {
         layer.setIcon(offerIcon);
       }
     });
-
   }
 
   //Change supermarket icon if there is an offer there
   function changeIconOnCatOffer(nodeId) {
-
     featuresLayer.eachLayer(function (layer) {
       if (layer.feature.id === nodeId) {
         layer.setIcon(catOfferIcon);
       }
     });
-
   }
   setAllIcons();
   //Reset all icons
@@ -456,13 +448,13 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
     fetch("fetchAllOffers.php", {
       method: "POST",
       headers: {
-        "Content-Type": "text/plain"
-      }
+        "Content-Type": "text/plain",
+      },
     })
-      .then(response => response.text())
-      .then(result => {
+      .then((response) => response.text())
+      .then((result) => {
         const items = result.split(",");
-        items.forEach(item => {
+        items.forEach((item) => {
           changeIconOnOffer(item.trim()); //Icon update on offer found
           console.log(item.trim());
         });
