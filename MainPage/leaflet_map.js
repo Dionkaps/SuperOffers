@@ -341,6 +341,7 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
     superChosen = true;
     const supermarketName = event.layer.feature.properties.name;
     s_name.innerHTML = supermarketName;
+    superId = event.layer.feature.id;
     event.layer.bindPopup(supermarketName).openPopup();
 
     infobox_attributes();

@@ -72,15 +72,15 @@
     <form name="newPriceForm" class="new-price-form" method="POST">
       <div id="priceInput">
         <label for="newPrice">Offer Price:</label>
-        <input type="number" id="newPrice" name="newPrice" step="0.01" required>
+        <input type="number" id="newPrice" name="newPrice" step="0.01">
       </div>
       <br><br>
-      <button id="close-button">Cancel</button>
-      <input type="submit" value="Add offer" id="addBtn" class="btn solid" onclick="newOfferPrice(document.newPriceForm)">
+      <input type="button" value="Add offer" id="addBtn" class="btn solid"
+        onclick="newOfferPrice(document.newPriceForm)">
       <input type="hidden" name="superId" id="superIdInput" value="">
       <input type="hidden" name="prodName" id="productNameInput" value="">
-
     </form>
+    <button id="close-button"><i class="fa-solid fa-x"></i></button>
   </div>
   <img src="images/menu.png" alt="menu icon" class="menu">
 </body>

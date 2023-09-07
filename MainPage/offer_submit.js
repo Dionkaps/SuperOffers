@@ -1,6 +1,7 @@
 var popupWindow = document.getElementById("popup-window");
 var closeButton = document.getElementById("close-button");
 var prodName;
+var newPrice;
 
 // Hide the pop-up window when the close button is clicked
 closeButton.addEventListener("click", function () {
@@ -9,11 +10,18 @@ closeButton.addEventListener("click", function () {
 
 //Dimiourgia methodou gia eisagwgi neas timis gia offer gia simplirwsi kritiriwn xristi gia na mporei na anevazei nea timi
 function newOfferPrice(form) {
-  form.action = "newPriceSubmit.php";
-  document.getElementById("superIdInput").value = superId;
-  document.getElementById("productNameInput").value = prodName;
-  form.submit();
-  alert("Offer added successfully");
+  newPrice = document.getElementById("newPrice").value;
+  if (newPrice != 0 && newPrice != null && newPrice != "") {
+    document.getElementById("superIdInput").value = superId;
+    document.getElementById("productNameInput").value = prodName;
+    form.action = "newPriceSubmit.php";
+    form.submit();
+    alert("Offer added successfully");
+  } else {
+    console.log(newPrice);
+    alert("Please enter a valid price");
+    document.getElementById("newPrice").value = "";
+  }
 }
 const productGrid = document.querySelector(".product-grid");
 const categoryDropdown = document.getElementById("categories");
