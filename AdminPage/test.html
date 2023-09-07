@@ -1,31 +1,80 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Discount Entries</title>
+    <title>Discount Entries Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <h1>Get Number of Discount Entries for a Month and Year</h1>
+    <h1>Discount Entries Chart for a Month and Year</h1>
     <form id="dateForm">
         <label for="monthYearInput">Select a Month and Year:</label>
         <input type="month" id="monthYearInput" required>
-        <button type="button" id="submitBtn">Get Entries</button>
+        <button type="button" id="submitBtn">Generate Chart</button>
     </form>
-    <div id="result"></div>
+    <div>
+        <canvas id="chart" width="400" height="200"></canvas>
+    </div>
 
     <script>
+        let myChart; // Store the chart instance globally
+
         document.getElementById("submitBtn").addEventListener("click", function() {
             const selectedMonthYear = document.getElementById("monthYearInput").value;
 
-            // Send selectedMonthYear to the server to retrieve the number of entries
+            // Send selectedMonthYear to the server to retrieve data
             fetch(`test.php?monthYear=${selectedMonthYear}`)
-                .then(response => response.text())
+                .then(response => response.json())
                 .then(data => {
-                    document.getElementById("result").textContent = `Number of entries in ${selectedMonthYear}: ${data}`;
+                    // Clear the previous chart instance if it exists
+                    if (myChart) {
+                        myChart.destroy();
+                    }
+
+                    createChart(data);
                 })
                 .catch(error => {
                     console.error('Error:', error);
                 });
         });
+
+        function createChart(data) {
+            const ctx = document.getElementById("chart").getContext("2d");
+
+            // Extract the days and entry counts from the data
+            const days = Object.keys(data);
+            const entryCounts = Object.values(data);
+
+            myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: days,
+                    datasets: [{
+                        label: 'Number of Entries',
+                        data: entryCounts,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Number of Entries'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Day of the Month'
+                            }
+                        }
+                    }
+                }
+            });
+        }
     </script>
 </body>
 </html>
