@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Discount Entries</title>
+</head>
+<body>
+    <h1>Get Number of Discount Entries for a Month and Year</h1>
+    <form id="dateForm">
+        <label for="monthYearInput">Select a Month and Year:</label>
+        <input type="month" id="monthYearInput" required>
+        <button type="button" id="submitBtn">Get Entries</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById("submitBtn").addEventListener("click", function() {
+            const selectedMonthYear = document.getElementById("monthYearInput").value;
+
+            // Send selectedMonthYear to the server to retrieve the number of entries
+            fetch(`test.php?monthYear=${selectedMonthYear}`)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("result").textContent = `Number of entries in ${selectedMonthYear}: ${data}`;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+    </script>
+</body>
+</html>
