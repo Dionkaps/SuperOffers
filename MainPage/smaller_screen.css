@@ -89,4 +89,16 @@
     overflow-y: auto;
     padding-top: 10%;
   }
+
+  #exitBut {
+    text-align: center;
+    width: 5%;
+    height: 2%;
+    background-color: white;
+    box-shadow: none;
+  }
+
+  #exitBut:hover {
+    background-color: white;
+  }
 }

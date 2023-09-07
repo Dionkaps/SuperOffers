@@ -218,10 +218,20 @@ h5 {
 
 #exitBut {
   font-weight: bold;
+  background-color: #80b8fc;
+  border-radius: 10px;
   color: black;
   cursor: pointer;
   margin-left: 10%;
   margin-bottom: 10%;
+  top: 0;
+  left: 0;
+  width: 20%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+#exitBut:hover {
+  background-color: #729cfd;
 }
 
 #buttonContainer {
@@ -308,20 +318,4 @@ h5 {
   padding-right: 15%;
   justify-content: space-between;
   align-items: center;
-}
-
-#popup-window {
-  position: fixed;
-  width: 300px;
-  height: 200px;
-  background: white;
-  border: 1px solid black;
-  padding: 10px;
-  margin: auto;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 10;
-  display: none;
 }

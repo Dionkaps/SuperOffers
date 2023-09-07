@@ -127,6 +127,7 @@ body {
     padding: 10px 15px;
     margin-top: 0.1%;
     margin-left: 2%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
 #offerExitBut:hover {
@@ -135,4 +136,62 @@ body {
 
 label {
     color: #000000;
+}
+
+#popup-window {
+    position: fixed;
+    width: 38vh;
+    height: 25vh;
+    background: white;
+    border-radius: 10px;
+    padding: 10px;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: none;
+    text-align: center;
+}
+
+#newPrice {
+    width: 40%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+#close-button,
+#addBtn {
+    border-radius: 5px;
+    border: none;
+    font-weight: normal;
+    padding: 5px;
+}
+
+#addBtn {
+    background-color: #80b8fc;
+}
+
+#close-button {
+    background-color: white;
+    border: black 1px solid;
+}
+
+#close-button:hover {
+    border: none;
+    padding: 6px;
+}
+
+#addBtn:hover {
+    background-color: #729cfd;
+}
+
+#priceInput {
+    padding-top: 15%;
 }

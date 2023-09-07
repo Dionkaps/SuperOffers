@@ -49,11 +49,11 @@
       </ul>
     </div>
     <div id="buttonContainer" class="sidenav" style="background-color: white;">
-      <div id="exitBut" onclick="closeNav()">Exit</div>
+      <button id="exitBut" onclick="closeNav()"><i class="fa-solid fa-arrow-left"></i></button>
     </div>
   </div>
   <div id="mySidenav" class="sidenav" style="background-color: rgb(255, 255, 255);">
-    <button id="offerExitBut" onclick="closeFullNav()">Exit</button>
+    <button id="offerExitBut" onclick="closeFullNav()"><i class="fa-solid fa-arrow-left"></i></button>
     <div class="search-bar">
       <input type="text" name="query" id="searchBox" placeholder="Search products...">
     </div>
@@ -70,15 +70,17 @@
   </div>
   <div id="popup-window">
     <form name="newPriceForm" class="new-price-form" method="POST">
-      <label for="newPrice">New Price:</label>
-      <input type="number" id="newPrice" name="newPrice" step="0.01" required>
+      <div id="priceInput">
+        <label for="newPrice">Offer Price:</label>
+        <input type="number" id="newPrice" name="newPrice" step="0.01" required>
+      </div>
       <br><br>
-      <input type="submit" value="Update Price" class="btn solid" onclick="newOfferPrice(document.newPriceForm)">
+      <button id="close-button">Cancel</button>
+      <input type="submit" value="Add offer" id="addBtn" class="btn solid" onclick="newOfferPrice(document.newPriceForm)">
       <input type="hidden" name="superId" id="superIdInput" value="">
       <input type="hidden" name="prodName" id="productNameInput" value="">
 
     </form>
-    <button id="close-button">Close</button>
   </div>
   <img src="images/menu.png" alt="menu icon" class="menu">
 </body>
