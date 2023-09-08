@@ -13,8 +13,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $spId = $data['spid'];
     $pName = $data['pname'];
 
-    $queryProdId = "SELECT id FROM products WHERE name = '" . $pName . "'";
-    $resultProdId = $conn->query($queryProdId);
+    $queryProdId = "SELECT id FROM products WHERE name = ?";
+    $stmt1 = $conn->prepare($queryProducts);
+    $stmt1->bind_param("s", $pName);
+    $stmt1->execute();
+    $resultPordId = $stmt1->get_result();
 
     if ($resultProdId) {
         $row = $resultProdId->fetch_assoc();
@@ -32,15 +35,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $row = $result->fetch_assoc();
         $currentValue = $row["dislikes"];
 
-        // Step 3: Increment the Value
         $newValue = $currentValue + 1;
 
-        // Step 4: Update the Database
-        $sqlUpdate = "UPDATE discount SET dislikes = $newValue WHERE shop_id = '" . $spId . "' AND product_id = '" . $prodId . "'";
-        if ($conn->query($sqlUpdate) === TRUE) {
+        $sqlUpdate = "UPDATE discount SET dislikes = ? WHERE shop_id = ? AND product_id = ?";
+
+        $stmt = $conn->prepare($sqlUpdate);
+        $stmt->bind_param("iss", $newValue, $spId, $prodId);
+
+        if ($stmt->execute()) {
             echo "Value increased successfully";
         } else {
-            echo "Error updating record: " . $conn->error;
+            echo "Error updating record: " . $stmt->error;
         }
     } else {
         echo "No records found";

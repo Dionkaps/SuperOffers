@@ -13,38 +13,46 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $spId = $data['spid'];
     $pName = $data['pname'];
 
-    $queryProdId = "SELECT id FROM products WHERE name = '" . $pName . "'";
-    $resultProdId = $conn->query($queryProdId);
+    $queryProdId = "SELECT id FROM products WHERE name = ?";
+    $stmtProdId = $conn->prepare($queryProdId);
+    $stmtProdId->bind_param("s", $pName);
+    $stmtProdId->execute();
+    $resultProdId = $stmtProdId->get_result();
 
-    if ($resultProdId) {
+    if ($resultProdId->num_rows > 0) {
         $row = $resultProdId->fetch_assoc();
         $prodId = $row['id'];
-    }
 
-    $query = "SELECT likes FROM discount WHERE shop_id = ? AND product_id = ?";
+        $query = "SELECT likes FROM discount WHERE shop_id = ? AND product_id = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("ss", $spId, $prodId);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("ss", $spId, $prodId);
-    $stmt->execute();
-    $result = $stmt->get_result();
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $currentValue = $row["likes"];
 
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        $currentValue = $row["likes"];
+            $newValue = $currentValue + 1;
 
-        // Step 3: Increment the Value
-        $newValue = $currentValue + 1;
+            $sqlUpdate = "UPDATE discount SET likes = ? WHERE shop_id = ? AND product_id = ?";
+            $stmtUpdate = $conn->prepare($sqlUpdate);
+            $stmtUpdate->bind_param("iss", $newValue, $spId, $prodId);
 
-        // Step 4: Update the Database
-        $sqlUpdate = "UPDATE discount SET likes = $newValue WHERE shop_id = '" . $spId . "' AND product_id = '" . $prodId . "'";
-        if ($conn->query($sqlUpdate) === TRUE) {
-            echo "Value increased successfully";
+            if ($stmtUpdate->execute()) {
+                echo "Value increased successfully";
+            } else {
+                echo "Error updating record: " . $stmtUpdate->error;
+            }
+
+            $stmtUpdate->close();
         } else {
-            echo "Error updating record: " . $conn->error;
+            echo "No records found";
         }
     } else {
-        echo "No records found";
+        echo "Product not found";
     }
 
     $stmt->close();
+    $stmtProdId->close();
 }

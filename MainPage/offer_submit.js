@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
         //Fetch product data from selection
         const productGrid = document.querySelector(".product-grid");
 
-        // Clear the existing content of the grid
+        //Clear the existing content of the grid
         productGridReset();
 
         const xhrProduct = new XMLHttpRequest();
