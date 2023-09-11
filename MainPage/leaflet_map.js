@@ -344,6 +344,7 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
     s_name.innerHTML = supermarketName;
     superId = event.layer.feature.id;
     event.layer.bindPopup(supermarketName).openPopup();
+    event.layer.setIcon(superSearch);
 
     infobox_attributes();
     infobox_populate(event);
@@ -382,10 +383,9 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
           button.innerText = category;
 
           button.addEventListener("click", function () {
+            setAllIcons(); //Reset all icons
             catName = this.innerText;
             data = { message: this.innerText };
-
-            setAllIcons(); //Reset all icons
 
             fetch("fetchOffers.php", {
               method: "POST",
@@ -427,6 +427,12 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
     iconAnchor: [16, 22],
   });
 
+  const superSearch = L.icon({
+    iconUrl: "images/theSuper.png",
+    iconSize: [32, 32],
+    iconAnchor: [16, 5],
+  });
+
   //Change supermarket icon if there is an offer there
   function changeIconOnOffer(nodeId) {
     featuresLayer.eachLayer(function (layer) {
@@ -462,4 +468,5 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
         });
       });
   }
+  
 });

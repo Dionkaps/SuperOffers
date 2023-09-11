@@ -27,7 +27,7 @@ while ($cat = $resultCategories->fetch_assoc()) {
 
     $querySubcategories = "SELECT id, name FROM subcategories WHERE category_id = ?";
     $stmtSubcategories = $conn->prepare($querySubcategories);
-    $stmtSubcategories->bind_param("i", $selecteCategoryId);
+    $stmtSubcategories->bind_param("s", $selecteCategoryId);
     $stmtSubcategories->execute();
     $resultSubcategories = $stmtSubcategories->get_result();
 
