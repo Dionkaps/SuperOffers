@@ -383,7 +383,7 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
           button.innerText = category;
 
           button.addEventListener("click", function () {
-            setAllIcons(); //Reset all icons
+            setDefaultMarker(); //Reset all icons
             catName = this.innerText;
             data = { message: this.innerText };
 
@@ -467,6 +467,12 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
           console.log(item.trim());
         });
       });
+  }
+
+  function setDefaultMarker(){
+    featuresLayer.eachLayer(function (layer) {
+      layer.setIcon(myIcon);
+    });
   }
   
 });
