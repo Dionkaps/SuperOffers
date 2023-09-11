@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $servername = 'localhost';
 $username = 'root';
 $password = '';
@@ -11,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $jsonData = file_get_contents("php://input");
     $data = json_decode($jsonData, true);
     $spId = $data['spid'];
-
+    $_SESSION['spid'] = $spId;
 
     $query = "SELECT product_id FROM discount WHERE shop_id = ?";
 
@@ -43,4 +45,3 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmt->close();
 }
 $conn->close();
-?>
