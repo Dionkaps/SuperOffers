@@ -114,7 +114,7 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
     ratebtn.innerHTML = "Rate an offer";
     ratebtn.id = "rateButton";
     ratebtn.onclick = function () {
-      alert("Button is clicked");
+      window.location.href = "offer_rating.html";
     };
   }
 
@@ -142,6 +142,7 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
 
           items.forEach((item) => {
             if (item.trim() != "") {
+              ratebtn.disabled = false;
               const itemElement = document.createElement("p");
               itemElement.textContent = item.trim();
               itemElement.style.fontWeight = "bold";
@@ -231,7 +232,7 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
                 .then((result) => {
                   console.log(result);
                   const jsonResponse = JSON.parse(result);
-                  
+
                   // Create formatted text with italic styles
                   const formattedText = `<em>
                 ${jsonResponse[0].discount_price}&nbsp;<i class="fa-solid fa-euro-sign euro"></i>&nbsp;
@@ -254,6 +255,7 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
             }
           });
           if (result === "") {
+            ratebtn.disabled = true;
             const itemElement = document.createElement("p");
             itemElement.textContent = "No offers found";
             infobox_body.appendChild(itemElement);
@@ -287,7 +289,6 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
         infobox_body.innerHTML = "";
         offerbtn.disabled = false;
         offerButtonInit();
-        ratebtn.disabled = false;
         rateButtonInit();
         buttonsContainer.appendChild(offerbtn);
         buttonsContainer.appendChild(ratebtn);
