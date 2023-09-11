@@ -44,3 +44,4 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmtCatId->close();
 }
 $conn->close();
+?>

@@ -104,6 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
               //Button container init
               const buttonContainer = document.createElement("div");
+              buttonContainer.classList.add("button-container");
 
               const firstRow = document.createElement("div");
               firstRow.classList.add("product-details");

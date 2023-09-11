@@ -50,3 +50,4 @@ $stmtSubcategories->close();
 $conn->close();
 
 echo json_encode($jsonFile, JSON_UNESCAPED_UNICODE);
+?>

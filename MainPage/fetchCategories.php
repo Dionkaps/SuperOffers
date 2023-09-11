@@ -26,3 +26,4 @@ $conn->close();
 //Return the data in JSON format
 header('Content-Type: application/json');
 echo json_encode($categories);
+?>
