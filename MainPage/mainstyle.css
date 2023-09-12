@@ -308,6 +308,14 @@ h5 {
   color: rgb(225, 75, 75);
 }
 
+.like:disabled {
+  background-color: rgb(189, 224, 199);
+}
+
+.dislike:disabled {
+  background-color: rgb(237, 207, 207);
+}
+
 .euro {
   color: rgb(224, 188, 68);
 }

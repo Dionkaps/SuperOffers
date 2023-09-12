@@ -1,7 +1,7 @@
+var userId;
 document.addEventListener("DOMContentLoaded", function () {
   // const shopDetails = document.getElementById("shop-name");
   const offerGrid = document.querySelector(".offer-grid");
-
 
   /*
   function populateShopInfo(shopName){
@@ -118,6 +118,8 @@ document.addEventListener("DOMContentLoaded", function () {
                   firstRow.classList.add("product-details");
                   const secondRow = document.createElement("div");
                   secondRow.classList.add("offer-details");
+                  const thirdRow = document.createElement("div");
+                  thirdRow.classList.add("user-offer-details");
 
                   firstRow.appendChild(itemElement);
 
@@ -129,6 +131,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   };
                   const priceNrating = document.createElement("p");
                   const date = document.createElement("p");
+                  const userOfferDetails = document.createElement("p");
                   const br = document.createElement("br");
 
                   fetch("offerDetails.php", {
@@ -144,23 +147,72 @@ document.addEventListener("DOMContentLoaded", function () {
 
                       // Create formatted text with italic styles
                       const formattedText = `<em>
-              ${jsonResponse[0].discount_price}&nbsp;<i class="fa-solid fa-euro-sign euro"></i>&nbsp;
-              ${jsonResponse[0].likes}&nbsp;<i class="fa-solid fa-thumbs-up like"></i>&nbsp;
-              ${jsonResponse[0].dislikes}&nbsp;<i class="fa-solid fa-thumbs-down dislike"></i>&nbsp;</em>
-            `;
+                    ${jsonResponse[0].discount_price}&nbsp;<i class="fa-solid fa-euro-sign euro"></i>&nbsp;
+                    ${jsonResponse[0].likes}&nbsp;<i class="fa-solid fa-thumbs-up like"></i>&nbsp;
+                    ${jsonResponse[0].dislikes}&nbsp;<i class="fa-solid fa-thumbs-down dislike"></i>&nbsp;</em>
+                    `;
 
                       priceNrating.innerHTML = formattedText;
 
-                      const formattedDate = `&nbsp;&nbsp;<strong>Offer date:</strong> <em>${jsonResponse[0].date}</em>`;
+                      var onStockResponse;
+                      if (jsonResponse[0].stock == 1) {
+                        onStockResponse = "On stock";
+                        likeButton.disabled = false;
+                        dislikeButton.disabled = false;
+                        dislikeButton.style.backgroundColor =
+                          "rgb(225, 75, 75)";
+                        likeButton.style.backgroundColor = "rgb(71, 194, 106)";
+                      } else {
+                        onStockResponse = "Out of stock";
+                        likeButton.disabled = true;
+                        dislikeButton.disabled = true;
+                        dislikeButton.style.backgroundColor =
+                          "rgb(237, 207, 207)";
+                        likeButton.style.backgroundColor = "rgb(189, 224, 199)";
+                      }
+
+                      const formattedDate = `<em>&nbsp;&nbsp;<strong>Offer date:</strong>${jsonResponse[0].date}&nbsp;<br>${onStockResponse}</em>`;
 
                       date.innerHTML = formattedDate;
+                      userId = jsonResponse[0].user_id;
+                      //User offer details
+
+                      console.log("User id is: " + userId);
+                      var values1 = {
+                        uid: userId,
+                      };
+
+                      fetch("getUserDetails.php", {
+                        method: "POST",
+                        headers: {
+                          "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(values1),
+                      })
+                        .then((response) => response.text())
+                        .then((result) => {
+                          console.log(result);
+                          const jsonResponse = JSON.parse(result);
+
+                          // Create formatted text with italic styles
+                          const formattedText1 = `<em style="color: grey;">
+                          Uploaded by:&nbsp;
+                          ${jsonResponse[0].username}&nbsp;&nbsp;
+                          Total score:&nbsp;
+                          ${jsonResponse[0].total_score}&nbsp;</em>`;
+
+                          userOfferDetails.innerHTML = formattedText1;
+                        });
                     });
 
                   secondRow.appendChild(priceNrating);
                   secondRow.appendChild(br);
                   secondRow.appendChild(date);
+                  console.log(userOfferDetails);
+                  thirdRow.appendChild(userOfferDetails);
                   itemContainer.appendChild(firstRow);
                   itemContainer.appendChild(secondRow);
+                  itemContainer.appendChild(thirdRow);
 
                   imageContainer.appendChild(productImage);
 

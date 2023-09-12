@@ -241,8 +241,14 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
               `;
 
                   priceNrating.innerHTML = formattedText;
+                  var onStockResponse;
+                  if (jsonResponse[0].stock == 1) {
+                    onStockResponse = "On stock";
+                  } else {
+                    onStockResponse = "Out of stock";
+                  }
 
-                  const formattedDate = `&nbsp;&nbsp;<strong>Offer date:</strong> <em>${jsonResponse[0].date}</em>`;
+                  const formattedDate = ` <em>&nbsp;&nbsp;<strong>Offer date:</strong>${jsonResponse[0].date}&nbsp;<br>${onStockResponse}</em>`;
 
                   date.innerHTML = formattedDate;
                 });
@@ -469,10 +475,9 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
       });
   }
 
-  function setDefaultMarker(){
+  function setDefaultMarker() {
     featuresLayer.eachLayer(function (layer) {
       layer.setIcon(myIcon);
     });
   }
-  
 });
