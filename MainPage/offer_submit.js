@@ -2,6 +2,8 @@ var popupWindow = document.getElementById("popup-window");
 var closeButton = document.getElementById("close-button");
 var prodName;
 var newPrice;
+var prodExists;
+var oldPrice;
 
 // Hide the pop-up window when the close button is clicked
 closeButton.addEventListener("click", function () {
@@ -14,9 +16,36 @@ function newOfferPrice(form) {
   if (newPrice != 0 && newPrice != null && newPrice != "") {
     document.getElementById("superIdInput").value = superId;
     document.getElementById("productNameInput").value = prodName;
-    form.action = "newPriceSubmit.php";
-    form.submit();
-    alert("Offer added successfully");
+    if (prodExists) {
+      console.log("newPrice: " + newPrice);
+      console.log("oldPrice: " + oldPrice);
+      if (newPrice < 0.8 * oldPrice) {
+        var values = {
+          spid: superId,
+          pname: prodName,
+        };
+        fetch("deletePrevOffer.php", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(values),
+        })
+          .then((response) => response.text())
+          .then((result) => {
+            console.log(result);
+          });
+        form.action = "newPriceSubmit.php";
+        form.submit();
+        alert("Offer added successfully");
+      } else {
+        alert("Offer already exists");
+      }
+    } else {
+      form.action = "newPriceSubmit.php";
+      form.submit();
+      alert("Offer added successfully");
+    }
   } else {
     console.log(newPrice);
     alert("Please enter a valid price");
@@ -60,7 +89,27 @@ document.addEventListener("DOMContentLoaded", function () {
             submitButton.addEventListener("click", function (event) {
               event.preventDefault();
               popupWindow.style.display = "block";
+              prodExists = false;
+              if (products.includes(product.name)) {
+                prodExists = true;
+                var values = {
+                  spid: superId,
+                  pname: product.name,
+                };
+                fetch("fetchOfferPrice.php", {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify(values),
+                })
+                  .then((response) => response.text())
+                  .then((result) => {
+                    oldPrice = result;
+                  });
+              }
               prodName = product.name;
+              console.log(products);
             });
 
             const productInfo = document.createElement("div");
@@ -156,7 +205,27 @@ document.addEventListener("DOMContentLoaded", function () {
                 submitButton.addEventListener("click", function (event) {
                   event.preventDefault();
                   popupWindow.style.display = "block";
+                  prodExists = false;
+                  if (products.includes(product.name)) {
+                    prodExists = true;
+                    var values = {
+                      spid: superId,
+                      pname: product.name,
+                    };
+                    fetch("fetchOfferPrice.php", {
+                      method: "POST",
+                      headers: {
+                        "Content-Type": "application/json",
+                      },
+                      body: JSON.stringify(values),
+                    })
+                      .then((response) => response.text())
+                      .then((result) => {
+                        oldPrice = result;
+                      });
+                  }
                   prodName = product.name;
+                  console.log(products);
                 });
 
                 const productInfo = document.createElement("div");

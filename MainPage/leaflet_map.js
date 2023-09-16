@@ -1,4 +1,5 @@
 var superId;
+var products = [];
 function fetchJSON(url) {
   return fetch(url).then(function (response) {
     return response.json();
@@ -142,6 +143,7 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
 
           items.forEach((item) => {
             if (item.trim() != "") {
+              products.push(item.trim());
               ratebtn.disabled = false;
               const itemElement = document.createElement("p");
               itemElement.textContent = item.trim();
