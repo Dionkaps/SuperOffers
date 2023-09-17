@@ -18,7 +18,7 @@ header {
 }
 
 .jsonMargin {
-  margin-top: 20vh;
+  margin-top: 5vh;
 
 }
 
@@ -93,3 +93,45 @@ li:hover {
   border-bottom-right-radius: 0.5em;
   border-bottom: none;
 }
+/* Form container */
+#dateForm {
+  position: relative;
+  text-align: center;
+  margin: 0px auto;
+  max-width: 300px; /* Adjust the width as needed */
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Label style */
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* Input field style */
+#monthYearInput {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Button style */
+#submitBtn {
+  background-color: #0074d9;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#submitBtn:hover {
+  background-color: #0056b3;
+}
+

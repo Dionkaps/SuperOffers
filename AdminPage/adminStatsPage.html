@@ -8,6 +8,8 @@
     integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="button.js" defer></script>
+    <script src="DiscountChart.js"defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer ></script>
     <title>Admin Menu</title>
 </head>
 <body>
@@ -25,7 +27,20 @@
         </ul>
       </div>
     </div>
-  
+    <div class="jsonUpload">
+        <div class="jsonMargin">
+    <h1></h1>
+    <form id="dateForm">
+        <label for="monthYearInput">Select a Month and Year:</label>
+        <input type="month" id="monthYearInput" required>
+        <button type="button" id="submitBtn">Show discounts</button>
+    </form>
+    <div>
+        <canvas id="chart" width="300" height="100"></canvas>
+    </div>
+    </div>
+    </div>
+
           
             
 

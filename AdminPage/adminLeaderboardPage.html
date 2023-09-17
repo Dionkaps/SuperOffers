@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="adminStyle.css" />
+    <link rel="stylesheet" type="text/css" href="Leaderboard.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
     integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="button.js" defer></script>
+    <script src="Leaderboard.js"></script>
     <title>Admin Menu</title>
 </head>
 <body>
@@ -25,6 +27,27 @@
         </ul>
       </div>
       </div>
-          
+      <div class="jsonUpload">
+        <div class="jsonMargin">
+      <div class="leaderboard-container">
+          <table>
+              <thead>
+                  <tr>
+                      <th>   </th>
+                      <th>Username</th>
+                      <th>Total score</th>
+                      <th>Total tokens</th>
+                  </tr>
+              </thead>
+              <tbody id="leaderboard-body">
+            
+              </tbody>
+          </table>
+  
+          <div id="pagination"></div> 
+      </div>   
+      </div>
+      </div>
+           
 </body>
 </html>
