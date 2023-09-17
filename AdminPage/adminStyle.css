@@ -17,12 +17,12 @@ header {
   height: 10vh;
 }
 
-.jsonMargin {
+.PageMargin {
   margin-top: 5vh;
 
 }
 
-.jsonUpload {
+.Page {
   position: fixed;
   height: 90vh;
   width: 88%;
