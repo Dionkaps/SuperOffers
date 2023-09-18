@@ -3,6 +3,7 @@ $servername = 'localhost';
 $username = 'root';
 $password = '';
 $dbname = 'webdev';
+$active = 1;
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die('Connection failed: ' . $conn->connect_error);
@@ -25,10 +26,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     $query = "SELECT discount_price, likes, dislikes, date, stock, user_id FROM discount
-          WHERE product_id = ? AND shop_id = ?";
+          WHERE product_id = ? AND shop_id = ? AND active = ?";
 
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("ss", $productId, $spId);
+    $stmt->bind_param("ssi", $productId, $spId, $active);
     $stmt->execute();
     $result = $stmt->get_result();
     $response = array();

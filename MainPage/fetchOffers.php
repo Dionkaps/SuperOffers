@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $query = "SELECT d.shop_id
                   FROM discount d
                   INNER JOIN products p ON d.product_id = p.id
-                  WHERE p.category_id = ?";
+                  WHERE p.category_id = ? AND d.active = 1";
         $stmt = $conn->prepare($query);
         $stmt->bind_param("s", $categoryId);
         $stmt->execute();

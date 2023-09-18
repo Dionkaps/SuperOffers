@@ -11,6 +11,7 @@ $likes = 0;
 $dislikes = 0;
 $stock = 1;
 $userId = 1;
+$active = 1;
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die('Connection failed: ' . $conn->connect_error);
@@ -27,7 +28,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         while ($row = $result->fetch_assoc()) {
             $productId = $row['id'];
         }
-        $insertPriceQuery = "INSERT INTO discount (product_id, discount_price, shop_id, likes, dislikes, stock, date, user_id) VALUES ( $productId, $newOfferPrrice, '$superId', $likes, $dislikes, $stock, '$currentDate', $userId)";
+        $insertPriceQuery = "INSERT INTO discount (product_id, discount_price, shop_id, likes, dislikes, stock, date, user_id, active) VALUES 
+        ( $productId, $newOfferPrrice, '$superId', $likes, $dislikes, $stock, '$currentDate', $userId, $active)";
         mysqli_query($conn, $insertPriceQuery);
         header('Location:../MainPage/main_page.html');
     } else {

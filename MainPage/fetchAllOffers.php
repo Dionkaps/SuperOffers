@@ -9,7 +9,7 @@ if ($conn->connect_error) {
 }
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    $query = "SELECT DISTINCT shop_id FROM discount";
+    $query = "SELECT DISTINCT shop_id FROM discount  WHERE active = 1";
 
     $stmt = $conn->prepare($query);
     $stmt->execute();
@@ -21,4 +21,3 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 $conn->close();
-?>

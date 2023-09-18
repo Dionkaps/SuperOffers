@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $spId = $data['spid'];
     $_SESSION['spid'] = $spId;
 
-    $query = "SELECT product_id FROM discount WHERE shop_id = ?";
+    $query = "SELECT product_id FROM discount WHERE shop_id = ? AND active = 1";
 
     $stmt = $conn->prepare($query);
     $stmt->bind_param("s", $spId);

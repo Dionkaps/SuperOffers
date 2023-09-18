@@ -24,7 +24,7 @@ function newOfferPrice(form) {
           spid: superId,
           pname: prodName,
         };
-        fetch("deletePrevOffer.php", {
+        fetch("deactivatePrevOffer.php", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

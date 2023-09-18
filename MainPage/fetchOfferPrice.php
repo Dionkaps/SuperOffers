@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $row = $resultProdId->fetch_assoc();
         $prodId = $row['id'];
 
-        $query = "SELECT discount_price FROM discount WHERE shop_id = ? AND product_id = ?";
+        $query = "SELECT discount_price FROM discount WHERE shop_id = ? AND product_id = ? AND active = 1";
         $stmt = $conn->prepare($query);
         $stmt->bind_param("ss", $spId, $prodId);
         $stmt->execute();

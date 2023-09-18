@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo "Product not found";
     }
 
-    $sql = "DELETE FROM discount WHERE shop_id = ? AND product_id = ?";
+    $sql = "UPDATE discount SET active = 0 WHERE shop_id = ? AND product_id = ?";
 
     $stmt = $conn->prepare($sql);
 
