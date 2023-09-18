@@ -22,6 +22,30 @@ $stmt_categories->bind_param("ss", $category_id, $category_name);
 $stmt_subcategories = $conn->prepare("INSERT INTO subcategories (id, name, category_id) VALUES (?, ?, ?)");
 $stmt_subcategories->bind_param("sss", $subcategory_uuid, $subcategory_name, $category_id);
 
+//Get category data from json and insert them in database
+foreach ($data['categories'] as $category) {
+  $category_id = $category['id'];
+  $category_name = $category['name'];
+
+  if ($stmt_categories->execute()) {
+    echo "Category inserted successfully. <br>";
+  } else {
+    echo "Error inserting category: " . $conn->error . "<br>";
+  }
+
+  //Get subcategory data from json and insert them in database
+  foreach ($category['subcategories'] as $subcategory) {
+    $subcategory_name = $subcategory['name'];
+    $subcategory_uuid = $subcategory['uuid'];
+
+    if ($stmt_subcategories->execute()) {
+      echo "Subcategory inserted successfully. <br>";
+    } else {
+      echo "Error inserting subcategory: " . $conn->error . "<br>";
+    }
+  }
+}
+
 //Get product data from json and insert them in database
 foreach ($data['products'] as $product) {
   $id = $product['id'];
@@ -33,30 +57,6 @@ foreach ($data['products'] as $product) {
     echo "Product inserted successfully. <br>";
   } else {
     echo "Error inserting product: " . $conn->error . "<br>";
-  }
-}
-
-//Get category data from json and insert them in database
-foreach ($data['categories'] as $category) {
-    $category_id = $category['id'];
-    $category_name = $category['name'];
-
-    if ($stmt_categories->execute()) {
-    echo "Category inserted successfully. <br>";
-    } else {
-    echo "Error inserting category: " . $conn->error . "<br>";
-}
-
-//Get subcategory data from json and insert them in database
-foreach ($category['subcategories'] as $subcategory) {
-    $subcategory_name = $subcategory['name'];
-    $subcategory_uuid = $subcategory['uuid'];
-
-    if ($stmt_subcategories->execute()) {
-      echo "Subcategory inserted successfully. <br>";
-    } else {
-      echo "Error inserting subcategory: " . $conn->error . "<br>";
-    }
   }
 }
 
