@@ -41,6 +41,7 @@
 
 
         <div class="PageMargin">
+            
             <form name="productsForm" method="post" enctype="multipart/form-data">
                 <label for="fileToUpload">Please select a JSON file with the products data you wish to insert</label>
                 <input type="file" name="fileToUpload1" id="fileToUpload1" accept=".json">
@@ -51,9 +52,13 @@
                 <label for="fileToUpload">Please select a JSON file with the price data you wish to insert</label>
                 <input type="file" name="fileToUpload2" id="fileToUpload2" accept=".json">
                 <input type="button" value="Upload" name="submit" onclick="pricesAlert()">
+
+    
+        
             </form>
         </div>
-
+            <button id="deleteButton">Delete all produts and prices</button>
+            <div id="message"></div>
     </div>
 
 </body>

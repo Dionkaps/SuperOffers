@@ -8,7 +8,7 @@
     integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" type="text/css" href="JSONstyle.css" />
-    <script src="button.js" defer></script>
+    <script src="uploadAlerts.js" defer></script>
     <title>Admin Menu</title>
 </head>
 <body>
@@ -29,11 +29,13 @@
     <div class="Page">
       <div class="PageMargin">
           <form action="shopsJson.php" method="post" enctype="multipart/form-data">
-              <label for="fileToUpload">Please select a JSON file with the products data you wish to insert</label>
+              <label for="fileToUpload">Please select a JSON file with the shop data you wish to insert</label>
               <input type="file" name="fileToUpload" id="fileToUpload" accept=".json">
               <input type="submit" value="Upload" name="submit">
           </form>
       </div>
-            
+      <button type="button" id="deleteShopsButton">Delete shops data</button>
+      <div id="message"></div>
+     
 </body>
 </html>

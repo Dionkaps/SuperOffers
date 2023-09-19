@@ -134,4 +134,50 @@ label {
 #submitBtn:hover {
   background-color: #0056b3;
 }
+form {
+  margin-bottom: 20px;
+}
 
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+input[type="file"] {
+  margin-bottom: 10px;
+}
+
+input[type="button"] {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+/* Style for the delete button */
+#deleteButton {
+  background-color: #0074d9;
+  color: #fff;
+  border: none;
+  padding: 10px 30px;
+  cursor: pointer;
+  align-items:center;
+}
+
+/* Style for the message div */
+#message {
+  margin-top: 20px;
+  font-weight: bold;
+  color: green; /* You can change the color to your preference */
+  text-align: center; /* Center the content horizontally */
+}
+#deleteShopsButton {
+  background-color: #0074d9;
+  color: #fff;
+  border: none;
+  padding: 10px 30px;
+  cursor: pointer;
+  align-items:center;
+}

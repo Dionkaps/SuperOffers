@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 }
 
 // Fetch user data and sort by tokens
-$sql = "SELECT username, total_score,token_count FROM user ORDER BY total_score DESC";
+$sql = "SELECT username, total_score,token_count,current_score FROM user ORDER BY total_score DESC";
 $result = $conn->query($sql);
 
 // Create an array to store user data

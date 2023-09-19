@@ -16,6 +16,7 @@
                     <td>${i + 1}</td>
                     <td>${user.username}</td>
                     <td>${user.total_score}</td>
+                    <td>${user.current_score}
                     <td>${user.token_count}</td>
                 `;
                 leaderboardBody.appendChild(row);
