@@ -12,6 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $data = json_decode($jsonData, true);
     $spId = $data['spid'];
     $pName = $data['pname'];
+    $uid = $data['userid'];
 
     $queryProdId = "SELECT id FROM products WHERE name = ?";
     $stmtProdId = $conn->prepare($queryProdId);
@@ -40,12 +41,35 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $stmtUpdate->bind_param("iss", $newValue, $spId, $prodId);
 
             if ($stmtUpdate->execute()) {
-                echo "Value increased successfully";
+                $query = "SELECT current_score FROM user WHERE user_id = ?";
+                $stmt = $conn->prepare($query);
+                $stmt->bind_param("i", $uid);
+                $stmt->execute();
+                $result = $stmt->get_result();
+
+                if ($result->num_rows > 0) {
+                    $row = $result->fetch_assoc();
+                    $currentValue = $row["current_score"];
+
+                    $newValue = $currentValue + 5;
+
+                    $sqlUpdate = "UPDATE user SET current_score = ? WHERE user_id = ?";
+                    $stmtUpdate = $conn->prepare($sqlUpdate);
+                    $stmtUpdate->bind_param("ii", $newValue, $uid);
+
+                    if ($stmtUpdate->execute()) {
+                        echo "Value increased successfully";
+                    } else {
+                        echo "Error updating record: " . $stmtUpdate->error;
+                    }
+
+                    $stmtUpdate->close();
+                } else {
+                    echo "No records found";
+                }
             } else {
                 echo "Error updating record: " . $stmtUpdate->error;
             }
-
-            $stmtUpdate->close();
         } else {
             echo "No records found";
         }
@@ -57,4 +81,3 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmtProdId->close();
 }
 $conn->close();
-?>

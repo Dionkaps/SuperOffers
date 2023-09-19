@@ -62,6 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     var values = {
                       spid: superId,
                       pname: item.name.trim(),
+                      userid: userId,
                     };
                     fetch("likeOffer.php", {
                       method: "POST",
@@ -76,6 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
                           alert("Succsessfully liked offer");
                         }
                       });
+
                   });
 
                   const dislikeButton = document.createElement("button");
@@ -87,6 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     var values = {
                       spid: superId,
                       pname: item.name.trim(),
+                      userid: userId,
                     };
                     fetch("dislikeOffer.php", {
                       method: "POST",
@@ -193,7 +196,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         .then((result) => {
                           console.log(result);
                           const jsonResponse = JSON.parse(result);
-
                           // Create formatted text with italic styles
                           const formattedText1 = `<em style="color: grey;">
                           Uploaded by:&nbsp;

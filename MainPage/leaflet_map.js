@@ -112,7 +112,7 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
   }
 
   function rateButtonInit() {
-    ratebtn.innerHTML = "Rate an offer";
+    ratebtn.innerHTML = "Rate offer";
     ratebtn.id = "rateButton";
     ratebtn.onclick = function () {
       window.location.href = "offer_rating.html";

@@ -5,7 +5,7 @@ var newPrice;
 var prodExists;
 var oldPrice;
 
-// Hide the pop-up window when the close button is clicked
+//Hide the pop-up window when the close button is clicked
 closeButton.addEventListener("click", function () {
   popupWindow.style.display = "none";
 });
@@ -16,6 +16,8 @@ function newOfferPrice(form) {
   if (newPrice != 0 && newPrice != null && newPrice != "") {
     document.getElementById("superIdInput").value = superId;
     document.getElementById("productNameInput").value = prodName;
+    //User token share
+    tokenSubmit(newPrice);
     if (prodExists) {
       console.log("newPrice: " + newPrice);
       console.log("oldPrice: " + oldPrice);
@@ -52,12 +54,31 @@ function newOfferPrice(form) {
     document.getElementById("newPrice").value = "";
   }
 }
+
+function tokenSubmit(newPrice) {
+  var values = {
+    pname: prodName,
+  };
+  fetch("fetchMostRecentPrice.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(values),
+  })
+    .then((response) => response.text())
+    .then((result) => {
+      alert("Price" + result);
+    });
+}
+
 const productGrid = document.querySelector(".product-grid");
 const categoryDropdown = document.getElementById("categories");
 const subcategoryDropdown = document.getElementById("subcategories");
 const searchBox = document.getElementById("searchBox");
+
 function productGridReset() {
-  productGrid.innerHTML = ""; // Clear existing content
+  productGrid.innerHTML = ""; //Clear existing content
 }
 
 document.addEventListener("DOMContentLoaded", function () {
