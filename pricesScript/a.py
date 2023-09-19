@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 from datetime import date
 from datetime import timedelta
 import time
@@ -14,13 +15,14 @@ results = {}
 results['fetch_date']=int(time.time())
 results['data']=[]
 
+service = Service(executable_path="/Users/User/Desktop/test/chromedriver.exe")
 #get product information
 options = webdriver.ChromeOptions()
 options.add_argument('--headless')
 
 options.add_experimental_option('excludeSwitches', ['enable-logging'])
 # executable_path param is where the Chrome driver is installed
-browser = webdriver.Chrome(options=options)
+browser = webdriver.Chrome(service=service,options=options)
 browser.get(URL)
 
 #get product information

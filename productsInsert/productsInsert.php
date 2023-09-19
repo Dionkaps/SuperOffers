@@ -13,8 +13,8 @@ $json_string = file_get_contents('products_data.json');
 $data = json_decode($json_string, true);
 
 //Prepared statements
-$stmt_products = $conn->prepare("INSERT INTO products (id, name, category_id, subcategory_id) VALUES (?, ?, ?, ?)");
-$stmt_products->bind_param("ssss", $id, $name, $category_id, $subcategory_id);
+$stmt_products = $conn->prepare("INSERT INTO products (id, name, category_id, subcategory_id, image) VALUES (?, ?, ?, ?, ?)");
+$stmt_products->bind_param("sssss", $id, $name, $category_id, $subcategory_id, $image);
 
 $stmt_categories = $conn->prepare("INSERT INTO categories (id, name) VALUES (?, ?)");
 $stmt_categories->bind_param("ss", $category_id, $category_name);
@@ -52,6 +52,7 @@ foreach ($data['products'] as $product) {
   $name = $product['name'];
   $category_id = $product['category'];
   $subcategory_id = $product['subcategory'];
+  $image = "images/" . $id . ".png";
 
   if ($stmt_products->execute()) {
     echo "Product inserted successfully. <br>";
