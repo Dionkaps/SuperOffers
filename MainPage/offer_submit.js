@@ -16,8 +16,6 @@ function newOfferPrice(form) {
   if (newPrice != 0 && newPrice != null && newPrice != "") {
     document.getElementById("superIdInput").value = superId;
     document.getElementById("productNameInput").value = prodName;
-    //User token share
-    tokenSubmit(newPrice);
     if (prodExists) {
       console.log("newPrice: " + newPrice);
       console.log("oldPrice: " + oldPrice);
@@ -37,6 +35,8 @@ function newOfferPrice(form) {
           .then((result) => {
             console.log(result);
           });
+        //User token share
+        tokenSubmit(newPrice);
         form.action = "newPriceSubmit.php";
         form.submit();
         alert("Offer added successfully");
@@ -44,6 +44,8 @@ function newOfferPrice(form) {
         alert("Offer already exists");
       }
     } else {
+      //User token share
+      tokenSubmit(newPrice);
       form.action = "newPriceSubmit.php";
       form.submit();
       alert("Offer added successfully");
@@ -68,7 +70,51 @@ function tokenSubmit(newPrice) {
   })
     .then((response) => response.text())
     .then((result) => {
-      alert("Price" + result);
+      if (newPrice < 0.8 * result) {
+        var values = {
+          score: 50,
+        };
+        fetch("userOfferTokens.php", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(values),
+        })
+          .then((response) => response.text())
+          .then((result) => {
+            console.log(result);
+          });
+      }
+    });
+  var values1 = {
+    pname: prodName,
+  };
+  fetch("fetchWeekPrice.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(values1),
+  })
+    .then((response) => response.text())
+    .then((result) => {
+      if (newPrice < 0.8 * result) {
+        var values = {
+          score: 20,
+        };
+        fetch("userOfferTokens.php", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(values),
+        })
+          .then((response) => response.text())
+          .then((result) => {
+            console.log(result);
+          });
+      }
     });
 }
 
