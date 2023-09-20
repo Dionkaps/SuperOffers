@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="adminLogin.css" />
+    <script src="checkAdminCredentials.js"></script>
+  <body>
+ <div class="signin-signup">
+      <form name="signInForm" class="sign-in-form" method="post">
+        <h2 class="title">Sign in</h2>
+        <div class="input-field">
+          <i class="fas fa-user"></i>
+          <input type="text" placeholder="Username" name="username" required />
+        </div>
+        <div class="input-field">
+          <i class="fas fa-lock"></i>
+          <input type="password" placeholder="Password" name="password" required />
+        </div>
+        <input type="button" value="Login" class="btn solid" onclick="checkDataFromPHP()" />
+      </form>
+    </body>
