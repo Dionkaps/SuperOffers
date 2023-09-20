@@ -118,7 +118,7 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
       window.location.href = "offer_rating.html";
     };
   }
-
+  var specialOffer;
   //Offer infobox populate function
   function offerPopulate() {
     infobox_body.innerHTML = ""; //Clear existing content
@@ -232,11 +232,31 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
               })
                 .then((response) => response.text())
                 .then((result) => {
+                  //APO EDWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+                  var values = {
+                    pname: item.trim(),
+                  };
+                  fetch("fetchMostRecentPrice.php", {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(values),
+                  })
+                    .then((response) => response.text())
+                    .then((result) => {
+                      if (jsonResponse[0].discount_price < 0.8 * result) {
+                        specialOffer = "Special offer";
+                      }
+                      else{
+                        specialOffer = "";
+                      }
+                    });
                   console.log(result);
                   const jsonResponse = JSON.parse(result);
 
                   // Create formatted text with italic styles
-                  const formattedText = `<em>
+                  const formattedText = `<em>${specialOffer}&nbsp;<br>
                 ${jsonResponse[0].discount_price}&nbsp;<i class="fa-solid fa-euro-sign euro"></i>&nbsp;
                 ${jsonResponse[0].likes}&nbsp;<i class="fa-solid fa-thumbs-up like"></i>&nbsp;
                 ${jsonResponse[0].dislikes}&nbsp;<i class="fa-solid fa-thumbs-down dislike"></i>&nbsp;</em>

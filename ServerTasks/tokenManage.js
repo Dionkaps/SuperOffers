@@ -1,7 +1,6 @@
-const schedule = require("node-schedule");
+const cron = require("node-cron");
 
-//Runs every 1st of the month at 00:00
-const job = schedule.scheduleJob("0 0 1 * *", function () {
+const monthlyTask = cron.schedule("0 0 1 * *", () => {
   //DO CODE GIA 31 TOU PROIGOUMENOU MHNA PRIN TO RESET
 
   //Reset tokens before setting them
@@ -22,3 +21,26 @@ const job = schedule.scheduleJob("0 0 1 * *", function () {
     console.log("Total tokens: " + totalTokens);
   });
 });
+
+const weeklyTask = cron.schedule("41 17 * * *", () => {
+  const { exec } = require("child_process");
+
+  const phpScriptPath = "testCriteria.php";
+
+  const command = `php ${phpScriptPath}`;
+
+  exec(command, (error, stdout, stderr) => {
+    if (error) {
+      console.error(`Error executing PHP script: ${error}`);
+      return;
+    }
+    console.log(stdout);
+  });
+});
+
+// Start both tasks
+monthlyTask.start();
+weeklyTask.start();
+
+// You can add more logic or functionality here if needed
+console.log("Tasks have been started.");
