@@ -1,4 +1,7 @@
 var userId;
+function redirectToMainPage() {
+  window.location.href = "main_page.html";
+}
 document.addEventListener("DOMContentLoaded", function () {
   // const shopDetails = document.getElementById("shop-name");
   const offerGrid = document.querySelector(".offer-grid");
@@ -77,7 +80,6 @@ document.addEventListener("DOMContentLoaded", function () {
                           alert("Succsessfully liked offer");
                         }
                       });
-
                   });
 
                   const dislikeButton = document.createElement("button");

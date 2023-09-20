@@ -10,13 +10,30 @@ $currentDate = date("Y-m-d H:i:s");
 $likes = 0;
 $dislikes = 0;
 $stock = 1;
-$userId = 1;
 $active = 1;
+session_start();
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die('Connection failed: ' . $conn->connect_error);
 }
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $email = $_SESSION['email'];
+
+    $query1 = "SELECT user_id FROM user WHERE email = ?";
+
+    $stmt1 = $conn->prepare($query1);
+    $stmt1->bind_param("s", $email);
+    $stmt1->execute();
+    $result1 = $stmt1->get_result();
+
+    if ($result1) {
+        while ($row = $result1->fetch_assoc()) {
+            $userId = $row['user_id'];
+        }
+    } else {
+        echo "Error executing the first query: " . $conn->error;
+    }
+
     $query = "SELECT id FROM products WHERE name = ?";
 
     $stmt = $conn->prepare($query);
