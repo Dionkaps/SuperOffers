@@ -19,7 +19,7 @@ if ($conn->connect_error) {
         
         // Store user data in session
         $_SESSION['username']=$user_data['username'];
-        $_SESSION['email'] = $user_data['email']; // Replace 'id' with your actual user ID column name
+        $_SESSION['email'] = $user_data['email'];
         $_SESSION['password']=$user_data['password'];
     
         

@@ -12,7 +12,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $data = json_decode($jsonData, true);
     $spId = $data['spid'];
     $pName = $data['pname'];
-    $uid = $data['userid'];
+    $uid = $data['userid']; //User ID of the user that submitted the offer that is being rated
+
+    $_SESSION['email'] = $current_email;
+    $queryUserId = "SELECT user_id FROM user WHERE email = ?";
+    $stmtUserId = $conn->prepare($queryUserId);
+    $stmtUserId->bind_param("s", $current_email);
+    $stmtUserId->execute();
+    $currentUserId = $stmtUserId->get_result(); //User ID of the user rating the current offer
+
+    $currentDate = date("Y-m-d H:i:s"); //Fetch the current date
+    $rating = 1; // When the user likes the offer the rating is 1
 
     $queryProdId = "SELECT id FROM products WHERE name = ?";
     $stmtProdId = $conn->prepare($queryProdId);
@@ -23,6 +33,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($resultProdId->num_rows > 0) {
         $row = $resultProdId->fetch_assoc();
         $prodId = $row['id'];
+
+        $queryRating = "INSERT INTO rating (rating, product_id, user_id, shop_id, date) VALUES (?,?,?,?,?)";
+        $stmtRating = $conn->prepare($queryRating);
+        $stmtRating->bind_param("isiss", $rating, $prodId, $currentUserId, $spId, $currentDate);
+        $stmtRating->execute();
+        $stmtRating->close();
 
         $query = "SELECT likes FROM discount WHERE shop_id = ? AND product_id = ?";
         $stmt = $conn->prepare($query);
@@ -79,5 +95,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $stmt->close();
     $stmtProdId->close();
+    $stmtUserId->close();
+
 }
 $conn->close();
+?>
