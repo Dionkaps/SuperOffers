@@ -38,7 +38,7 @@ let myChart;
                 data: {
                     labels: daysInMonth,
                     datasets: [{
-                        label: 'Number of Entries',
+                        label: 'Number of Discounts',
                         data: allEntryCounts,
                         backgroundColor: 'rgba(75, 192, 192, 0.2)',
                         borderColor: 'rgba(75, 192, 192, 1)',
@@ -51,7 +51,7 @@ let myChart;
                             beginAtZero: true,
                             title: {
                                 display: true,
-                                text: 'Number of Entries'
+                                text: 'Number of Discounts'
                             }
                         },
                         x: {
