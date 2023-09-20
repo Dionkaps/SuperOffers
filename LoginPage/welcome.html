@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="welcome.js" defer></script>
+    <link rel="stylesheet" href="welcome.css" />
+    <title>Welcome to our e-shop</title>
+</head>
+
+<body>
+
+    <div class="logo">
+        <img src="logo.png" alt="logooooo" id="logoImage">
+    </div>
+
+    <div class="container">
+
+        <!-- Continue as User -->
+        <div class="UserLogin">
+            <button id="UserLogin" onclick="redirectToUserLoginPage()">
+                <h2 class="title">Continue as User</h2>
+            </button>
+        </div>
+
+        <!-- Continue as Admin -->
+        <div class="AdminLogin">
+            <button id="AdminLogin" onclick="redirectToAdminLoginPage()">
+                <h2 class="title">Continue as Admin</h2>
+            </button>
+        </div>
+
+    </div>
+</body>
