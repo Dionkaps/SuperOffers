@@ -1,4 +1,5 @@
 var superId;
+var inCircle = false;
 var products = [];
 function fetchJSON(url) {
   return fetch(url).then(function (response) {
@@ -34,7 +35,7 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
 
         //Kiklos 50 metrwn me kentro ti topothesia tou xristi
         circle = L.circle(userLocation, {
-          radius: 50,
+          radius: 5000,
           color: "blue",
           fillOpacity: 0.1,
           opacity: 0.7,
@@ -144,7 +145,11 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
           items.forEach((item) => {
             if (item.trim() != "") {
               products.push(item.trim());
-              ratebtn.disabled = false;
+              if (inCircle == false) {
+                ratebtn.disabled = true;
+              } else {
+                ratebtn.disabled = false;
+              }
               const itemElement = document.createElement("p");
               itemElement.textContent = item.trim();
               itemElement.style.fontWeight = "bold";
@@ -232,7 +237,6 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
               })
                 .then((response) => response.text())
                 .then((result) => {
-                  //APO EDWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
                   var values = {
                     pname: item.trim(),
                   };
@@ -247,8 +251,7 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
                     .then((result) => {
                       if (jsonResponse[0].discount_price < 0.8 * result) {
                         specialOffer = "Special offer";
-                      }
-                      else{
+                      } else {
                         specialOffer = "";
                       }
                     });
@@ -282,7 +285,7 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
               itemContainer.appendChild(secondRow);
             }
           });
-          if (result === "") {
+          if (result === "" && inCircle == false) {
             ratebtn.disabled = true;
             const itemElement = document.createElement("p");
             itemElement.textContent = "No offers found";
@@ -314,14 +317,17 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
 
       //Elegxos an to layer einai marker & an vrisketai entos tou kiklou
       if (event.layer instanceof L.Marker && distance <= circle.getRadius()) {
+        inCircle = true;
         infobox_body.innerHTML = "";
         offerbtn.disabled = false;
+        ratebtn.disabled = false;
         offerButtonInit();
         rateButtonInit();
         buttonsContainer.appendChild(offerbtn);
         buttonsContainer.appendChild(ratebtn);
         infobox_body.appendChild(buttonsContainer);
       } else {
+        inCircle = false;
         console.log("Supermarket is outside the circle.");
         infobox_body.innerHTML = "You are too far away from the supermarket";
         offerButtonInit();
