@@ -2,13 +2,6 @@ var userId;
 document.addEventListener("DOMContentLoaded", function () {
   // const shopDetails = document.getElementById("shop-name");
   const offerGrid = document.querySelector(".offer-grid");
-
-  /*
-  function populateShopInfo(shopName){
-    const shopDetails = document.createElement('p');
-    shopDetails.textContent = 
-  }
-  */
   function offerPopulate() {
     offerGrid.innerHTML = ""; //Clear existing content
 

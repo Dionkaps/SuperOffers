@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       xhr.onreadystatechange = function () {
           if (xhr.readyState === 4 && xhr.status === 200) {
-              // Display the response from the PHP script in the messageDiv
+              // Display success message
               messageDiv.textContent = xhr.responseText;
           }
       };
@@ -98,7 +98,7 @@ deleteShopsButton.addEventListener("click", function() {
 
   xhr.onreadystatechange = function () {
       if (xhr.readyState === 4 && xhr.status === 200) {
-          // Display the response from the PHP script in the messageDiv
+          // Display success message
           messageDiv.textContent = xhr.responseText;
       }
   };

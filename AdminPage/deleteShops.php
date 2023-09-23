@@ -1,5 +1,4 @@
 <?php
-// Create a database connection
 $conn = new mysqli("localhost", "root", "", "webdev");
 
 // Check if the connection was successful
@@ -7,7 +6,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// SQL query to delete all data from the "shop" table
+
 $sql = "DELETE FROM shop";
 
 if ($conn->query($sql) === TRUE) {

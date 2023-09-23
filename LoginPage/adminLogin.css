@@ -10,7 +10,7 @@ body {
   .signin-signup {
     width: 100%;
     max-width: 400px;
-    margin: 50px auto; /* Add top margin here */
+    margin: 50px auto; 
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;

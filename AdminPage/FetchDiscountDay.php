@@ -1,11 +1,10 @@
 <?php
-// Replace with your actual database credentials
+
 $hostname = "localhost";
 $username = "root";
 $password = "";
 $database = "webdev";
 
-// Create a connection to the database
 $conn = new mysqli($hostname, $username, $password, $database);
 
 if ($conn->connect_error) {

@@ -98,20 +98,19 @@ li:hover {
   position: relative;
   text-align: center;
   margin: 0px auto;
-  max-width: 300px; /* Adjust the width as needed */
+  max-width: 300px; 
   background-color: #fff;
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* Label style */
+
 label {
   display: block;
   margin-bottom: 10px;
 }
 
-/* Input field style */
 #monthYearInput {
   width: 100%;
   padding: 10px;
@@ -120,7 +119,7 @@ label {
   border-radius: 5px;
 }
 
-/* Button style */
+
 #submitBtn {
   background-color: #0074d9;
   color: #fff;
@@ -170,8 +169,8 @@ input[type="button"] {
 #message {
   margin-top: 20px;
   font-weight: bold;
-  color: green; /* You can change the color to your preference */
-  text-align: center; /* Center the content horizontally */
+  color: green; 
+  text-align: center; 
 }
 
 #map {
@@ -186,7 +185,7 @@ input[type="button"] {
 }
 .center-button {
   text-align: center;
-  margin-top: 20px; /* Adjust the margin-top value to control the space between the forms and the button */
+  margin-top: 20px; 
 }
 #deleteShopsButton {
   background-color: #0074d9;

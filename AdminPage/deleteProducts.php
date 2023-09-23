@@ -16,7 +16,7 @@ if ($conn->query($sql_discount) === TRUE) {
     echo "Error deleting discount records: " . $conn->error;
 }
 
-// SQL query to delete all data from the "products" table
+// SQL query to delete all data from products
 $sql_products = "DELETE FROM products";
 $sql_products = "DELETE FROM prices";
 
