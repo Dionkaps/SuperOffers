@@ -49,55 +49,50 @@ if ($result->num_rows > 0) {
                 echo "Most Recent Price: " . $currentPrice . "<br>";
                 echo "Discount price is less than 80% of the current price.<br>";
                 echo "<hr>"; // Separation line between records
-                $flag = 0;
+                $flag = 1;
             } else {
-                $flag = $flag + 1;
+                //No offers
             }
-        } else if ($discountPrice >= 0.8 * $currentPrice) {
+        } else {
             echo "No records found for the most recent price.<br>";
             echo "<hr>"; // Separation line between records
         }
 
         // Modify the query to calculate the average price for the past week
-        $query = "SELECT AVG(price) AS average_price FROM prices WHERE product_id = ? AND date >= ? AND date <= ?";
-        $stmt = $conn->prepare($query);
+        $query1 = "SELECT AVG(price) AS average_price FROM prices WHERE product_id = ? AND date >= ? AND date <= ?";
+        $stmt1 = $conn->prepare($query1);
+        $stmt1->bind_param("sss", $productId, $startDate, $endDate);
+        $stmt1->execute();
+        $result1 = $stmt1->get_result();
 
-        // Bind the variables
-        $stmt->bind_param("sss", $productId, $startDate, $endDate);
-
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
+        if ($result1->num_rows > 0) {
+            $row = $result1->fetch_assoc();
             $averagePrice = $row["average_price"];
             if ($discountPrice < 0.8 * $averagePrice) {
                 echo "Product ID: " . $productId . "<br>";
                 echo "Discount Price: " . $discountPrice . "<br>";
                 echo "Most Recent Price: " . $averagePrice . "<br>";
                 echo "Discount price is less than 80% of the average price.<br>";
-                echo "<hr>"; // Separation line between records
-                $flag = 0;
-            } else if ($discountPrice >= 0.8 * $averagePrice) {
-                $flag = $flag + 1;
+                $flag = 1;
+            } else {
+                //No offers
             }
         } else {
             echo "No records found for the past week";
         }
 
-        if ($flag == 2) {
+        if ($flag == 0) {
             // Delete the row from the 'discount' table
             $deleteQuery = "DELETE FROM discount WHERE product_id = ? AND shop_id = ?";
             $deleteStmt = $conn->prepare($deleteQuery);
             $deleteStmt->bind_param("ss", $productId, $shopId);
             $deleteStmt->execute();
             $deleteStmt->close();
-            $flag = 0;
+        } else {
+            echo "Product Offer Renewed";
         }
-        else {
-            echo "No records found for the past week";
-        }
-        $stmt->close();
+        $stmt1->close();
+        $flag = 0;
     }
 } else {
     echo "No records found in the 'discount' table.";
