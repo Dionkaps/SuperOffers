@@ -18,7 +18,42 @@ if (isset($_SESSION['user_id'])) {
             $offerData = array(); // Initialize an empty array
 
             while ($row = mysqli_fetch_assoc($result)) {
-                $offerData[] = $row; // Add each row to the array
+                $prodId = $row['product_id'];
+                $shopId = $row['shop_id'];
+                $date = $row['date'];
+
+                // Fetch product name
+                $query1 = "SELECT name FROM products WHERE id = ?";
+                $stmt1 = $conn->prepare($query1);
+                $stmt1->bind_param("s", $prodId);
+                $stmt1->execute();
+                $result1 = $stmt1->get_result();
+
+                if ($result1 && $productRow = $result1->fetch_assoc()) {
+                    $productName = $productRow['name'];
+                } else {
+                    echo "Error executing the first query: " . $conn->error;
+                }
+
+                // Fetch shop name
+                $query2 = "SELECT name FROM shop WHERE shop_id = ?";
+                $stmt2 = $conn->prepare($query2);
+                $stmt2->bind_param("s", $shopId);
+                $stmt2->execute();
+                $result2 = $stmt2->get_result();
+
+                if ($result2 && $shopRow = $result2->fetch_assoc()) {
+                    $shopName = $shopRow['name'];
+                } else {
+                    echo "Error executing the second query: " . $conn->error;
+                }
+
+                // Add the data to the offerData array
+                $offerData[] = array(
+                    'productName' => $productName,
+                    'shopName' => $shopName,
+                    'date' => $date
+                );
             }
 
             echo json_encode(array('status' => 'success', 'odata' => $offerData));
@@ -31,4 +66,3 @@ if (isset($_SESSION['user_id'])) {
 } else {
     echo json_encode(array('status' => 'error', 'message' => 'User not authenticated.'));
 }
-?>
