@@ -18,7 +18,9 @@ if ($conn->connect_error) {
         $user_data = mysqli_fetch_assoc($result);
         
         // Store user data in session
+       
         $_SESSION['username']=$user_data['username'];
+        $_SESSION['user_id']=$user_data['user_id'];
         $_SESSION['email'] = $user_data['email'];
         $_SESSION['password']=$user_data['password'];
     

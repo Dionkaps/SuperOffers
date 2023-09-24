@@ -98,10 +98,15 @@ tfoot th {
   text-align: center;
 }
 
-button {
-  background-color: transparent;
+#updateButton {
+  background-color: #43cea2;
+  color: #ffffff;
   border: none;
-}
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;}
 
 button :hover{
   cursor: pointer;
