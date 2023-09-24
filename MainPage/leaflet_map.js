@@ -237,27 +237,13 @@ var data = fetchJSON("map_data.geojson").then(function (data) {
               })
                 .then((response) => response.text())
                 .then((result) => {
-                  var values = {
-                    pname: item.trim(),
-                  };
-                  fetch("fetchMostRecentPrice.php", {
-                    method: "POST",
-                    headers: {
-                      "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(values),
-                  })
-                    .then((response) => response.text())
-                    .then((result) => {
-                      if (jsonResponse[0].discount_price < 0.8 * result) {
-                        specialOffer = "Special offer";
-                      } else {
-                        specialOffer = "";
-                      }
-                    });
                   console.log(result);
                   const jsonResponse = JSON.parse(result);
-
+                  if (jsonResponse[0].special_offer == 1) {
+                    specialOffer = "Special offer";
+                  } else {
+                    specialOffer = "Regular offer";
+                  }
                   // Create formatted text with italic styles
                   const formattedText = `<em>${specialOffer}&nbsp;<br>
                 ${jsonResponse[0].discount_price}&nbsp;<i class="fa-solid fa-euro-sign euro"></i>&nbsp;

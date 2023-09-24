@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $productId = $row['id'];
     }
 
-    $query = "SELECT discount_price, likes, dislikes, date, stock, user_id FROM discount
+    $query = "SELECT discount_price, likes, dislikes, date, stock, user_id, special_offer FROM discount
           WHERE product_id = ? AND shop_id = ? AND active = ?";
 
     $stmt = $conn->prepare($query);
@@ -40,7 +40,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             "dislikes" => $row['dislikes'],
             "date" => $row['date'],
             "stock" => $row['stock'],
-            "user_id" => $row['user_id']
+            "user_id" => $row['user_id'],
+            "special_offer" => $row['special_offer']
 
         );
         $response[] = $item;

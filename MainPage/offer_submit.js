@@ -1,6 +1,7 @@
 var popupWindow = document.getElementById("popup-window");
 var closeButton = document.getElementById("close-button");
 var prodName;
+var specialOffer;
 var newPrice;
 var prodExists;
 var oldPrice;
@@ -16,6 +17,7 @@ function newOfferPrice(form) {
   if (newPrice != 0 && newPrice != null && newPrice != "") {
     document.getElementById("superIdInput").value = superId;
     document.getElementById("productNameInput").value = prodName;
+    document.getElementById("specialOfferInput").value = specialOffer;
     if (prodExists) {
       console.log("newPrice: " + newPrice);
       console.log("oldPrice: " + oldPrice);
@@ -36,7 +38,8 @@ function newOfferPrice(form) {
             console.log(result);
           });
         //User token share
-        tokenSubmit(newPrice);
+        specialOffer = tokenSubmit(newPrice);
+        console.log("Special offer: " + specialOffer);
         form.action = "newPriceSubmit.php";
         form.submit();
         alert("Offer added successfully");
@@ -45,7 +48,8 @@ function newOfferPrice(form) {
       }
     } else {
       //User token share
-      tokenSubmit(newPrice);
+      specialOffer = tokenSubmit(newPrice);
+      console.log("Special offer: " + specialOffer);
       form.action = "newPriceSubmit.php";
       form.submit();
       alert("Offer added successfully");
@@ -57,65 +61,67 @@ function newOfferPrice(form) {
   }
 }
 
-function tokenSubmit(newPrice) {
-  var values = {
-    pname: prodName,
-  };
-  fetch("fetchMostRecentPrice.php", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(values),
-  })
-    .then((response) => response.text())
-    .then((result) => {
-      if (newPrice < 0.8 * result) {
-        var values = {
-          score: 50,
-        };
-        fetch("userOfferTokens.php", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(values),
-        })
-          .then((response) => response.text())
-          .then((result) => {
-            console.log(result);
-          });
-      }
+async function tokenSubmit(newPrice) {
+  var spOffer;
+
+  try {
+    const response1 = await fetch("fetchMostRecentPrice.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ pname: prodName }),
     });
-  var values1 = {
-    pname: prodName,
-  };
-  fetch("fetchWeekPrice.php", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(values1),
-  })
-    .then((response) => response.text())
-    .then((result) => {
-      if (newPrice < 0.8 * result) {
-        var values = {
-          score: 20,
-        };
-        fetch("userOfferTokens.php", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(values),
-        })
-          .then((response) => response.text())
-          .then((result) => {
-            console.log(result);
-          });
-      }
+
+    const result1 = await response1.text();
+
+    if (newPrice < 0.8 * result1) {
+      spOffer = 1;
+      const response2 = await fetch("userOfferTokens.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ score: 50 }),
+      });
+
+      const result2 = await response2.text();
+      console.log(result2);
+    } else {
+      spOffer = 0;
+    }
+
+    const response3 = await fetch("fetchWeekPrice.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ pname: prodName }),
     });
+
+    const result3 = await response3.text();
+
+    if (newPrice < 0.8 * result3) {
+      spOffer = 1;
+      const response4 = await fetch("userOfferTokens.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ score: 20 }),
+      });
+
+      const result4 = await response4.text();
+      console.log(result4);
+    } else {
+      spOffer = 0;
+    }
+
+    console.log("spOffer: " + spOffer);
+    return spOffer;
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 const productGrid = document.querySelector(".product-grid");

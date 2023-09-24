@@ -22,7 +22,7 @@ const monthlyTask = cron.schedule("0 0 1 * *", () => {
   });
 });
 
-const weeklyTask = cron.schedule("52 14 * * *", () => {
+const weeklyTask = cron.schedule("45 15 * * *", () => {
   const { exec } = require("child_process");
 
   const phpScriptPath = "testCriteria.php";
