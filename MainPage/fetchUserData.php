@@ -4,7 +4,6 @@ session_start();
 if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
     
-    // Replace these values with your database connection details
     $conn = new mysqli('localhost', 'root', '', 'webdev');
     
     if ($conn->connect_error) {
