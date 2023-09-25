@@ -1,7 +1,7 @@
 const cron = require("node-cron");
 
-const monthlyTask = cron.schedule("00 02 * * *", () => {
-  // Reset tokens before setting them
+const monthlyTask = cron.schedule("0 0 1 * *", () => {
+  //Reset tokens before setting them
   let totalTokens = 0;
   const { exec } = require("child_process");
 
@@ -14,11 +14,11 @@ const monthlyTask = cron.schedule("00 02 * * *", () => {
       console.error(`Error executing PHP script: ${error}`);
       return;
     }
-    // Calculate total amount of tokens
+    //Calculate total amount of tokens
     totalTokens = stdout * 100;
     console.log("Total tokens: " + totalTokens);
 
-    // Code for splitting tokens between users
+    //Code for splitting tokens between users
     const phpScriptPath1 = "splitTokens.php";
 
     const command1 = `php ${phpScriptPath1} ${totalTokens}`;
@@ -32,7 +32,7 @@ const monthlyTask = cron.schedule("00 02 * * *", () => {
   });
 });
 
-const weeklyTask = cron.schedule("45 15 * * *", () => {
+const weeklyTask = cron.schedule("0 0 * * 0", () => {
   const { exec } = require("child_process");
 
   const phpScriptPath = "testCriteria.php";
@@ -48,9 +48,8 @@ const weeklyTask = cron.schedule("45 15 * * *", () => {
   });
 });
 
-// Start both tasks
+//Start both tasks
 monthlyTask.start();
 weeklyTask.start();
 
-// You can add more logic or functionality here if needed
 console.log("Tasks have been started.");
