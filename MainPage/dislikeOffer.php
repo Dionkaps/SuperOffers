@@ -3,6 +3,7 @@ $servername = 'localhost';
 $username = 'root';
 $password = '';
 $dbname = 'webdev';
+session_start();
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die('Connection failed: ' . $conn->connect_error);
@@ -12,14 +13,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $data = json_decode($jsonData, true);
     $spId = $data['spid'];
     $pName = $data['pname'];
-    $uid = $data['userid'];
+    $uid = $data['userid']; //User ID of the user that submitted the offer that is being rated
 
-    $_SESSION['email'] = $current_email;
+    $current_email = $_SESSION['email'];
     $queryUserId = "SELECT user_id FROM user WHERE email = ?";
     $stmtUserId = $conn->prepare($queryUserId);
     $stmtUserId->bind_param("s", $current_email);
     $stmtUserId->execute();
-    $currentUserId = $stmtUserId->get_result(); //User ID of the user rating the current offer
+    $result1 = $stmtUserId->get_result();
+
+    if ($result1) {
+        while ($row = $result1->fetch_assoc()) {
+            $currentUserId = $row['user_id'];
+        }
+    } else {
+        echo "Error executing the first query: " . $conn->error;
+    }
 
     $currentDate = date("Y-m-d H:i:s"); //Fetch the current date
     $rating = 0; // When the user dislikes the offer the rating is 1
@@ -67,12 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     $row = $result->fetch_assoc();
                     $currentValue = $row["current_score"];
 
-                    //User score cannot be negative
-                    if ($currentValue > 0) {
-                        $newValue = $currentValue - 1;
-                    } else {
-                        $newValue = $currentValue;
-                    }
+                    $newValue = $currentValue + 5;
 
                     $sqlUpdate = "UPDATE user SET current_score = ? WHERE user_id = ?";
                     $stmtUpdate = $conn->prepare($sqlUpdate);
@@ -101,7 +105,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmt->close();
     $stmtProdId->close();
     $stmtUserId->close();
-    
 }
 $conn->close();
-?>
