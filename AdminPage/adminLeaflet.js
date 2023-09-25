@@ -34,7 +34,7 @@ var data = fetchJSON("../MainPage/map_data.geojson").then(function (data) {
 
         //Kiklos 50 metrwn me kentro ti topothesia tou xristi
         circle = L.circle(userLocation, {
-          radius: 50,
+          radius: 200000,
           color: "blue",
           fillOpacity: 0.1,
           opacity: 0.7,
