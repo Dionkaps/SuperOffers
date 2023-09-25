@@ -56,6 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   itemElement.textContent = item.name.trim();
                   itemElement.style.fontWeight = "bold";
                   itemElement.id = "itemElement";
+                  //Like Button init
                   const likeButton = document.createElement("button");
                   likeButton.textContent = "Like";
                   likeButton.style.backgroundColor = "#69db69";
@@ -81,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         }
                       });
                   });
-
+                  //Dislike Button init
                   const dislikeButton = document.createElement("button");
                   dislikeButton.textContent = "Dislike";
                   dislikeButton.style.backgroundColor = "#ff7a7a";
@@ -107,6 +108,59 @@ document.addEventListener("DOMContentLoaded", function () {
                         }
                       });
                   });
+                  //On stock Button init
+                  const onStockbtn = document.createElement("button");
+                  onStockbtn.textContent = "On Stock";
+                  onStockbtn.style.backgroundColor = "#69db69";
+                  onStockbtn.style.color = "black";
+                  onStockbtn.style.borderRadius = "5px";
+                  onStockbtn.addEventListener("click", () => {
+                    var values = {
+                      spid: superId,
+                      pname: item.name.trim(),
+                      userid: userId,
+                    };
+                    fetch("onStock.php", {
+                      method: "POST",
+                      headers: {
+                        "Content-Type": "application/json",
+                      },
+                      body: JSON.stringify(values),
+                    })
+                      .then((response) => response.text())
+                      .then((result) => {
+                        if (result === "Value increased successfully") {
+                          alert("All changes saved");
+                        }
+                      });
+                  });
+
+                  //Dislike Button init
+                  const notOnStockbtn = document.createElement("button");
+                  notOnStockbtn.textContent = "Out off Stock";
+                  notOnStockbtn.style.backgroundColor = "#ff7a7a";
+                  notOnStockbtn.style.color = "black";
+                  notOnStockbtn.style.borderRadius = "5px";
+                  notOnStockbtn.addEventListener("click", () => {
+                    var values = {
+                      spid: superId,
+                      pname: item.name.trim(),
+                      userid: userId,
+                    };
+                    fetch("outOfStock.php", {
+                      method: "POST",
+                      headers: {
+                        "Content-Type": "application/json",
+                      },
+                      body: JSON.stringify(values),
+                    })
+                      .then((response) => response.text())
+                      .then((result) => {
+                        if (result === "Value increased successfully") {
+                          alert("All changes saved");
+                        }
+                      });
+                  });
 
                   //Image container init
                   const imageContainer = document.createElement("div");
@@ -118,6 +172,9 @@ document.addEventListener("DOMContentLoaded", function () {
                   //Button container init
                   const buttonContainer = document.createElement("div");
                   buttonContainer.classList.add("button-container");
+
+                  const buttonContainer1 = document.createElement("div");
+                  buttonContainer1.classList.add("button-container1");
 
                   const firstRow = document.createElement("div");
                   firstRow.classList.add("product-details");
@@ -164,16 +221,26 @@ document.addEventListener("DOMContentLoaded", function () {
                         onStockResponse = "On stock";
                         likeButton.disabled = false;
                         dislikeButton.disabled = false;
+                        onStockbtn.disabled = true;
+                        notOnStockbtn.disabled = false;
                         dislikeButton.style.backgroundColor =
                           "rgb(225, 75, 75)";
                         likeButton.style.backgroundColor = "rgb(71, 194, 106)";
+                        onStockbtn.style.backgroundColor = "rgb(189, 224, 199)";
+                        notOnStockbtn.style.backgroundColor =
+                          "rgb(225, 75, 75)";
                       } else {
                         onStockResponse = "Out of stock";
                         likeButton.disabled = true;
                         dislikeButton.disabled = true;
+                        onStockbtn.disabled = false;
+                        notOnStockbtn.disabled = true;
                         dislikeButton.style.backgroundColor =
                           "rgb(237, 207, 207)";
                         likeButton.style.backgroundColor = "rgb(189, 224, 199)";
+                        onStockbtn.style.backgroundColor = "rgb(71, 194, 106)";
+                        notOnStockbtn.style.backgroundColor =
+                          "rgb(237, 207, 207)";
                       }
 
                       const formattedDate = `<em>&nbsp;&nbsp;<strong>Offer date:</strong>${jsonResponse[0].date}&nbsp;<br>${onStockResponse}</em>`;
@@ -223,8 +290,12 @@ document.addEventListener("DOMContentLoaded", function () {
                   buttonContainer.appendChild(likeButton);
                   buttonContainer.appendChild(dislikeButton);
 
+                  buttonContainer.appendChild(onStockbtn);
+                  buttonContainer.appendChild(notOnStockbtn);
+
                   offerContainer.appendChild(imageContainer);
                   offerContainer.appendChild(itemContainer);
+                  offerContainer.appendChild(buttonContainer1);
                   offerContainer.appendChild(buttonContainer);
                   offerGrid.appendChild(offerContainer);
                 }
